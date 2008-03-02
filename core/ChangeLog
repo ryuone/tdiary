@@ -1,3 +1,6 @@
+2008-03-02 Hideki SAKAMOTO <hs at on-sky.net>
+	* tdiary.rb: fixed no appling plugin in title and subtitle.
+
 2008-02-29 TADA Tadashi <sho@spc.gr.jp>
 	* release 2.2.1.
 

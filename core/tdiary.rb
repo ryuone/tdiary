@@ -1,13 +1,13 @@
 =begin
 == NAME
 tDiary: the "tsukkomi-able" web diary system.
-tdiary.rb $Revision: 1.339 $
+tdiary.rb $Revision: 1.339.2.1 $
 
 Copyright (C) 2001-2007, TADA Tadashi <sho@spc.gr.jp>
 You can redistribute it and/or modify it under GPL2.
 =end
 
-TDIARY_VERSION = '2.2.1'
+TDIARY_VERSION = '2.2.1.20080302'
 
 $:.insert( 1, File::dirname( __FILE__ ) + '/misc/lib' )
 
@@ -795,7 +795,7 @@ module TDiary
 			@title_procs.each do |proc|
 				title = proc.call( date, title )
 			end
-			apply_plugin( title )
+			apply_plugin( title, false, true )
 		end
 
 		def add_body_enter_proc( block = Proc::new )
@@ -843,7 +843,7 @@ module TDiary
 			@subtitle_procs.each do |proc|
 				subtitle = proc.call( date, @section_index[date], subtitle )
 			end
-			apply_plugin( subtitle )
+			apply_plugin( subtitle, false, true )
 		end
 
 		def add_section_leave_proc( block = Proc::new )
@@ -946,10 +946,10 @@ module TDiary
 			str.gsub( /<[^"'<>]*(?:"[^"]*"[^"'<>]*|'[^']*'[^"'<>]*)*(?:>|(?=<)|$)/, '' )
 		end
 
-		def apply_plugin( str, remove_tag = false )
+		def apply_plugin( str, remove_tag = false, force = false )
 			return '' unless str
 			r = str.dup
-			if @options['apply_plugin'] and str.index( '<%' ) then
+			if (force or @options['apply_plugin']) and str.index( '<%' ) then
 				r = str.untaint if $SAFE < 3
 				Safe::safe( @conf.secure ? 4 : 1 ) do
 					begin
