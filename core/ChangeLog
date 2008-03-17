@@ -1,3 +1,6 @@
+2008-03-17 TADA Tadashi <sho@spc.gr.jp>
+	* tdiary_style.rb: fixed #74.
+
 2008-03-02 Hideki SAKAMOTO <hs at on-sky.net>
 	* tdiary.rb: fixed no appling plugin in title and subtitle.
 
