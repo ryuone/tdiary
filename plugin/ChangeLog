@@ -1,3 +1,7 @@
+2008-04-14 TADA Tadashi <sho@spc.gr.jp>
+	* category.rb: fixed cache file compatibility bug when cache name has
+	spaces.
+
 2008-02-29 TADA Tadashi <sho@spc.gr.jp>
 	* release 2.2.1.
 

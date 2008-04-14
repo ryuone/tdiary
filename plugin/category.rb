@@ -1,4 +1,4 @@
-# category.rb $Revision: 1.45 $
+# category.rb $Revision: 1.45.2.1 $
 #
 # Copyright (c) 2003 Junichiro KITA <kita@kitaj.no-ip.com>
 # Distributed under the GPL
@@ -541,7 +541,7 @@ class Cache
 private
 	def cache_file(category = nil)
 		if category
-			"#{@dir}/#{u category}".untaint
+			"#{@dir}/#{u( category ).gsub(/%20/,'+')}".untaint
 		else
 			"#{@dir}/category_list"
 		end
