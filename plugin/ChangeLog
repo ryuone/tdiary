@@ -1,3 +1,6 @@
+2008-07-28 TADA Tadashi <sho@spc.gr.jp>
+	* makerss.rb: fixed error when subtitle was nil.
+
 2008-07-02 TADA Tadashi <sho@spc.gr.jp>
 	* makerss.rb: fixed over deleting category name from title. thanks for
 	TAKAHASHI Tamotsu.
