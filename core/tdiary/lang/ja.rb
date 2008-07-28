@@ -45,7 +45,7 @@ def to_mail( str )
 end
 
 def shorten( str, len = 120 )
-	lines = NKF::nkf( "-e -m0 -f#{len}", str.gsub( /\n/, ' ' ) ).split( /\n/ )
+	lines = NKF::nkf( "-Ee -m0 -f#{len}", str.gsub( /\n/, ' ' ) ).split( /\n/ )
 	lines[0].concat( '..' ) if lines[0] and lines[1]
 	lines[0] || ''
 end
