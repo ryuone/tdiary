@@ -514,12 +514,15 @@ def comment_description
 end
 
 def comment_form_text
+	@diary = @diaries[@date.strftime('%Y%m%d')] unless @diary
+	return '' unless @diary
+
 	r = ''
 	unless @conf.hide_comment_form then
 		r = <<-FORM
 			<div class="form">
 		FORM
-		if @diaries[@date.strftime('%Y%m%d')].count_comments( true ) >= @conf.comment_limit_per_day then
+		if @diary.count_comments( true ) >= @conf.comment_limit_per_day then
 			r << <<-FORM
 				<div class="caption"><a name="c">#{comment_limit_label}</a></div>
 			FORM
@@ -581,8 +584,10 @@ def comment_form_mobile
 	return '' if @conf.hide_comment_form
 	return '' if bot?
 	return '' if hide_comment_day_limit
+	@diary = @diaries[@date.strftime('%Y%m%d')] unless @diary
+	return '' unless @diary
 
-	if @diaries[@date.strftime('%Y%m%d')].count_comments( true ) >= @conf.comment_limit_per_day then
+	if @diary.count_comments( true ) >= @conf.comment_limit_per_day then
 		return "<HR><P>#{comment_limit_label}</P>"
 	end
 
@@ -622,6 +627,8 @@ def comment_mail_send
 	return unless @comment
 	return unless @conf['comment_mail.enable']
 	return unless @conf['comment_mail.sendhidden'] or @comment.visible?
+	@diary = @diaries[@date.strftime('%Y%m%d')] unless @diary
+	return unless @diary
 
 	case @conf['comment_mail.receivers']
 	when Array
@@ -649,7 +656,7 @@ def comment_mail_send
 	tz = (g.to_i - l.to_i) / 36
 	date = now.strftime( "%a, %d %b %Y %X " ) + sprintf( "%+05d", tz )
 
-	serial = @diaries[@date.strftime( '%Y%m%d' )].count_comments( true )
+	serial = @diary.count_comments( true )
 	message_id = %Q!<tdiary.#{[@conf['comment_mail.header'] || ''].pack('m').gsub(/\n/,'')}.#{now.strftime('%Y%m%d%H%M%S')}.#{serial}@#{Socket::gethostname}>!
 
 	mail_header = (@conf['comment_mail.header'] || '').dup

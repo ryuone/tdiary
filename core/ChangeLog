@@ -1,3 +1,6 @@
+2008-08-19 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/00default.rb: fixed #104, NoMethodError specified old date without diary.
+
 2008-07-28 TADA Tadashi <sho@spc.gr.jp>
 	* tdiary/lang/ja.rb: fixed to fail NKF auto-detect charset in shorten.
 
