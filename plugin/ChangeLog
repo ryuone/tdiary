@@ -1,3 +1,6 @@
+2008-08-20 TADA Tadashi <sho@spc.gr.jp>
+	* squeeze.rb: applyed #117, #120 and #122.
+
 2008-07-28 TADA Tadashi <sho@spc.gr.jp>
 	* makerss.rb: fixed error when subtitle was nil.
 

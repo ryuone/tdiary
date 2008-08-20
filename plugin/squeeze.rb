@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# squeeze.rb $Revision: 1.24 $
+# squeeze.rb
 #
 # Create daily HTML file from tDiary database.
 #
@@ -12,8 +12,10 @@
 # You can redistribute it and/or modify it under GPL2.
 #
 # The original version of this file was distributed with squeeze 
-# version 1.0.4 by TADA Tadashi <sho@spc.gr.jp> with GPL2.
+# by TADA Tadashi <sho@spc.gr.jp> with GPL2.
 #
+unless $squeeze_loaded
+$squeeze_loaded ||= true
 
 mode = defined?(TDiary) ? "PLUGIN" : ENV["REQUEST_METHOD"]? "CGI" : "CMD"
 
@@ -28,7 +30,7 @@ if mode == "CMD" || mode == "CGI"
 
 	if mode == "CMD"
 		def usage
-			puts "squeeze $Revision: 1.24 $"
+			puts "squeeze"
 			puts " making html files from tDiary's database."
 			puts " usage: ruby squeeze.rb [-p <tDiary path>] [-c <tdiary.conf path>] [-a] [-s] [-x suffix] <dest path>"
 			exit
@@ -47,7 +49,7 @@ if mode == "CMD" || mode == "CGI"
 				when '--path'
 					tdiary_path = arg
 				when '--conf'
-					tdiary_conf = arg
+					tdiary_conf = arg.dup.untaint
 				when '--suffix'
 					suffix = arg
 				when '--all'
@@ -240,11 +242,12 @@ else
 		dir = @options['squeeze.output_path'] || @options['yasqueeze.output_path']
 		dir = @cache_path + "/html" unless dir
 		Dir.mkdir(dir, 0755) unless File.directory?(dir)
-		TDiary::YATDiarySqueeze.new(diary, dir,
+		::TDiary::YATDiarySqueeze.new(diary, dir,
 					    @options['squeeze.all_data'] || @options['yasqueeze.all_data'],
 					    @options['squeeze.compat_path'] || @options['yasqueeze.compat_path'],
 					    conf,
 					    @options['squeeze.suffix'] || ''
 					    ).execute
 	end
+end
 end
