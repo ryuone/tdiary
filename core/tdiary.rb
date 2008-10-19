@@ -523,8 +523,8 @@ module TDiary
 				@logger.warn( str )
 			when "INFO"
 				@logger.info( str )
-			else 
-				@logger.debug( str )			
+			else
+				@logger.debug( str )
 			end
 		end
 
@@ -574,7 +574,8 @@ module TDiary
 		def load
 			@secure = true unless @secure
 			@options = {}
-			eval( File::open( "tdiary.conf" ){|f| f.read }.untaint, binding, "(tdiary.conf)", 1 )
+#			eval( File::open( "tdiary.conf" ){|f| f.read }.untaint, binding, "(tdiary.conf)", 1 )
+			load_conf_current_directory
 
 			# language setup
 			@lang = 'ja' unless @lang
@@ -668,6 +669,10 @@ module TDiary
 				variables.each do |var| eval "@#{var} = #{var} if #{var} != nil" end
 			rescue IOError, Errno::ENOENT
 			end
+		end
+
+		def load_conf_current_directory( filename = "tdiary.conf", b = binding )
+			eval( File::open( filename ){|f| f.read }.untaint, b, "(#{ filename })", 1 )
 		end
 
 		def method_missing( *m )
@@ -1841,7 +1846,7 @@ EOS
 			end
 		end
 	end
-	
+
 	#
 	# class TDiaryMonth
 	#  show month mode view
@@ -2144,7 +2149,7 @@ HERE
 			if @cgi.content_type =~ /charset=([^\s;]*)/i then
 				charset = $1
 			end
-			
+
 			url = @cgi.params['url'][0]
 			blog_name = @conf.to_native( @cgi.params['blog_name'][0] || '', charset )
 			title = @conf.to_native( @cgi.params['title'][0] || '', charset )
