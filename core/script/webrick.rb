@@ -3,25 +3,52 @@ require 'webrick'
 require 'webrick/httpservlet/cgihandler'
 require 'webrick/httputils'
 
-TDIARY_CORE_DIR = File.expand_path("..", File.dirname(__FILE__))
+class TDiaryDevelopmentServer
+	TDIARY_CORE_DIR = File.expand_path("..", File.dirname(__FILE__))
 
-tdiary_mime_types = WEBrick::HTTPUtils::DefaultMimeTypes.merge({
-	"rdf" => "application/xml",
-	})
+	class << self
+		def run
+			@@server = TDiaryDevelopmentServer.new
+			@@server.start
+		end
 
-s = WEBrick::HTTPServer.new(
-	:Port => 10080, :BindAddress => '127.0.0.1',
-	:DocumentRoot => TDIARY_CORE_DIR,
-	:MimeTypes => tdiary_mime_types,
-	:Logger => WEBrick::Log::new($stderr, WEBrick::Log::DEBUG)
-)
-s.logger.level = WEBrick::Log::DEBUG
-trap("INT") { s.shutdown }
-trap("TERM") { s.shutdown }
+		def stop
+			@@server.shutdown
+		end
+	end
 
-s.mount("/index.cgi", WEBrick::HTTPServlet::CGIHandler,
-	File.expand_path("index.rb", TDIARY_CORE_DIR))
-s.mount("/update.cgi", WEBrick::HTTPServlet::CGIHandler,
-	File.expand_path("update.rb", TDIARY_CORE_DIR))
+	def initialize
+		@server = WEBrick::HTTPServer.new(
+			:Port => 10080, :BindAddress => '127.0.0.1',
+			:DocumentRoot => TDIARY_CORE_DIR,
+			:MimeTypes => tdiary_mime_types,
+			:Logger => WEBrick::Log::new($stderr, WEBrick::Log::DEBUG)
+		)
+		@server.logger.level = WEBrick::Log::DEBUG
+		trap("INT") { @server.shutdown }
+		trap("TERM") { @server.shutdown }
+		@server.mount("/index.cgi", WEBrick::HTTPServlet::CGIHandler,
+			File.expand_path("index.rb", TDIARY_CORE_DIR))
+		@server.mount("/update.cgi", WEBrick::HTTPServlet::CGIHandler,
+			File.expand_path("update.rb", TDIARY_CORE_DIR))
+	end
 
-s.start
+	def start
+		@server.start
+	end
+
+	def shutdown
+		@server.shutdown
+	end
+
+	private
+	def tdiary_mime_types
+		WEBrick::HTTPUtils::DefaultMimeTypes.merge({
+				"rdf" => "application/xml",
+			})
+	end
+end
+
+if $0 == __FILE__
+	TDiaryDevelopmentServer.run
+end
