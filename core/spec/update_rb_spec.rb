@@ -16,7 +16,7 @@ describe "update.rb" do
 			config_stub = ConfigStub.new(cgi_stub) do
 				@data_path = first_config_dir
 			end
-			mock(TDiary::Config).new(cgi_stub).times(2){config_stub}
+			mock(TDiary::Config).new(cgi_stub).times(2){config_stub} # why 2 times needed to make green???
 			@driver = TDiaryDriver.update(cgi_stub)
 			@driver.invoke
 			@response = @driver.response
