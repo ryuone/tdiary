@@ -6,7 +6,7 @@ tags_file = File.join(BASE_DIR, "TAGS")
 File.delete(tags_file) if File.exist?(tags_file)
 
 target_gem_libs = %w[
-  rspec-1.1.8
+  rspec-1.1.9
   rspec_hpricot_matchers-1.0
   rr-0.6.0
   cucumber-0.1.9
