@@ -17,26 +17,3 @@ Spec::Runner.configure do |config|
 	config.mock_with :rr
 	config.include(RspecHpricotMatchers)
 end
-
-class IndexRbDriver
-	def initialize(cgi_stub)
-		@response = ResponseSpy.new(cgi_stub)
-	end
-
-	def invoke
-		begin
-			raw_result = StringIO.new
-			$stdout = raw_result
-			load "index.rb"
-		ensure
-			$stdout = STDOUT
-			raw_result.rewind
-			@response.parse_raw_result(raw_result.read)
-		end
-	end
-
-	def response
-		@response
-	end
-
-end

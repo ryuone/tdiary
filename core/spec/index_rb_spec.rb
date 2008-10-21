@@ -41,6 +41,6 @@ describe "index.rb" do
 		it("Content-Length") { @headers["Content-Length"].should == @response.body_raw.size.to_s }
 
 		it { @body.should_not be_nil }
-		it { @should have_tag("h1", /【日記のタイトル】/)}
+		it { @body.should have_tag("h1", /【日記のタイトル】/)}
 	end
 end
