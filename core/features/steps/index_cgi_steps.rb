@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 
-Before do
-end
-
-After do
-end
-
 Given "最低限のtdiary.conf" do
 	fixture_dir = File.expand_path("../fixtures", File.dirname(__FILE__))
 	work_data_dir = File.expand_path("../data", File.dirname(__FILE__))

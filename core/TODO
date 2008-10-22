@@ -1,11 +1,10 @@
+* ConfigがCGIに依存しているのが気にくわない
+
 * misc/server を 本体に移したいなあ lib/commands/server とか？
+* Conf.save での skel.rconf で例外が出てもわからない
+* LoggerのAPIはもっとマシにできそう
 
-* ConfigがCGIに依存しているのは気にくわない
-* CGIをreopenしているが、このメソッドはテストでも使えるのでmoduleにしたい
-
-* headerのマッチャ
-* ContentLength の マッチャ
-* encodingのマッチャ(設定から抜いてきている。設定は、lang/の下から引いている)
+* 特定の日記の更新
 
 * HEADメソッドの場合のテスト
 * ForceRedirectがraiseされた場合のテスト
@@ -18,10 +17,15 @@
 ** 最新 n 日
 ** 月またぎ
 ** 指定した日
-
-* 日記が存在しない場合
+** 日記が存在しない場合
 
 * 日記の更新
+** 新規
+** プレビュー
+** 追記
+** この日の日記を隠す
+
+* プラグインを入れた場合の組み合わせ
 
 * セキュアモード
 * Win32
@@ -33,5 +37,7 @@
 * masterkey = conf.options['csrf_protection_key']
 * updaterb_regexp = conf.options['csrf_protection_allowed_referer_regexp_for_update']
 
-* Conf.save での skel.rconf 例外が出てもわからない
-* LoggerのAPIはもっとマシにできそう
+!! cgi方面
+
+* headerの検証
+* ContentLength の検証

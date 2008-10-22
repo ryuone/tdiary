@@ -7,12 +7,6 @@ require 'rspec_hpricot_matchers'
 
 require 'tdiary'
 
-require 'core_ext'
-require 'cgi_stub'
-require 'response_spy'
-require 'config_stub'
-require 'tdiary_driver'
-
 Spec::Runner.configure do |config|
 	config.mock_with :rr
 	config.include(RspecHpricotMatchers)

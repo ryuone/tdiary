@@ -1,7 +1,4 @@
-require 'stringio'
-require 'hpricot'
-
-
+# TODO refactoring
 class ResponseSpy
 	class HTTPStatus
 		attr_reader :code, :message
@@ -11,8 +8,7 @@ class ResponseSpy
 	end
 
 	attr_reader :body, :body_raw
-	def initialize(cgi_stub)
-		@cgi_stub = cgi_stub
+	def initialize
 		@raw = StringIO.new
 		@body_raw = ""
 	end

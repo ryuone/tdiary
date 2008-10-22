@@ -2,4 +2,4 @@
 $:.unshift(File.expand_path("../misc", File.dirname(__FILE__)))
 require 'server'
 
-TDiary::Server.run(:port => 10080)
+TDiary::Server.run(:port => 19292)
