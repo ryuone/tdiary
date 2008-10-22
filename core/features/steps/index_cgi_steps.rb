@@ -39,14 +39,18 @@ Then /ステータスコードは (.*) である/ do |status|
 	@status.to_s.should == status
 end
 
-Then /ボディの (.*) タグは (.*) を含む/ do |hpricot_path, content|
+Then /HTMLの (.*) タグの内容は (.*) を含む/ do |hpricot_path, content|
 	@response.should have_tag(hpricot_path, /#{content}/)
 end
 
-Then /ボディに (.*) へのリンクがある/ do |link|
+Then /HTMLの (.*) タグの内容は (.*) である/ do |hpricot_path, content|
+	@response.should have_tag(hpricot_path, content)
+end
+
+Then /HTMLに (.*) へのリンクがある/ do |link|
 	@response.should have_tag("a[@href=#{link}]")
 end
 
-Then /ボディに (.*) タグがある/ do |hpricot_path|
+Then /HTMLに (.*) タグがある/ do |hpricot_path|
 	@response.should have_tag(hpricot_path)
 end

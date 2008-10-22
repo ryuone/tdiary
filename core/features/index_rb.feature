@@ -7,6 +7,6 @@
     前提 最低限のtdiary.conf
     もし index.rb にアクセスした
 	ならば ステータスコードは 200 である
-    かつ ボディの title タグは 【日記のタイトル】 を含む
-	かつ ボディの h1 タグは 【日記のタイトル】 を含む
-    かつ ボディに update.rb?conf=default へのリンクがある
+    かつ HTMLの title タグの内容は 【日記のタイトル】 を含む
+	かつ HTMLの h1 タグの内容は 【日記のタイトル】 を含む
+    かつ HTMLに update.rb?conf=default へのリンクがある
