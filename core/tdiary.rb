@@ -575,7 +575,7 @@ module TDiary
 			@secure = true unless @secure
 			@options = {}
 #			eval( File::open( "tdiary.conf" ){|f| f.read }.untaint, binding, "(tdiary.conf)", 1 )
-			load_conf_current_directory
+			load_current_directory_conf
 
 			# language setup
 			@lang = 'ja' unless @lang
@@ -671,8 +671,13 @@ module TDiary
 			end
 		end
 
-		def load_conf_current_directory( filename = "tdiary.conf", b = binding )
-			eval( File::open( filename ){|f| f.read }.untaint, b, "(#{ filename })", 1 )
+		def load_current_directory_conf( filename = "tdiary.conf", b = binding )
+			eval( File::open( tdiary_config_file_path ) {
+				|f| f.read }.untaint, b, "(#{ tdiary_config_file_path })", 1 )
+		end
+
+		def tdiary_config_file_path( filename = "tdiary.conf" )
+			filename
 		end
 
 		def method_missing( *m )
