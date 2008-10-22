@@ -1,8 +1,10 @@
+require 'stringio'
+
 class TDiaryDriver
 	class << self
 		def configure(&block)
 			driver = new
-			yield driver
+			driver.instance_eval(&block) if block_given?
 			driver
 		end
 
@@ -24,7 +26,6 @@ class TDiaryDriver
 	def invoke(path)
 		raw_result = StringIO.new
 		begin
-			require 'stringio'
 			stdin_spy = StringIO.new("")
 			unless @param_str.empty?
 				stdin_spy.print(@param_str.join("\n"))
@@ -42,11 +43,10 @@ class TDiaryDriver
 			$stdout = STDOUT
 			$stderr = STDERR
 			raw_result.rewind
-			@res = ResponseSpy.new
-			@res.parse_raw_result(raw_result.read)
+			@res = ResponseSpy.parse(raw_result.read)
 		end
 		puts @res.body if $DEBUG
-		return [@res.status_code, @res.headers, @res.body]
+		[@res.status_code, @res.headers, @res.body]
 	end
 
 	private

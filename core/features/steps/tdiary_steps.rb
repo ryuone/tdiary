@@ -10,7 +10,7 @@ Given "最低限のtdiary.conf" do
 	end
 
 	@driver = TDiaryDriver.configure do |conf|
-		conf.data_path File.expand_path(
+		data_path File.expand_path(
 			"../fixtures/just_installed/tdiary.conf", File.dirname(__FILE__))
 	end
 end

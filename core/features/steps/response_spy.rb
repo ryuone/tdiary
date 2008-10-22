@@ -1,4 +1,3 @@
-# TODO refactoring
 class ResponseSpy
 	class HTTPStatus
 		attr_reader :code, :message
@@ -7,9 +6,20 @@ class ResponseSpy
 		end
 	end
 
+	class << self
+		def parse(raw_result)
+			response_spy = new(raw_result)
+			response_spy.parse_raw_result
+			response_spy
+		end
+		private :new
+	end
+
 	attr_reader :body, :body_raw
-	def initialize
-		@raw = StringIO.new
+
+
+	def initialize(raw = StringIO.new)
+		@raw = raw
 		@body_raw = ""
 	end
 
@@ -30,18 +40,12 @@ class ResponseSpy
 		@status.code
 	end
 
-	def parse_raw_result(raw)
-		raw_header, *body = raw.split(CGI::EOL * 2)
-		@raw = raw
+	def parse_raw_result
+		raw_header, *body = @raw.split(CGI::EOL * 2)
 		@headers ||= parse_headers(raw_header)
 		@body_raw = body.join("")
 		@body = Hpricot(@body_raw)
-		@status = if status = @headers["Status"]
-						 m = status.match(/(\d+)\s(.+)\Z/)
-						 HTTPStatus.new(*m[1..2])
-					 else
-						 HTTPStatus.new(200, "OK")
-					 end
+		@status = extract_status
 	end
 
 	private
@@ -55,4 +59,12 @@ class ResponseSpy
 		end
 	end
 
+	def extract_status
+		if status = @headers["Status"]
+			m = status.match(/(\d+)\s(.+)\Z/)
+			HTTPStatus.new(*m[1..2])
+		else
+			HTTPStatus.new(200, "OK")
+		end
+	end
 end

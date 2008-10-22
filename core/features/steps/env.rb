@@ -2,8 +2,6 @@ $KCODE = 'u'
 require 'stringio'
 
 require 'spec'
-
-require 'spec'
 require 'rr'
 include RR::Adapters::RRMethods
 
