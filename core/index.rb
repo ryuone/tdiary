@@ -129,4 +129,3 @@ rescue Exception
 	puts "</pre>"
 	puts "<div>#{' ' * 500}</div>"
 end
-
