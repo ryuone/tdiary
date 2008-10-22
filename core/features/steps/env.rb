@@ -13,6 +13,7 @@ include RspecHpricotMatchers
 
 
 $:.unshift(File.expand_path("../../", File.dirname(__FILE__)))
+require 'tdiary'
 
 class ResponseSpy
 	class HTTPStatus
@@ -87,13 +88,15 @@ class TDiaryDriver
 		@param_str = []
 	end
 
-	# conf(というかdata_path)を設定できないとまずいなー
+	def data_path(path)
+		stub(TDiary::Config).tdiary_config_file_path { path }
+	end
 
 	def append_param(param)
 		@param_str << param
 	end
 
-	def get(path, params=nil)
+	def invoke(path)
 		raw_result = StringIO.new
 		begin
 			require 'stringio'
@@ -103,8 +106,6 @@ class TDiaryDriver
 				stdin_spy.rewind
 			end
 			$stdin = stdin_spy
-
-			# write params to stdin_spy
 
 			dummy_stderr = StringIO.new
 			$stderr = dummy_stderr
@@ -131,11 +132,13 @@ class TDiaryDriver
 end
 
 Before do
-# Scenario setup
+	# Scenario setup
+	work_data_entries = File.expand_path("../data", File.dirname(__FILE__))
+	FileUtils.rm_r(Dir.glob("#{work_data_entries}/*"), :verbose => true, :force => true)
 end
 
 After do
-# Scenario teardown
+	# Scenario teardown
 end
 
 at_exit do

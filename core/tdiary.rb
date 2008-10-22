@@ -569,6 +569,10 @@ module TDiary
 			end
 		end
 
+		def self.tdiary_config_file_path( filename = "tdiary.conf" )
+			filename
+		end
+
 	private
 		# loading tdiary.conf in current directory
 		def load
@@ -591,11 +595,9 @@ module TDiary
 			@index = './' unless @index
 			@update = 'update.rb' unless @update
 			@hide_comment_form = false unless defined?( @hide_comment_form )
-
 			@author_name = '' unless @author_name
 			@index_page = '' unless @index_page
 			@hour_offset = 0 unless @hour_offset
-
 			@html_title = '' unless @html_title
 			@header = '' unless @header
 			@footer = '' unless @footer
@@ -672,13 +674,10 @@ module TDiary
 		end
 
 		def load_current_directory_conf( filename = "tdiary.conf", b = binding )
-			eval( File::open( tdiary_config_file_path ) {
-				|f| f.read }.untaint, b, "(#{ tdiary_config_file_path })", 1 )
+			eval( File::open( Config.tdiary_config_file_path ) {
+					|f| f.read }.untaint, b, "(#{Config.tdiary_config_file_path})", 1 )
 		end
 
-		def tdiary_config_file_path( filename = "tdiary.conf" )
-			filename
-		end
 
 		def method_missing( *m )
 			if m.length == 1 then

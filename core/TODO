@@ -32,3 +32,6 @@
 * protection_method = conf.options['csrf_protection_method']
 * masterkey = conf.options['csrf_protection_key']
 * updaterb_regexp = conf.options['csrf_protection_allowed_referer_regexp_for_update']
+
+* Conf.save での skel.rconf 例外が出てもわからない
+* LoggerのAPIはもっとマシにできそう
