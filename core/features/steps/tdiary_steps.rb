@@ -9,7 +9,7 @@ Given "最低限のtdiary.conf" do
 		FileUtils.cp_r sources, work_data_dir, :verbose => true
 	end
 
-	@driver = TDiaryDriver.configure do |conf|
+	@driver = TDiaryDriver.configure do
 		data_path File.expand_path(
 			"../fixtures/just_installed/tdiary.conf", File.dirname(__FILE__))
 	end
