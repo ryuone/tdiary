@@ -1,4 +1,5 @@
 require 'stringio'
+require 'response_helper'
 
 class TDiaryDriver
 	class << self
@@ -43,7 +44,7 @@ class TDiaryDriver
 			$stdout = STDOUT
 			$stderr = STDERR
 			raw_result.rewind
-			@res = ResponseSpy.parse(raw_result.read)
+			@res = ResponseHelper.parse(raw_result.read)
 		end
 		puts @res.body if $DEBUG
 		[@res.status_code, @res.headers, @res.body]

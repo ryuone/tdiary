@@ -13,7 +13,7 @@ $:.unshift(File.expand_path("../../", File.dirname(__FILE__)))
 require 'tdiary'
 
 $:.unshift(File.dirname(__FILE__))
-require 'response_spy'
+require 'response_helper'
 require 'tdiary_driver'
 
 def cleanup_feature_data_dir

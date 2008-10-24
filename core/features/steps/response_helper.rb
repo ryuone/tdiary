@@ -1,4 +1,4 @@
-class ResponseSpy
+class ResponseHelper
 	class HTTPStatus
 		attr_reader :code, :message
 		def initialize(code, message)
