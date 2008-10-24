@@ -673,7 +673,7 @@ module TDiary
 			end
 		end
 
-		def load_current_directory_conf( filename = "tdiary.conf", b = binding )
+		def load_current_directory_conf
 			eval( File::open( Config.tdiary_config_file_path ) {
 					|f| f.read }.untaint, b, "(#{Config.tdiary_config_file_path})", 1 )
 		end
