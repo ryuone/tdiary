@@ -32,7 +32,7 @@ Given /(?:クエリ|フォーム)パラメータは (.*)/ do |param|
 end
 
 When /(.*) に(?:アクセス|ポスト)した/ do |uri|
-	@status, @header, @response = @driver.__send__(:invoke,  uri)
+	@status, @header, @response = @driver.invoke(uri)
 end
 
 Then /ステータスコードは (.*) である/ do |status|
