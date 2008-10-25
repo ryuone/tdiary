@@ -1,3 +1,6 @@
+2008-10-25 TADA Tadashi <sho@spc.gr.jp>
+	* tdiary.conf.beginner: 'update.cgi' -> 'update.rb'
+
 2008-08-19 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/00default.rb: fixed #104, NoMethodError specified old date without diary.
 
