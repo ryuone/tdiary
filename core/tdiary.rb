@@ -522,8 +522,8 @@ module TDiary
 				@logger.warn( str )
 			when "INFO"
 				@logger.info( str )
-			else 
-				@logger.debug( str )			
+			else
+				@logger.debug( str )
 			end
 		end
 
@@ -568,12 +568,17 @@ module TDiary
 			end
 		end
 
+		def self.tdiary_config_file_path( filename = "tdiary.conf" )
+			filename
+		end
+
 	private
 		# loading tdiary.conf in current directory
 		def load
 			@secure = true unless @secure
 			@options = {}
-			eval( File::open( "tdiary.conf" ){|f| f.read }.untaint, binding, "(tdiary.conf)", 1 )
+#			eval( File::open( "tdiary.conf" ){|f| f.read }.untaint, binding, "(tdiary.conf)", 1 )
+			load_current_directory_conf
 
 			# language setup
 			@lang = 'ja' unless @lang
@@ -589,11 +594,9 @@ module TDiary
 			@index = './' unless @index
 			@update = 'update.rb' unless @update
 			@hide_comment_form = false unless defined?( @hide_comment_form )
-
 			@author_name = '' unless @author_name
 			@index_page = '' unless @index_page
 			@hour_offset = 0 unless @hour_offset
-
 			@html_title = '' unless @html_title
 			@header = '' unless @header
 			@footer = '' unless @footer
@@ -668,6 +671,12 @@ module TDiary
 			rescue IOError, Errno::ENOENT
 			end
 		end
+
+		def load_current_directory_conf
+			eval( File::open( Config.tdiary_config_file_path ) {
+					|f| f.read }.untaint, b, "(#{Config.tdiary_config_file_path})", 1 )
+		end
+
 
 		def method_missing( *m )
 			if m.length == 1 then
@@ -1840,7 +1849,7 @@ EOS
 			end
 		end
 	end
-	
+
 	#
 	# class TDiaryMonth
 	#  show month mode view
@@ -2143,7 +2152,7 @@ HERE
 			if @cgi.content_type =~ /charset=([^\s;]*)/i then
 				charset = $1
 			end
-			
+
 			url = @cgi.params['url'][0]
 			blog_name = @conf.to_native( @cgi.params['blog_name'][0] || '', charset )
 			title = @conf.to_native( @cgi.params['title'][0] || '', charset )

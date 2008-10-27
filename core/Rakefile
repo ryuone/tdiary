@@ -1,0 +1,48 @@
+require 'rake'
+require 'spec/rake/spectask'
+require 'cucumber/rake/task'
+
+namespace :features do
+	Cucumber::Rake::Task.new(:run) do |t|
+		t.feature_list = "features"
+		t.cucumber_opts = "--format progress --language ja"
+	end
+
+	Cucumber::Rake::Task.new(:rcov, "Run features w/ rcov") do |t|
+		t.cucumber_opts = "--format progress --language ja"
+		t.rcov = true
+		t.rcov_opts = IO.readlines(File.join('spec', 'rcov.opts')).map {|line| line.chomp.split(" ") }.flatten
+	end
+
+end
+
+desc "Run features"
+task :features do |t|
+	Rake::Task["features:run"].invoke
+end
+
+namespace :spec do
+	desc 'Run specs'
+	Spec::Rake::SpecTask.new(:core) do |t|
+		t.spec_files = FileList['spec/**/*_spec.rb']
+		t.spec_opts << '--options' << File.join('spec', 'spec.opts')
+	end
+
+	desc 'Run specs w/ RCov'
+	Spec::Rake::SpecTask.new(:rcov) do |t|
+		t.spec_files = FileList['spec/**/*_spec.rb']
+		t.spec_opts << '--options' << File.join('spec', 'spec.opts')
+		t.rcov = true
+		t.rcov_opts = lambda do
+			IO.readlines(File.join('spec', 'rcov.opts')).map {|line| line.chomp.split(" ") }.flatten
+		end
+	end
+
+end
+
+task :default => :spec
+
+desc "Run spec"
+task :spec do |t|
+	Rake::Task["spec:core"].invoke
+end

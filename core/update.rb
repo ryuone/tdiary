@@ -28,7 +28,7 @@ begin
 			tdiary = TDiary::TDiaryEdit::new( @cgi, 'update.rhtml', conf )
 		elsif @cgi.valid?( 'replace' )
 			tdiary = TDiary::TDiaryReplace::new( @cgi, 'show.rhtml', conf )
-		elsif @cgi.valid?( 'appendpreview' ) or @cgi.valid?( 'replacepreview' ) 
+		elsif @cgi.valid?( 'appendpreview' ) or @cgi.valid?( 'replacepreview' )
 			tdiary = TDiary::TDiaryPreview::new( @cgi, 'preview.rhtml', conf )
 		elsif @cgi.valid?( 'plugin' )
 			tdiary = TDiary::TDiaryFormPlugin::new( @cgi, 'update.rhtml', conf )
@@ -86,7 +86,7 @@ begin
 			<body>Wait or <a href="#{$!.path}">Click here!</a></body>
 			</html>]
 	end
-	
+
 rescue Exception
 	if @cgi then
 		print @cgi.header( 'status' => '500 Internal Server Error', 'type' => 'text/html' )
@@ -102,4 +102,3 @@ rescue Exception
 	puts "</pre>"
 	puts "<div>#{' ' * 500}</div>"
 end
-

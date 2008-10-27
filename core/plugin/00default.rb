@@ -1,5 +1,5 @@
 #
-# 00default.rb: default plugins 
+# 00default.rb: default plugins
 # $Revision: 1.120 $
 #
 # Copyright (C) 2001-2005, TADA Tadashi <sho@spc.gr.jp>
@@ -388,7 +388,7 @@ def iphone_tag
 	<<-CSS
 <meta name = "viewport" content = "width = device-width">
 	<style type="text/css"><!--
-	form.comment textarea { 
+	form.comment textarea {
 		width: 80%;
 	}
 	--></style>
@@ -417,7 +417,7 @@ def title_of_day( date, title )
 	r = <<-HTML
 	<span class="date">
 	<a href="#{h @index}#{anchor( date.strftime( '%Y%m%d' ) )}">#{date.strftime @date_format}</a>
-	</span> 
+	</span>
 	<span class="title">#{title}</span>
 	HTML
 	return r.gsub( /^\t+/, '' ).chomp
@@ -497,7 +497,7 @@ def subtitle_link( date, index, subtitle )
 			titleattr = (not subtitle or subtitle.empty?) ? '' : %Q[ title="#{remove_tag( subtitle ).gsub( /"/, "&quot;" )}"]
 			r << %Q[href="#{h @index}#{anchor param}"#{titleattr}>#{@conf.section_anchor}</a> ]
 		end
-	
+
 		r << %Q[(#{h @author}) ] if @multi_user and @author and subtitle
 	end
 	r << make_category_link( subtitle )
@@ -684,7 +684,7 @@ def comment_mail_send
 	mail = @comment.mail
 	mail = @conf.author_mail unless mail =~ %r<[0-9a-zA-Z_.-]+@[\(\)%!0-9a-zA-Z_$@.&+-,'"*-]+>
 	mail = receivers[0] if mail.empty?
-	
+
 	now = Time::now
 	g = now.dup.gmtime
 	l = Time::local( g.year, g.month, g.day, g.hour, g.min, g.sec )
