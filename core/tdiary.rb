@@ -455,6 +455,16 @@ module TDiary
 	#  configuration class
 	#
 	class Config
+		class << self
+			def tdiary_config_file_path
+				@@tdiary_config_file_path ||= "tdiary.conf"
+			end
+
+			def tdiary_config_file_path=(path)
+				@@tdiary_config_file_path = path
+			end
+		end
+
 		def initialize(cgi)
 			@cgi = cgi
 			load
@@ -566,10 +576,6 @@ module TDiary
 			rescue SecurityError
 				''
 			end
-		end
-
-		def self.tdiary_config_file_path( filename = "tdiary.conf" )
-			filename
 		end
 
 	private

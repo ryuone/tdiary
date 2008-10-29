@@ -17,7 +17,7 @@ class TDiaryDriver
 	end
 
 	def data_path(path)
-		stub(TDiary::Config).tdiary_config_file_path { path }
+		TDiary::Config.tdiary_config_file_path = path
 	end
 
 	def append_param(param)
