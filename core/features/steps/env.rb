@@ -1,5 +1,5 @@
+# -*- coding: utf-8 -*-
 $KCODE = 'u'
-require 'stringio'
 
 require 'spec'
 require 'rr'
@@ -11,10 +11,7 @@ include RspecHpricotMatchers
 
 $:.unshift(File.expand_path("../../", File.dirname(__FILE__)))
 require 'tdiary'
-
-$:.unshift(File.dirname(__FILE__))
-require 'response_helper'
-require 'tdiary_driver'
+require 'tdiary/tdiary_driver'
 
 def cleanup_feature_data_dir
 	work_data_entries = File.expand_path("../data", File.dirname(__FILE__))

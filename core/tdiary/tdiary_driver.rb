@@ -1,5 +1,5 @@
 require 'stringio'
-require 'response_helper'
+require 'tdiary/response_helper'
 
 class TDiaryDriver
 	class << self
@@ -37,22 +37,32 @@ class TDiaryDriver
 			dummy_stderr = StringIO.new
 			$stderr = dummy_stderr
 			$stdout = raw_result
-			tdiary_cgi_path = File.expand_path(path, tdiary_base_dir)
+			File.open(tdiary_cgi_path(path)) {|f| f.read}
+			load tdiary_cgi_path(path)
 
-			load tdiary_cgi_path
+			raw_result.rewind
+			@res = ResponseHelper.parse(raw_result.read)
 		ensure
 			$stdout = STDOUT
 			$stderr = STDERR
-			raw_result.rewind
-			@res = ResponseHelper.parse(raw_result.read)
 		end
 		puts @res.body if $DEBUG
 		[@res.status_code, @res.headers, @res.body]
 	end
 
 	private
+
+	def tdiary_cgi_path(path)
+		cgi_path = File.expand_path(path, tdiary_base_dir)
+		if File.exist?(cgi_path)
+			return cgi_path
+		else
+			raise Errno::ENOENT.new(cgi_path)
+		end
+	end
+
 	def tdiary_base_dir
-		File.expand_path("../../../", File.expand_path(__FILE__))
+		File.expand_path("../", File.dirname(__FILE__))
 	end
 
 end
