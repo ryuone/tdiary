@@ -11,6 +11,7 @@ target_gem_libs = %w[
   rr-0.6.0
   cucumber-0.1.9
   rest-client-0.8
+  rack-0.4.0
 ]
 
 target_gem_libs.each do |gem|

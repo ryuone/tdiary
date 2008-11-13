@@ -1,3 +1,10 @@
+* 動作確認
+- とにかく最初の画面(index.rb)
+- 更新画面 update.rb
+- パラメータ付き(設定)
+- 保存 -> リダイレクト
+- 例外が発生
+
 * ConfigがCGIに依存しているのが気にくわない
 
 * misc/server を 本体に移したいなあ lib/commands/server とか？
@@ -43,6 +50,11 @@
 * XML-RPC
 * 移行スクリプトもテストできるといいな
 
+!! webrick
+
+* Webrickのcgirunnerで動かすRubyに自分のローカルのRubyを指定できるようにしたい。
+** :CGIInterpreter を設定してWebrickを起動するかんじ？
+
 !! csrfがらみ
 
 * protection_method = conf.options['csrf_protection_method']
@@ -53,3 +65,7 @@
 
 * headerの検証
 * ContentLength の検証
+
+!! ほか
+
+* ForceRedirectが例外なのはどうなんだろうなあ

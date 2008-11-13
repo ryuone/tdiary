@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+require 'hpricot'
 
 Given "最低限のtdiary.conf" do
 	fixture_dir = File.expand_path("../fixtures", File.dirname(__FILE__))
@@ -32,7 +33,13 @@ Given /(?:クエリ|フォーム)パラメータは (.*)/ do |param|
 end
 
 When /(.*) に(?:アクセス|ポスト)した/ do |uri|
-	@status, @header, @response = @driver.invoke(uri)
+	target = case uri
+				when "index.rb"; :index
+				when "update.rb"; :update
+				else raise "invalid uri: must be index.rb or update.rb"
+				end
+	@status, @header, @response = @driver.invoke(target)
+	@response = Hpricot(@response)
 end
 
 Then /ステータスコードは (.*) である/ do |status|

@@ -583,8 +583,7 @@ module TDiary
 		def load
 			@secure = true unless @secure
 			@options = {}
-#			eval( File::open( "tdiary.conf" ){|f| f.read }.untaint, binding, "(tdiary.conf)", 1 )
-			load_current_directory_conf
+			load_tdiary_config
 
 			# language setup
 			@lang = 'ja' unless @lang
@@ -678,7 +677,7 @@ module TDiary
 			end
 		end
 
-		def load_current_directory_conf
+		def load_tdiary_config
 			eval( File::open( Config.tdiary_config_file_path ) {
 					|f| f.read }.untaint, b, "(#{Config.tdiary_config_file_path})", 1 )
 		end

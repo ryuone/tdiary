@@ -5,7 +5,8 @@ require 'spec'
 require 'rr'
 require 'rspec_hpricot_matchers'
 
-require 'tdiary'
+$:.unshift(File.expand_path("../", File.dirname(__FILE__)))
+require 'tdiary/tdiary_driver'
 
 Spec::Runner.configure do |config|
 	config.mock_with :rr

@@ -15,12 +15,12 @@ class ResponseHelper
 		private :new
 	end
 
-	attr_reader :body, :body_raw
+	attr_reader :body
 
 
 	def initialize(raw = StringIO.new)
 		@raw = raw
-		@body_raw = ""
+		@body = ""
 	end
 
 	def body
@@ -43,8 +43,7 @@ class ResponseHelper
 	def parse_raw_result
 		raw_header, *body = @raw.split(CGI::EOL * 2)
 		@headers ||= parse_headers(raw_header)
-		@body_raw = body.join("")
-		@body = Hpricot(@body_raw)
+		@body = body.join("")
 		@status = extract_status
 	end
 
