@@ -599,7 +599,7 @@ add_footer_proc do
 		r = ''
 		r << <<-JS
 			<script type="text/javascript"><!--
-			document.getElementById('comment-form-section').innerHTML = '#{comment_form_text.gsub( /[\r\n]/, '' )}';
+			document.getElementById('comment-form-section').innerHTML = '#{comment_form_text.gsub( /[\r\n]/, '' ).gsub( /<\//, '<\\/' )}';
 			//--></script>
 		JS
 	else

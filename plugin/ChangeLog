@@ -1,3 +1,9 @@
+2008-11-12 TADA Tadashi <sho@spc.gr.jp>
+	* tb-show.rb: added comment mode into no overriding TDiary::Comment class.
+
+2008-11-07 TADA Tadashi <sho@spc.gr.jp>
+	* makerss.rb: fixed bad numeric entiries value (again).
+
 2008-10-26 SHIBATA Hiroshi <shibata.hiroshi@gmail.com>
 	* recent_comment3.rb, */recent_comment3.rb: applied patch #128. thx tamo.
 
