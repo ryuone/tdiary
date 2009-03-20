@@ -1,3 +1,6 @@
+2009-03-20 TADA Tadashi <sho@spc.gr.jp>
+	* squeeze.rb: fixed error using with title_tag.rb, change module name TDiary to ::TDiary.
+
 2008-09-10 KURODA Hiraku <hiraku at sapporo.email.ne.jp>
 	* highlight.rb: enable to work on XHTML mode.
 
