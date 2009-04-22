@@ -1,3 +1,6 @@
+2009-04-22 TADA Tadashi <sho@spc.gr.jp>
+	* lang/ja.rb: back ported shorten method from 2.3.x.
+
 2008-10-31 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/00default.rb: escaped comment_form_text. thx fudan.
 

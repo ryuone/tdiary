@@ -45,9 +45,12 @@ def to_mail( str )
 end
 
 def shorten( str, len = 120 )
-	lines = NKF::nkf( "-Ee -m0 -f#{len}", str.gsub( /\n/, ' ' ) ).split( /\n/ )
-	lines[0].concat( '..' ) if lines[0] and lines[1]
-	lines[0] || ''
+	matched = str.gsub( /\n/, ' ' ).scan( /^.{0,#{len - 2}}/u )[0]
+	if $'.nil? || $'.empty?
+		matched
+	else
+		matched + '..'
+	end
 end
 
 def comment_length
