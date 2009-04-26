@@ -1,3 +1,6 @@
+2009-04-26 TADA Tadashi <sho@spc.gr.jp>
+	* lang/ja.rb: removed encoding flag from a eegexp.
+
 2009-04-22 TADA Tadashi <sho@spc.gr.jp>
 	* lang/ja.rb: back ported shorten method from 2.3.x.
 

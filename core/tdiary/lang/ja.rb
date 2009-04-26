@@ -45,7 +45,7 @@ def to_mail( str )
 end
 
 def shorten( str, len = 120 )
-	matched = str.gsub( /\n/, ' ' ).scan( /^.{0,#{len - 2}}/u )[0]
+	matched = str.gsub( /\n/, ' ' ).scan( /^.{0,#{len - 2}}/ )[0]
 	if $'.nil? || $'.empty?
 		matched
 	else
