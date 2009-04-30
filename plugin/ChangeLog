@@ -1,3 +1,6 @@
+2009-04-30 SHIBATA Hiroshi <shibata.hiroshi@gmail.com>
+	* amazon.rb: applied patch #151. thx arton.
+
 2009-03-20 TADA Tadashi <sho@spc.gr.jp>
 	* squeeze.rb: fixed error using with title_tag.rb, change module name TDiary to ::TDiary.
 
