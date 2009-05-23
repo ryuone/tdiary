@@ -1,3 +1,6 @@
+2009-05-23 SHIBATA Hiroshi <shibata.hiroshi@gmail.com>
+	* plugin/00default.rb, skel/diary.rhtml: support AutoPagerize.
+
 2009-04-27 SHIBATA Hiroshi <shibata.hiroshi@gmail.com>
 	* tdiary/lang/ja.rb: added encoding flag from a regexp.
 	revert r3423 and change encofig flag option.
