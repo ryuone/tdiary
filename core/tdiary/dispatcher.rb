@@ -23,7 +23,7 @@ module TDiary
 							date = @cgi.params['date'][0]
 							if /^\d{8}-\d+$/ =~ date then
 								tdiary = TDiary::TDiaryLatest::new( @cgi, "latest.rhtml", conf )
-							elsif /^\d{8}$/ =~ date_format
+							elsif /^\d{8}$/ =~ date then
 								tdiary = TDiary::TDiaryDay::new( @cgi, "day.rhtml", conf )
 							elsif /^\d{6}$/ =~ date then
 								tdiary = TDiary::TDiaryMonth::new( @cgi, "month.rhtml", conf )
