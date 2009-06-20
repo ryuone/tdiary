@@ -500,7 +500,7 @@ def subtitle_link( date, index, subtitle )
 			titleattr = (not subtitle or subtitle.empty?) ? '' : %Q[ title="#{remove_tag( subtitle ).gsub( /"/, "&quot;" )}"]
 			r << %Q[href="#{h @index}#{anchor param}"#{titleattr}>#{@conf.section_anchor}</a> ]
 		end
-	
+
 		r << %Q[(#{h @author}) ] if @multi_user and @author and subtitle
 	end
 	r << make_category_link( subtitle )

@@ -457,6 +457,16 @@ module TDiary
 	#  configuration class
 	#
 	class Config
+		class << self
+			def tdiary_config_file_path
+				@@tdiary_config_file_path ||= "tdiary.conf"
+			end
+
+			def tdiary_config_file_path=(path)
+				@@tdiary_config_file_path = path
+			end
+		end
+
 		def initialize(cgi)
 			@cgi = cgi
 			load
@@ -575,7 +585,7 @@ module TDiary
 		def load
 			@secure = true unless @secure
 			@options = {}
-			eval( File::open( "tdiary.conf" ){|f| f.read }.untaint, binding, "(tdiary.conf)", 1 )
+			load_tdiary_config
 
 			# language setup
 			@lang = 'ja' unless @lang
@@ -688,6 +698,11 @@ module TDiary
 				eval( def_vars2, b )
 			rescue IOError, Errno::ENOENT
 			end
+		end
+
+		def load_tdiary_config
+			eval( File::open( Config.tdiary_config_file_path ) {
+					|f| f.read }.untaint, b, "(#{Config.tdiary_config_file_path})", 1 )
 		end
 
 		def method_missing( *m )

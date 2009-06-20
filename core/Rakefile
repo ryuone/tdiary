@@ -1,0 +1,64 @@
+require 'rake'
+require 'spec/rake/spectask'
+require 'cucumber/rake/task'
+
+namespace :features do
+	Cucumber::Rake::Task.new(:run) do |t|
+		t.feature_list = "features"
+		t.cucumber_opts = "--format progress --language ja"
+	end
+
+	Cucumber::Rake::Task.new(:rcov, "Run features w/ rcov") do |t|
+		t.cucumber_opts = "--format progress --language ja"
+		t.rcov = true
+		t.rcov_opts = IO.readlines(File.join('spec', 'rcov.opts')).map {|line| line.chomp.split(" ") }.flatten
+		rcov_dir = File.expand_path("coverage/features", File.dirname(__FILE__))
+		t.rcov_opts << " -o #{rcov_dir}"
+	end
+	task :rcov => "coverage:clean"
+
+end
+
+desc "Run features"
+task :features do |t|
+	Rake::Task["features:run"].invoke
+end
+
+namespace :spec do
+	desc 'Run specs'
+	Spec::Rake::SpecTask.new(:core) do |t|
+		t.spec_files = FileList['spec/**/*_spec.rb']
+		t.spec_opts << '--options' << File.join('spec', 'spec.opts')
+	end
+
+	desc 'Run specs w/ RCov'
+	Spec::Rake::SpecTask.new(:rcov) do |t|
+		t.spec_files = FileList['spec/**/*_spec.rb']
+		t.spec_opts << '--options' << File.join('spec', 'spec.opts')
+		t.rcov = true
+		t.rcov_dir = File.expand_path("coverage/spec", File.dirname(__FILE__))
+		t.rcov_opts = lambda do
+			IO.readlines(File.join('spec', 'rcov.opts')).map {|line| line.chomp.split(" ") }.flatten
+		end
+	end
+	task :rcov => "coverage:clean"
+end
+
+task :default => :spec
+
+desc "Run spec"
+task :spec do |t|
+	Rake::Task["spec:core"].invoke
+end
+
+namespace :coverage do
+	desc "delete aggregate coverage data"
+	task(:clean) {
+		rm_f "coverage/*"
+		mkdir "coverage" unless File.exist? "coverage"
+		rm "coverage.aggregate" if File.exist? "coverage.aggregate"
+	}
+end
+
+desc "all coverage"
+task :coverage => ["coverage:clean","spec:rcov", "features:rcov"]
