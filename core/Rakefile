@@ -4,8 +4,7 @@ require 'cucumber/rake/task'
 
 namespace :features do
 	Cucumber::Rake::Task.new(:run) do |t|
-		t.feature_list = "features"
-		t.cucumber_opts = "--format progress --language ja"
+		t.cucumber_opts = "features --format progress --language ja"
 	end
 
 	Cucumber::Rake::Task.new(:rcov, "Run features w/ rcov") do |t|
