@@ -1,22 +1,22 @@
-!��ǽ
+!機能
 
-Pingback����������Ԥ��ޤ���
+Pingbackの送受信を行います。
 
-!���󥹥ȡ�����ˡ
-pingback.rb,pb-show.rb��plugin�ǥ��쥯�ȥ�ˡ�pb.rb��tDiary�Υ��󥹥ȡ��뤵��Ƥ���ǥ��쥯�ȥ�(index.rb�ʤɤ�Ʊ���ǥ��쥯�ȥ�)�˥��ԡ����ޤ���pb.rb�Υѡ��ߥå����ϡ�755�ʤɤ��ѹ�����ɬ�פ�����ޤ���
+!インストール方法
+pingback.rb,pb-show.rbをpluginディレクトリに、pb.rbをtDiaryのインストールされているディレクトリ(index.rbなどと同じディレクトリ)にコピーします。pb.rbのパーミッションは、755などに変更する必要があります。
 
-ñ���tDiary��ʣ�����������Ѥ��Ƥ�����ϡ�index.rb��Ʊ�ͤμ�ˡ��pb.rb�ؤΥ���ܥ�å���󥯤�require�����ꤷ�Ƥ���������
+単一のtDiaryで複数の日記を運用している場合は、index.rbと同様の手法でpb.rbへのシンボリックリンクやrequireを設定してください。
 
-!������ˡ
-�Ȥꤢ�������󥹥ȡ��뤷���顢Pingback�������������ϤǤ��Ƥ���Ϥ��Ǥ���
+!使用方法
+とりあえずインストールしたら、Pingbackを受信する準備はできているはずです。
 
-!!Pingback��������ˡ
+!!Pingbackの送信方法
 
-���̤�������񤤤Ƥ����������������ɵ������http://�ǤϤ��ޤ����Хѥ���URL���Ф���Pingback����������ޤ���
+普通に日記を書いてください。更新・追記するとhttp://ではじまる絶対パスのURLに対してPingbackが送信されます。
 
-'''�ǽ�Ϥޤ�����ʬ����Pingback���������ơ�����������Ǥ��뤳�Ȥ��ǧ���Ƥ��顢�̤οͤ���������褦�ˤ��ޤ��礦��'''
+'''最初はまず、自分宛にPingbackを送信して、正常に送信できることを確認してから、別の人に送信するようにしましょう。'''
 
-!���ץ����
+!オプション
 
-:pb.cgi:Pingback Pingback������(�ˤʤ�CGI)����ꤷ�ޤ����ǥե���Ȥ�'./pb.rb'�Ǥ���@options['pb.cgi'] = './pb.cgi' �Τ褦�˻��ꤷ�ޤ���
-:pb.hide_if_no_pb:�ǿ�ɽ�����ɽ���⡼�ɤξ�硢��ե���ο�����ΰ��ֱ�ü��Pingbacks(n)�Τ褦��Pingback�����ɽ�����ޤ��������Υ��ץ�����true�ˤ���ȡ�Pingback�����0�ξ��Τߤ����ɽ�����ޤ��󡥥ǥե���Ȥ�false(0��Ǥ�Pingback�����ɽ��)�Ǥ���
+:pb.cgi:Pingback Pingbackサーバ(になるCGI)を指定します。デフォルトは'./pb.rb'です。@options['pb.cgi'] = './pb.cgi' のように指定します。
+:pb.hide_if_no_pb:最新表示や月表示モードの場合、リファラの数字列の一番右端にPingbacks(n)のようにPingback件数を表示しますが、このオプションをtrueにすると、Pingback件数が0の場合のみこれを表示しません．デフォルトはfalse(0件でもPingback件数を表示)です。

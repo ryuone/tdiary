@@ -1,20 +1,20 @@
-!��ǽ
+!機能
 
-blogger API/metaWeblog API/MovableType API�Ǥ�tDiary�ι������Ǥ��ޤ���
+blogger API/metaWeblog API/MovableType APIでのtDiaryの更新ができます。
 
-!���󥹥ȡ�����ˡ
-xmlrpc.rb,ja/xmlrpc.rb,en/xmlrpc.rb,zh/xmlrpc.rb��plugin�ǥ��쥯�ȥ�˥��ԡ����ޤ���
-xmlrpc/xmlrpc.rb��tDiary�Υ��󥹥ȡ��뤵��Ƥ���ǥ��쥯�ȥ�(index.rb�ʤɤ�Ʊ���ǥ��쥯�ȥ�)�˥��ԡ����ޤ���xmlrpc.rb�Υѡ��ߥå����ϡ�755�ʤɤ��ѹ�����ɬ�פ�����ޤ���
-index.rb�����֤����ǥ��쥯�ȥ��rsd.xml�Ȥ����ե�������������CGI����񤭴�������褦�˽񤭹��߸��¤����ꤷ�ޤ���
+!インストール方法
+xmlrpc.rb,ja/xmlrpc.rb,en/xmlrpc.rb,zh/xmlrpc.rbをpluginディレクトリにコピーします。
+xmlrpc/xmlrpc.rbをtDiaryのインストールされているディレクトリ(index.rbなどと同じディレクトリ)にコピーします。xmlrpc.rbのパーミッションは、755などに変更する必要があります。
+index.rbを設置したディレクトリにrsd.xmlというファイルを作成し、CGIから書き換えられるように書き込み権限を設定します。
 
-!������ˡ
+!使用方法
 
-������̤���'XML-RPC API'�����򤷤�XML-RPC API�������Ԥ�OK�ܥ���򥯥�å����ޤ���
+設定画面から'XML-RPC API'を選択してXML-RPC APIの設定を行いOKボタンをクリックします。
 
-���Ȥ�blogger API/metaWeblog API/MovableType API���б������ġ��뤫�饢���������ޤ���
-���Ȥ���ubicast Blogger����XMl-RPC����ɥݥ���ȤȤ�������ˤ�xmlrpc.rb��URL����ꤷ�ޤ���
+あとはblogger API/metaWeblog API/MovableType APIに対応したツールからアクセスします。
+たとえばubicast BloggerだとXMl-RPCエンドポイントという設定にはxmlrpc.rbのURLを指定します。
 
-  (MovableType�ξ��) http://<youdomain>/<path>/mt-xmlrpc.cgi
-  (xmlrpc.rb�ξ��)   http://<youdomain>/<path>/xmlrpc.rb
+  (MovableTypeの場合) http://<youdomain>/<path>/mt-xmlrpc.cgi
+  (xmlrpc.rbの場合)   http://<youdomain>/<path>/xmlrpc.rb
 
-rsd.xml���б��������饤����Ȥʤ饵���ȤΥȥåץڡ�����URL����ꤹ���OK�Ǥ���
+rsd.xmlに対応したクライアントならサイトのトップページのURLを指定すればOKです。
