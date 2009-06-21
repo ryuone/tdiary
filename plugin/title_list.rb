@@ -1,4 +1,5 @@
-# titile_list.rb $Revision: 1.22 $
+# -*- coding: utf-8 -*-
+# titile_list.rb
 #
 # title_list: 現在表示している月のタイトルリストを表示
 #   パラメタ(カッコ内は未指定時の値):

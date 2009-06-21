@@ -1,4 +1,5 @@
-# ja/category.rb $Revision: 1.14 $
+# -*- coding: utf-8 -*-
+# ja/category.rb
 #
 # Copyright (c) 2004 Junichiro KITA <kita@kitaj.no-ip.com>
 # Distributed under the GPL

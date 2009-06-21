@@ -1,4 +1,5 @@
-# tlink.rb $Revision: 1.20 $
+# -*- coding: utf-8 -*-
+# tlink.rb
 #
 # title 属性付 anchor plugin
 #

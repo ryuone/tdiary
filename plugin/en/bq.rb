@@ -1,4 +1,4 @@
-# en/bq.rb $Revision: 1.2 $
+# en/bq.rb
 #
 def bq_cite_from( cite )
 	"cite from #{cite}"

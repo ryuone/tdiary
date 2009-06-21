@@ -1,4 +1,5 @@
-# $Revision: 1.23 $
+# -*- coding: utf-8 -*-
+#
 # recent_trackback3: 最近のツッコミをリストアップする
 #
 # Copyright (c) 2004 Junichiro KITA <kita@kitaj.no-ip.com>

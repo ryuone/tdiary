@@ -1,4 +1,4 @@
-# todo.rb $Revision: 1.7 $
+# todo.rb
 #
 # todo: show ToDo lists.
 #

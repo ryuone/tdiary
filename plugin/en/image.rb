@@ -1,5 +1,5 @@
 #
-# English resource of image plugin $Revision: 1.4 $
+# English resource of image plugin
 #
 
 #

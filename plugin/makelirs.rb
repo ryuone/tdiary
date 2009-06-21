@@ -1,4 +1,5 @@
-# makelirs.rb $Revision: 1.19 $
+# -*- coding: utf-8 -*-
+# makelirs.rb
 #
 # 更新情報をLIRSフォーマットのファイルに吐き出す
 #

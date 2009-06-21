@@ -1,4 +1,5 @@
-# image.rb $Revision: 1.35 $
+# -*- coding: utf-8 -*-
+# image.rb
 # -pv-
 # 
 # 名称:

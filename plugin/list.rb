@@ -1,4 +1,5 @@
-# list.rb $Revision: 1.5 $
+# -*- coding: utf-8 -*-
+# list.rb
 #
 # <ol> 順番付きリスト生成
 #   <%= ol l %>

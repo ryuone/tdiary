@@ -1,4 +1,4 @@
-# en/recent_comment3.rb $Revision: 1.7 $
+# en/recent_comment3.rb
 #
 # English resources for recent_comment3.rb
 #

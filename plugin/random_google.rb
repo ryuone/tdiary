@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# random_google.rb $Revision: 1.8 $
+# random_google.rb
 #
 # random_google: 日記からランダムに抽出した単語をgoogleで検索するリンクを生成する
 #

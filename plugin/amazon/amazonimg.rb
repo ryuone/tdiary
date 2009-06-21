@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# amazonimg.rb $Revision: 1.6 $: CGI script for tDiary amazon plugin in secure mode.
+# amazonimg.rb : CGI script for tDiary amazon plugin in secure mode.
 #
 # set URL of this script to @options['amazon.secure-cgi'] into tdiary.conf.
 #

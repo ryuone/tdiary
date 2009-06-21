@@ -1,4 +1,5 @@
-# whatsnew.rb $Revision: 1.5 $
+# -*- coding: utf-8 -*-
+# whatsnew.rb
 #
 # 名称：
 # What's Newプラグイン

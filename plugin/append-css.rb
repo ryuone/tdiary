@@ -1,4 +1,5 @@
-# append-css.rb: $Revision: 1.11 $
+# -*- coding: utf-8 -*-
+# append-css.rb
 #
 # Append CSS fragment via Preferences Page.
 #

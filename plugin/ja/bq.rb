@@ -1,4 +1,5 @@
-# ja/bq.rb $Revision: 1.2 $
+# -*- coding: utf-8 -*-
+# ja/bq.rb
 #
 def bq_cite_from( cite )
 	"#{cite}より引用"

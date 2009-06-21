@@ -1,4 +1,5 @@
-# ja/recent_comment3.rb $Revision: 1.7 $
+# -*- coding: utf-8 -*-
+# ja/recent_comment3.rb
 #
 # Japanese resources for recent_comment3.rb
 #

@@ -1,4 +1,4 @@
-# referer-utf8.rb $Revision: 1.3 $
+# referer-utf8.rb
 
 #
 # this plugin is obsolete.

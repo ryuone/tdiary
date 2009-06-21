@@ -1,4 +1,5 @@
-# comment_mail_sendmail.rb $Revision: 1.10 $
+# -*- coding: utf-8 -*-
+# comment_mail_sendmail.rb
 #
 # sendmailを使ってツッコミをメールで知らせる
 #   入れるだけで動作する。

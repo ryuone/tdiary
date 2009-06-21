@@ -1,4 +1,4 @@
-# English resource of dropdown_calendar.rb $Revision: 1.1 $
+# English resource of dropdown_calendar.rb
 #
 # calendar: replace calendar with dropdown style.
 #   Parameter: none.

@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# tb.rb $Revision: 1.13 $
+# tb.rb
 #
 # Copyright (c) 2003 Junichiro KITA <kita@kitaj.no-ip.com>
 # Distributed under the GPL
