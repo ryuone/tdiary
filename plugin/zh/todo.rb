@@ -1,4 +1,4 @@
-# en/todo.rb $Revision: 1.3 $
+# en/todo.rb
 #
 # English resources for todo.rb
 #

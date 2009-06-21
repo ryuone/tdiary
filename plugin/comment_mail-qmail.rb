@@ -1,4 +1,5 @@
-# comment_mail_qmail.rb $Revision: 1.11 $
+# -*- coding: utf-8 -*-
+# comment_mail_qmail.rb
 #
 # qmailを使ってツッコミをメールで知らせる
 #   入れるだけで動作する。

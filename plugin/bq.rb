@@ -1,4 +1,5 @@
-# bq.rb $Revision: 1.6 $
+# -*- coding: utf-8 -*-
+# bq.rb
 #
 # bq: blockquoteを使った引用を生成する
 #   パラメタ:

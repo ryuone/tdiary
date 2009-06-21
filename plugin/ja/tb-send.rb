@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Japanese resource of tb-send.rb
 
 @tb_send_label_url = 'TrackBack送信先URL'

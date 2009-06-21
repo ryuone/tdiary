@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Japanese resource of highlight.rb
 #
 

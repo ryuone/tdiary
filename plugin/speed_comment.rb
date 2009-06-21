@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# speed_comment.rb $Revision: 1.7 $
+# speed_comment.rb
 #
 # spped_comment: 最新・月毎表示時に簡易なツッコミフォームを表示する
 #                pluginディレクトリに入れるだけで動きます。

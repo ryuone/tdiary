@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# xmlrpc.rb $Revision: 1.8 $
+# xmlrpc.rb
 #
 # Copyright (c) 2004 MoonWolf <moonwolf@moonwolf.com>
 # Distributed under the GPL

@@ -1,4 +1,4 @@
-# counter.rb $Revision: 1.2 $
+# counter.rb
 #
 # English resource file for access counter plugin.
 #

@@ -1,4 +1,4 @@
-# pingback.rb: $Revision: 1.6 $
+# pingback.rb
 #
 # Pingback when updating.
 #

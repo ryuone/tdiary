@@ -1,4 +1,5 @@
-# src.rb $Revision: 1.4 $
+# -*- coding: utf-8 -*-
+# src.rb
 #
 # src: 外部ファイルを挿入する(HTMLエスケープ付き)
 #   パラメタ:

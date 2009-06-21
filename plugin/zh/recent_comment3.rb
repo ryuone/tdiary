@@ -1,4 +1,4 @@
-# zh/recent_comment3.rb $Revision: 1.6 $
+# zh/recent_comment3.rb
 #
 # Chinese  resources for recent_comment3.rb
 #

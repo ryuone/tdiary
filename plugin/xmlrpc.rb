@@ -1,4 +1,4 @@
-# xmlrpc.rb: $Revision: 1.4 $
+# xmlrpc.rb
 #
 # XML-RPC API
 #

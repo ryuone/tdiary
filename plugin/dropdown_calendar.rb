@@ -1,4 +1,5 @@
-# dropdown_calendar.rb $Revision: 1.6 $
+# -*- coding: utf-8 -*-
+# dropdown_calendar.rb
 #
 # calendar: カレンダーをドロップダウンリストに置き換えるプラグイン
 #   パラメタ: なし

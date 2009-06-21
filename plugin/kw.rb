@@ -1,4 +1,5 @@
-# kw.rb $Revision: 1.17 $
+# -*- coding: utf-8 -*-
+# kw.rb
 #
 # kw: keyword link generator
 #   Parameters:

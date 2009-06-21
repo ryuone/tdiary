@@ -1,4 +1,5 @@
-# number_anchor.rb $Revision: 1.5 $
+# -*- coding: utf-8 -*-
+# number_anchor.rb
 #
 # number_anchor: アンカーにid属性を付加する
 #          アンカー画像を異なるものにするためのもの

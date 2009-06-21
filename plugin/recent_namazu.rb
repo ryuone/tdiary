@@ -1,4 +1,5 @@
-# recent_namazu.rb $Revision 1.0 $
+# -*- coding: utf-8 -*-
+# recent_namazu.rb
 #
 # recent_namazu: Namazu検索語新しい順
 # 		 namazi.cgiが作成する検索キーワードログ(NMZ.slog)から

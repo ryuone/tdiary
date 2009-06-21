@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 =begin
 = ここだけ検索プラグイン((-$Id: search_control.rb,v 1.4 2008-03-02 09:01:46 kazuhiko Exp $-))
 日本語リソース

@@ -1,4 +1,5 @@
-# ja/recent_trackback3.rb $Revision: 1.8 $
+# -*- coding: utf-8 -*-
+# ja/recent_trackback3.rb
 #
 # Japanese resources for recent_trackback3.rb
 #

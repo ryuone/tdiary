@@ -1,4 +1,4 @@
-# calendar2.rb $Revision: 1.17 $
+# calendar2.rb
 #
 # calendar2: add calendar as table layout.
 #   parameter:

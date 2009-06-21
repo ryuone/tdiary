@@ -1,6 +1,5 @@
 #
 # my-sequel.rb
-# $Revision: 1.12 $
 #
 # show links to follow-up entries
 #

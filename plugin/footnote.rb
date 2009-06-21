@@ -1,4 +1,5 @@
-# footnote.rb $Revision: 1.15 $
+# -*- coding: utf-8 -*-
+# footnote.rb
 #
 # fn: 脚注plugin
 #   パラメタ:

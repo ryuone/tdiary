@@ -1,4 +1,4 @@
-# edit_today.rb : add link to edit after title of each days. $Revision: 1.6 $
+# edit_today.rb : add link to edit after title of each days.
 #
 # Copyright (C) 2007 by NOB <nob@harunaru.com>
 # You can redistribute it and/or modify it under GPL2.

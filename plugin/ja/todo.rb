@@ -1,4 +1,5 @@
-# ja/todo.rb $Revision: 1.4 $
+# -*- coding: utf-8 -*-
+# ja/todo.rb
 #
 # Japanese resources for todo.rb
 #

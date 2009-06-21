@@ -1,4 +1,5 @@
-# a.rb $Revision: 1.14 $
+# -*- coding: utf-8 -*-
+# a.rb
 #
 # Create anchor easily.
 #
