@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 #
-# Japanese resource of amazon plugin $Revision: 1.14 $
+# Japanese resource of amazon plugin
 #
 # Copyright (C) 2002 HAL99 <hal99@mtj.biglobe.ne.jp>
 # You can redistribute it and/or modify it under GPL2.

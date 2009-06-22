@@ -1,4 +1,5 @@
-# html_anchor $Revision: 1.7 $
+# -*- coding: utf-8 -*-
+# html_anchor
 #
 # anchor: アンカーを「YYYYMMDD.html」「YYYYMM.html」形式に置き換える
 #         tDiaryから自動的に呼び出されるので、プラグインファイルを

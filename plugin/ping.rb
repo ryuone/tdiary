@@ -1,4 +1,4 @@
-# ping.rb: $Revision: 1.13 $
+# ping.rb
 #
 # ping to weblog ping servers.
 #

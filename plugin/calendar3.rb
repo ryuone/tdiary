@@ -1,4 +1,5 @@
-# calendar3.rb $Revision: 1.42 $
+# -*- coding: utf-8 -*-
+# calendar3.rb
 #
 # calendar3: 現在表示している月のカレンダーを表示します．
 #  パラメタ: なし

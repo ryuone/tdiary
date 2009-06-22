@@ -1,4 +1,5 @@
-# counter.rb $Revision: 1.28 $
+# -*- coding: utf-8 -*-
+# counter.rb
 #
 # Access counter plugin.
 #

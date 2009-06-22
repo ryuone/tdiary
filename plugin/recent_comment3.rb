@@ -1,4 +1,5 @@
-# $Revision: 1.38 $
+# -*- coding: utf-8 -*-
+#
 # recent_comment3: 最近のツッコミをリストアップする
 #
 #   @secure = true な環境では動作しません．

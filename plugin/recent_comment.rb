@@ -1,4 +1,5 @@
-# recent_comment.rb $Revision: 1.12 $
+# -*- coding: utf-8 -*-
+# recent_comment.rb
 #
 # recent_comment: 最近のツッコミをリストアップする
 #

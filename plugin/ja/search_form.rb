@@ -1,4 +1,5 @@
-# search_form.rb japanese resource. $Revision: 1.2 $
+# -*- coding: utf-8 -*-
+# search_form.rb japanese resource.
 
 def googlej_form( button_name = "Google 検索", size = 20, default_text = "" )
 	first = %Q[<a href="http://www.google.com/">

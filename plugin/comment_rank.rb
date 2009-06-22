@@ -1,4 +1,5 @@
-# comment_rank.rb $Revision: 1.8 $
+# -*- coding: utf-8 -*-
+# comment_rank.rb
 #
 # comment_rank: ツッコミの数でランキング
 #   パラメタ:

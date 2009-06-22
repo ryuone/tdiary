@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def label_pingback_exclue; 'Pingback記録除外リスト'; end
 add_conf_proc( 'Pingback', 'Pingback') do
 	saveconf_pingback

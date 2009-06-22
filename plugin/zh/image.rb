@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 #
-# English resource of image plugin $Revision: 1.3 $
+# English resource of image plugin
 #
 
 #

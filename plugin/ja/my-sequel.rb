@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 #
 # ja/my-sequel.rb
-# $Revision: 1.4 $
 #
 # show links to follow-up entries
 #

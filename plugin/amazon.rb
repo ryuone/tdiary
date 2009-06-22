@@ -1,4 +1,4 @@
-# amazon.rb $Revision: 1.65 $: Making link with image to Amazon using Amazon ECS.
+# amazon.rb: Making link with image to Amazon using Amazon ECS.
 #
 # see document: #{@lang}/amazon.rb
 #

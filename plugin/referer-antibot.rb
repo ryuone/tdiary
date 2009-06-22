@@ -1,4 +1,5 @@
-# referer-antibot.rb $Revision: 1.3 $
+# -*- coding: utf-8 -*-
+# referer-antibot.rb
 #
 # 検索エンジンの巡回BOTには「本日のリンク元」を見せないようにする
 # これにより、無関係な検索語でアクセスされることが減る(と予想される)

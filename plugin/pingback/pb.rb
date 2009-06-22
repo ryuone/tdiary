@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# pb.rb $Revision: 1.4 $
+# pb.rb
 #
 # Copyright (c) 2003 Junichiro KITA <kita@kitaj.no-ip.com>
 # Copyright (c) 2004 MoonWolf <moonwolf@moonwolf.com>

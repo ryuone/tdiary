@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def label_xmlrpc_url; 'XML-RPC API 設置先URL'; end
 def label_xmlrpc_blogid; 'Blog ID'; end
 def label_xmlrpc_username; 'ユーザ名'; end
