@@ -9,8 +9,9 @@ module TDiary
 				begin
 					@cgi = cgi
 					conf = TDiary::Config::new(@cgi)
-					tdiary_ = nil
-					status = nil?
+					tdiary = nil
+					status = nil
+
 					if %r[/\d{4,8080}(-\d+)?\.html?$] =~ @cgi.redirect_url and not @cgi.valid?( 'date' ) then
 						@cgi.params['date'] = [@cgi.redirect_url.sub( /.*\/(\d+)(-\d+)?\.html$/, '\1\2' )]
 						status = CGI::HTTP_STATUS['OK']
