@@ -137,15 +137,15 @@ def image_info( f )
 	image_width = nil
 
 	sig = f.read( 24 )
-	if /\A\x89PNG\x0D\x0A\x1A\x0A(....)IHDR(........)/on =~ sig
+	if /\A\x89PNG\x0D\x0A\x1A\x0A(....)IHDR(........)/onm =~ sig
 		image_type = 'png'
 		image_width, image_height = $2.unpack( 'NN' )
 
-	elsif /\AGIF8[79]a(....)/on =~ sig
+	elsif /\AGIF8[79]a(....)/onm =~ sig
 		image_type   = 'gif'
 		image_width, image_height = $1.unpack( 'vv' )
 
-	elsif /\A\xFF\xD8/on =~ sig
+	elsif /\A\xFF\xD8/onm =~ sig
 		image_type = 'jpg'
 		data = $'
 		until data.empty?
