@@ -59,8 +59,7 @@
 # 確認の上利用して下さい。
 #
 
-@amazon_url = 'http://www.amazon.co.jp/exec/obidos/ASIN'
-@amazon_ecs_url = 'http://webservices.amazon.co.jp/onca/xml'
+@amazon_default_country = 'jp'
 @amazon_item_name = /^Amazon.co.jp： (.*)<.*$/
 @amazon_item_image = %r|(<img src="(http://images-jp\.amazon\.com/images/P/(.*MZZZZZZZ_?.jpg))".*?>)|i
 @amazon_label_conf ='Amazon'

@@ -1,3 +1,6 @@
+2009-07-19 TADA Tadashi <t@tdtds.jp>
+	* amazon.rb: changed entry point of Amazon API to amazon-auth-proxy. special thanks to furyu-tei.
+
 2009-07-07 Motoya Kurotsu <motoya.kurotsu.2009@gmail.com>
 	* image.rb: fixed error on upload when PNG file header has 0x0a.
 
