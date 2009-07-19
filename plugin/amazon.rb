@@ -19,16 +19,14 @@ require 'rexml/document'
   'fr' => 'http://www.amazon.fr/exec/obidos/ASIN',
   'uk' => 'http://www.amazon.co.uk/exec/obidos/ASIN',
   'de' => 'http://www.amazon.de/exec/obidos/ASIN',
-  nil   => @amazon_url
 }
 
 @amazon_ecs_url_hash = {
-  'us' => 'http://webservices.amazon.com/onca/xml',
-  'jp' => 'http://webservices.amazon.co.jp/onca/xml',
-  'fr' => 'http://webservices.amazon.fr/onca/xml',
-  'uk' => 'http://webservices.amazon.co.uk/onca/xml',
-  'de' => 'http://webservices.amazon.de/onca/xml',
-  nil   => @amazon_ecs_url
+  'us' => 'http://honnomemo.appspot.com/rpaproxy/us/',
+  'jp' => 'http://honnomemo.appspot.com/rpaproxy/jp/',
+  'fr' => 'http://honnomemo.appspot.com/rpaproxy/fr/',
+  'uk' => 'http://honnomemo.appspot.com/rpaproxy/uk/',
+  'de' => 'http://honnomemo.appspot.com/rpaproxy/de/',
 }
 
 def amazon_call_ecs( asin, id_type, country = nil )
@@ -208,7 +206,7 @@ end
 def amazon_get( asin, with_image = true, label = nil, pos = 'amazon' )
 	asin = asin.to_s.strip # delete white spaces
 	asin.sub!(/\A([a-z]+):/, '')
-	country = $1
+	country = $1 || @amazon_default_country
 	digit = asin.gsub( /[^\d]/, '' )
 	if digit.length == 13 then # ISBN-13
 		asin = digit
@@ -229,7 +227,7 @@ def amazon_get( asin, with_image = true, label = nil, pos = 'amazon' )
 				xml =  amazon_call_ecs( asin, id_type, country )
 				File::open( "#{cache}/#{country}#{asin}.xml", 'wb' ) {|f| f.write( xml )}
 			end
-			doc = REXML::Document::new( xml ).root
+			doc = REXML::Document::new( REXML::Source::new( xml ) ).root
 			item = doc.elements.to_a( '*/Item' )[0]
 			if pos == 'detail' then
 				amazon_detail_html( item )

@@ -42,8 +42,7 @@
 #                                 when the book image not found, set true.
 #
 
-@amazon_url = 'http://www.amazon.com/exec/obidos/ASIN'
-@amazon_ecs_url = 'http://webservices.amazon.com/onca/xml'
+@amazon_default_country = 'us'
 @amazon_item_name = /^Amazon\.com: (.*)$/
 @amazon_item_image = %r|(<img src="(http://images\.amazon\.com/images/P/(.*MZZZZZZZ_?.jpg))".*?>)|i
 @amazon_label_conf = 'Amazon'
