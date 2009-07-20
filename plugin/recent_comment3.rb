@@ -20,6 +20,9 @@ def recent_comment3_init
 	if File.exists?( "#{@cache_path}/recent_comments" ) then
 		FileUtils.mv( "#{@cache_path}/recent_comments", "#{@conf.data_path}/recent_comments" )
 	end
+	if @conf['recent_comment3.cache'] == "#{@cache_path}/recent_comments" then
+		@conf['recent_comment3.cache'] = "#{@conf.data_path}/recent_comments"
+	end
 
 	@conf['recent_comment3.cache'] ||= "#{@conf.data_path}/recent_comments"
 	@conf['recent_comment3.cache_size'] ||= 50

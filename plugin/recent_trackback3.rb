@@ -18,6 +18,9 @@ def recent_trackback3_init
 	if File.exists?( "#{@cache_path}/recent_trackbacks" ) then
 		FileUtis.mv( "#{@cache_path}/recent_trackbacks", "#{@conf.data_path}/recent_trackbacks" )
 	end
+	if @conf['recent_trackback3.cache'] == "#{@cache_path}/recent_trackbacks" then
+		@conf['recent_trackback3.cache'] = "#{@conf.data_path}/recent_trackbacks"
+	end
 
 	@conf['recent_trackback3.cache'] ||= "#{@conf.data_path}/recent_trackbacks"
 	@conf['recent_trackback3.cache_size'] ||= 50
