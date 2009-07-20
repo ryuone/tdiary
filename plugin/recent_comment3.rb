@@ -8,6 +8,7 @@
 # Distributed under the GPL
 #
 require 'pstore'
+require 'fileutils'
 require 'time'
 
 def recent_comment3_format(format, *args)
@@ -15,7 +16,12 @@ def recent_comment3_format(format, *args)
 end
 
 def recent_comment3_init
-	@conf['recent_comment3.cache'] ||= "#{@cache_path}/recent_comments"
+	# backward compatibility
+	if File.exists?( "#{@cache_path}/recent_comments" ) then
+		FileUtils.mv( "#{@cache_path}/recent_comments", "#{@conf.data_path}/recent_comments" )
+	end
+
+	@conf['recent_comment3.cache'] ||= "#{@conf.data_path}/recent_comments"
 	@conf['recent_comment3.cache_size'] ||= 50
 	@conf['recent_comment3.max'] ||= 3
 	@conf['recent_comment3.date_format'] ||= "(%m-%d)"

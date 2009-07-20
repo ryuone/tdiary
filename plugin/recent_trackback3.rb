@@ -6,6 +6,7 @@
 # Distributed under the GPL
 #
 require 'pstore'
+require 'fileutils'
 require 'time'
 
 def recent_trackback3_format(format, *args)
@@ -13,7 +14,12 @@ def recent_trackback3_format(format, *args)
 end
 
 def recent_trackback3_init
-	@conf['recent_trackback3.cache'] ||= "#{@cache_path}/recent_trackbacks"
+	# backward compatibility
+	if File.exists?( "#{@cache_path}/recent_trackbacks" ) then
+		FileUtis.mv( "#{@cache_path}/recent_trackbacks", "#{@conf.data_path}/recent_trackbacks" )
+	end
+
+	@conf['recent_trackback3.cache'] ||= "#{@conf.data_path}/recent_trackbacks"
 	@conf['recent_trackback3.cache_size'] ||= 50
 	@conf['recent_trackback3.n'] ||= 3
 	@conf['recent_trackback3.date_format'] ||= "(#{@date_format} %H:%M)"
