@@ -86,7 +86,10 @@ def todo_pretty_print(todos)
 		s << %Q|<span class="todo-priority">#{if x.prio != '' then '%02d' % x.prio else '' end}</span> #{apply_plugin x.todo}|
 		if x.limit
 			s << "(~#{x.limit}"
-			y, m, d = Time.parse(x.limit)
+			ymd = Time.parse(x.limit)
+			y = ymd.year
+			m = ymd.month
+			d = ymd.day
 			y = today.year unless y
 			if y and m and d
 				limit = Time.local(y, m, d)
