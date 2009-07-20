@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # todo.rb
 #
 # todo: show ToDo lists.
@@ -36,6 +37,7 @@
 # 
 
 require 'parsedate'
+require 'fileutils'
 class ToDo
 	attr_reader :prio, :todo, :limit
 	def initialize(prio, todo, limit, deleted = nil)
@@ -141,7 +143,10 @@ end
 
 # backward compatibility
 def todo_file
-	(@options && @options['todo.path'] || @cache_path) + "/todo"
+	if File.exists?( "#{@cache_path}/todo" ) then
+		FileUtils.mv( "#{@cache_path}/todo", "#{@conf.data_path}/todo")
+	end
+	(@options && @options['todo.path'] || @conf.data_path) + "/todo"
 end
 
 #
