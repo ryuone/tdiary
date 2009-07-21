@@ -19,6 +19,7 @@ require 'rexml/document'
   'fr' => 'http://www.amazon.fr/exec/obidos/ASIN',
   'uk' => 'http://www.amazon.co.uk/exec/obidos/ASIN',
   'de' => 'http://www.amazon.de/exec/obidos/ASIN',
+  'ca' => 'http://www.amazon.ca/exec/obidos/ASIN',
 }
 
 @amazon_ecs_url_hash = {
@@ -27,6 +28,7 @@ require 'rexml/document'
   'fr' => 'http://honnomemo.appspot.com/rpaproxy/fr/',
   'uk' => 'http://honnomemo.appspot.com/rpaproxy/uk/',
   'de' => 'http://honnomemo.appspot.com/rpaproxy/de/',
+  'ca' => 'http://honnomemo.appspot.com/rpaproxy/ca/',
 }
 
 def amazon_call_ecs( asin, id_type, country = nil )
