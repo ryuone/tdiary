@@ -14,7 +14,7 @@
 @amazon_aid = 'cshs-22'                  # Amazon Association ID
 @amazon_url = 'http://www.amazon.co.jp/exec/obidos/ASIN'
                                          # URL of items in amazon
-@amazon_ecs_url = 'http://webservices.amazon.co.jp/onca/xml'
+@amazon_ecs_url = 'http://honnomemo.appspot.com/rpaproxy/jp/'
                                          # URL of Amazon ECS service
 #############################
 
@@ -34,15 +34,17 @@
   'fr' => 'http://www.amazon.fr/exec/obidos/ASIN',
   'uk' => 'http://www.amazon.co.uk/exec/obidos/ASIN',
   'de' => 'http://www.amazon.de/exec/obidos/ASIN',
+  'ca' => 'http://www.amazon.ca/exec/obidos/ASIN',
   nil   => @amazon_url
 }
 
 @amazon_ecs_url_hash = {
-  'us' => 'http://webservices.amazon.com/onca/xml',
-  'jp' => 'http://webservices.amazon.co.jp/onca/xml',
-  'fr' => 'http://webservices.amazon.fr/onca/xml',
-  'uk' => 'http://webservices.amazon.co.uk/onca/xml',
-  'de' => 'http://webservices.amazon.de/onca/xml',
+  'us' => 'http://honnomemo.appspot.com/rpaproxy/us/',
+  'jp' => 'http://honnomemo.appspot.com/rpaproxy/jp/',
+  'fr' => 'http://honnomemo.appspot.com/rpaproxy/fr/',
+  'uk' => 'http://honnomemo.appspot.com/rpaproxy/uk/',
+  'de' => 'http://honnomemo.appspot.com/rpaproxy/de/',
+  'ca' => 'http://honnomemo.appspot.com/rpaproxy/ca/',
   nil   => @amazon_ecs_url
 }
 
