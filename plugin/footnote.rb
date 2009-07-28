@@ -39,7 +39,7 @@ def fn( text, mark = '*' )
 		r << %Q|name="#{@fn_fragment_fm % idx}" |
 		r << %Q|href="##{@fn_fragment_f % idx}" |
 		r << %Q|title="#{h text}">|
-		r << %Q|#{mark}#{idx}|
+		r << %Q|#{h mark}#{idx}|
 		r << %Q|</a>|
 	end
 	r << %Q|</span>|
