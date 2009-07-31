@@ -52,7 +52,7 @@ def amazon_call_ecs( asin, id_type, country = nil )
 	aid =  @conf['amazon.aid'] || ''
 	aid = 'cshs-22' if aid.empty?
 
-	url =  @amazon_ecs_url_hash[country].dup
+	url = (@conf['amazon.endpoints'] || @amazon_ecs_url_hash)[country].dup
 	url << "?Service=AWSECommerceService"
 	url << "&SubscriptionId=#{@amazon_subscription_id}"
 	url << "&AssociateTag=#{aid}"
