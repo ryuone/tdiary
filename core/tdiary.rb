@@ -7,7 +7,7 @@ Copyright (C) 2001-2009, TADA Tadashi <sho@spc.gr.jp>
 You can redistribute it and/or modify it under GPL2.
 =end
 
-TDIARY_VERSION = '2.2.1.20090528'
+TDIARY_VERSION = '2.2.1.20090801'
 
 $:.insert( 1, File::dirname( __FILE__ ) + '/misc/lib' )
 
@@ -273,7 +273,11 @@ module TDiary
 
 		def each_referer( limit = 10 )
 			newer_referer
-			@referers.values.sort.reverse.each_with_index do |ary,idx|
+			# dirty workaround to avoid recursive sort that
+			# causes SecurityError in @secure=true
+			# environment since
+			# http://svn.ruby-lang.org/cgi-bin/viewvc.cgi?view=rev&revision=16081
+			@referers.values.sort_by{|e| "%08d_%s" % e}.reverse.each_with_index do |ary,idx|
 				break if idx >= limit
 				yield ary[0], ary[1]
 			end
