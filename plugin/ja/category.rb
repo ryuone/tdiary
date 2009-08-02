@@ -140,7 +140,7 @@ HTML
 <tr>
 	<td>#{button}</td>
 	<td><input type="text" name="#{name}" value="#{h @conf[name]}" size="30"></td>
-	<td><p><span class="adminmenu"><a>#{@conf[name].sub(/\$1/, "2007").sub(/\$2/, "2")}</a></span></p></td>
+	<td><p><span class="adminmenu"><a>#{h @conf[name].sub(/\$1/, "2007").sub(/\$2/, "2")}</a></span></p></td>
 </tr>
 HTML
 	end
