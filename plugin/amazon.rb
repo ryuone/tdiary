@@ -226,7 +226,7 @@ end
 def amazon_get( asin, with_image = true, label = nil, pos = 'amazon' )
 	asin = asin.to_s.strip # delete white spaces
 	asin.sub!(/\A([a-z]+):/, '')
-	country = $1 || @amazon_default_country
+	country = $1 || @conf['amazon.default_country'] || @amazon_default_country
 	digit = asin.gsub( /[^\d]/, '' )
 	if digit.length == 13 then # ISBN-13
 		asin = digit

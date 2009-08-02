@@ -1,3 +1,6 @@
+2009-08-02 TADA Tadashi <t@tdtds.jp>
+	* amazon.rb: added option @conf['amazon.default_country'].
+
 2009-08-02  Kazuhiko  <kazuhiko@fdiary.net>
 	* en/category.rb, ja/category.rb, zh/category.rb: escape
 	configuration sample's HTML. thanks to Motoya Kurotsu for
