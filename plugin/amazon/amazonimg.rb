@@ -14,7 +14,7 @@
 @amazon_aid = 'cshs-22'                  # Amazon Association ID
 @amazon_url = 'http://www.amazon.co.jp/exec/obidos/ASIN'
                                          # URL of items in amazon
-@amazon_ecs_url = 'http://webservices.amazon.co.jp/onca/xml'
+@amazon_ecs_url = 'http://honnomemo.appspot.com/rpaproxy/jp/'
                                          # URL of Amazon ECS service
 #############################
 

@@ -1,6 +1,7 @@
 2009-08-03 TADA Tadashi <t@tdtds.jp>
 	* amazon.rb: supported request redirection by amazon-auth-proxy.
 	* amazon.rb: added option @options['amazon.ecs_url']
+	* amazon/amazonimg.rb: changed end point of Amazon API to amazon-auth-proxy.
 
 2009-08-02  Kazuhiko  <kazuhiko@fdiary.net>
 	* en/category.rb, ja/category.rb, zh/category.rb: (backport
