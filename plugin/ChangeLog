@@ -1,3 +1,7 @@
+2009-08-03 TADA Tadashi <t@tdtds.jp>
+	* amazon.rb: supported request redirection by amazon-auth-proxy.
+	* amazon.rb: added option @options['amazon.ecs_url']
+
 2009-08-02  Kazuhiko  <kazuhiko@fdiary.net>
 	* en/category.rb, ja/category.rb, zh/category.rb: (backport
 	rev.3499) escape configuration sample's HTML. thanks to Motoya

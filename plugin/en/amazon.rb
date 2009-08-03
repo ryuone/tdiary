@@ -43,9 +43,8 @@
 
 
 @amazon_url = 'http://www.amazon.com/exec/obidos/ASIN'
-@amazon_ecs_url = 'http://webservices.amazon.com/onca/xml'
-@amazon_item_name = /^Amazon\.com: (.*)$/
-@amazon_item_image = %r|(<img src="(http://images\.amazon\.com/images/P/(.*MZZZZZZZ_?.jpg))".*?>)|i
+@amazon_ecs_url = 'http://honnomemo.appspot.com/rpaproxy/us/'
+
 @amazon_label_conf = 'Amazon'
 @amazon_label_aid = 'Amazon Assosiate ID'
 @amazon_label_aid_desc = "If you don't specified it, this plugin call amazon with ID of tDiary developer."

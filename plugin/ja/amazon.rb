@@ -59,9 +59,8 @@
 #
 
 @amazon_url = 'http://www.amazon.co.jp/exec/obidos/ASIN'
-@amazon_ecs_url = 'http://webservices.amazon.co.jp/onca/xml'
-@amazon_item_name = /^Amazon.co.jp： (.*)<.*$/
-@amazon_item_image = %r|(<img src="(http://images-jp\.amazon\.com/images/P/(.*MZZZZZZZ_?.jpg))".*?>)|i
+@amazon_ecs_url = 'http://honnomemo.appspot.com/rpaproxy/jp/'
+
 @amazon_label_conf ='Amazon'
 @amazon_label_aid = 'AmazonアソシエイトIDの指定'
 @amazon_label_aid_desc = '指定しない場合には、tDiary作者の所有するIDが指定されたことになりますのでご注意ください。'

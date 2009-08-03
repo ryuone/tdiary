@@ -5,7 +5,8 @@
 # Copyright (C) 2005-2007 TADA Tadashi <sho@spc.gr.jp>
 # You can redistribute it and/or modify it under GPL2.
 #
-require 'open-uri'
+require 'net/http'
+require 'uri'
 require 'timeout'
 require 'rexml/document'
 
@@ -13,11 +14,27 @@ require 'rexml/document'
 @amazon_subscription_id = '1CVA98NEF1G753PFESR2'
 @amazon_require_version = '2007-01-17'
 
+def amazon_fetch( url, limit = 10 )
+	raise ArgumentError, 'HTTP redirect too deep' if limit == 0
+
+	px_host, px_port = (@conf['proxy'] || '').split( /:/ )
+	px_port = 80 if px_host and !px_port
+	res = Net::HTTP::Proxy( px_host, px_port ).get_response( URI::parse( url ) )
+	case res
+	when Net::HTTPSuccess
+		res.body
+	when Net::HTTPRedirection
+		amazon_fetch( res['location'].untaint, limit - 1 )
+	else
+		raise ArgumentError, res.error!
+	end
+end
+
 def amazon_call_ecs( asin, id_type )
 	aid =  @conf['amazon.aid'] || ''
 	aid = 'cshs-22' if aid.empty?
 
-	url =  @amazon_ecs_url.dup
+	url = (@conf['amazon.ecs_url'] || @amazon_ecs_url).dup
 	url << "?Service=AWSECommerceService"
 	url << "&SubscriptionId=#{@amazon_subscription_id}"
 	url << "&AssociateTag=#{aid}"
@@ -28,11 +45,12 @@ def amazon_call_ecs( asin, id_type )
 	url << "&ResponseGroup=Medium"
 	url << "&Version=#{@amazon_require_version}"
 
-	proxy = @conf['proxy']
-	proxy = 'http://' + proxy if proxy
-	timeout( 10 ) do
-		open( url, :proxy => proxy ) {|f| f.read }
-	end
+	begin
+		timeout( 10 ) do
+	   	amazon_fetch( url )
+		end
+	rescue ArgumentError
+   end
 end
 
 def amazon_author( item )
