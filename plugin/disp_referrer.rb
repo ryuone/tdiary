@@ -827,13 +827,13 @@ class DispRef2URL
 			title = setup.to_native( DispRef2String::unescape( @url ) )
 			setup.referer_table.each do |url, name|
 				unless /\$\d/ =~ name then
-					if title.gsub!( /#{url}/i, name ) then
+					if title.gsub!( /#{url}/iu, name ) then
 						matched = true
 						break
 					end
 				else
 					name.untaint unless setup.secure
-					if title.gsub!( /#{url}/i ) { eval name } then
+					if title.gsub!( /#{url}/iu ) { eval name } then
 						matched = true
 						break
 					end
