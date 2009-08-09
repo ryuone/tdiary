@@ -751,7 +751,7 @@ module TDiary
 			@conf_genre_label = {}
 			@cookies = []
 
-			params.each_key do |key|
+			params.each do |key, value|
 				instance_variable_set( "@#{key}", value )
 			end
 
