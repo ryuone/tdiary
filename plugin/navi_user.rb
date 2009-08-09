@@ -11,8 +11,8 @@
 
 eval( <<MODIFY_CLASS, TOPLEVEL_BINDING )
 module TDiary
-	class TDiaryMonth
-	  attr_reader :diaries
+	class TDiaryMonthWithoutFilter < TDiaryMonth
+		def referer_filter(referer); end
 	end
 end
 MODIFY_CLASS
@@ -32,11 +32,11 @@ end
 
 add_header_proc do
 	if @date then
-		cgi = NaviUserCGI.new(@date.strftime('%Y%m%d'))
+		today = @date.strftime('%Y%m%d')
+		cgi = NaviUserCGI.new(today)
 		days = []
 		yms = []
-		today = @date.strftime('%Y%m%d')
-		this_month = @date.strftime('%Y%m')
+		this_month = today[0,6]
 
 		@years.keys.each do |y|
 			yms += @years[y].collect {|m| y + m}
@@ -47,7 +47,7 @@ add_header_proc do
 		yms[yms.index(this_month) - 1, 3].each do |ym|
 			next unless ym
 			cgi.params['date'] = [ym]
-			m = TDiaryMonth.new(cgi, '', @conf)
+			m = TDiaryMonthWithoutFilter.new(cgi, '', @conf)
 			m.diaries.delete_if {|date,diary| !diary.visible?}
 			days += m.diaries.keys.sort
 		end
