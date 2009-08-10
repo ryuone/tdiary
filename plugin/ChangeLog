@@ -1,3 +1,6 @@
+2009-08-10  Kazuhiko  <kazuhiko@fdiary.net>
+	* category.rb: code cleanup. use sort_by for better performance.
+
 2009-08-09  Kazuhiko  <kazuhiko@fdiary.net>
 	* navi_user.rb, recent_list.rb: create and use
 	TDiaryMonthWithoutFilter instead of TDiaryMonth to reduce

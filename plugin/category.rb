@@ -111,7 +111,7 @@ def category_list_sections
 
 	raise ::TDiary::NotFound if @categorized.empty? and bot?
 
-	@categorized.keys.sort{|a,b| a.downcase <=> b.downcase}.each do |c|
+	@categorized.to_a.sort_by{|e| e[0].downcase}.each do |c, v|
 		info.category = c
 		if @category_icon[c]
 			img = %Q|<img class="category" src="#{h @category_icon_url}#{h @category_icon[c]}" alt="#{h c}">|
@@ -124,9 +124,9 @@ def category_list_sections
 	<div class="body">
 		<ul class="category">
 HTML
-		@categorized[c].keys.sort{|a,b| a.downcase <=> b.downcase}.each do |ymd|
+		v.to_a.sort_by{|e| e[0]}.each do |ymd, ary|
 			text = Time.local(ymd[0,4], ymd[4,2], ymd[6,2]).strftime(@conf.date_format)
-			@categorized[c][ymd].sort.each do |idx, title, excerpt|
+			ary.sort.each do |idx, title, excerpt|
 				r << %Q|\t\t\t<li><a href="#{h @index}#{anchor "#{ymd}#p#{'%02d' % idx}"}" title="#{h excerpt}">#{text}#p#{'%02d' % idx}</a> #{apply_plugin(title)}</li>\n|
 			end
 		end
@@ -147,13 +147,13 @@ def category_list_sections_mobile
 
 	raise ::TDiary::NotFound if @categorized.empty? and bot?
 
-	@categorized.keys.sort{|a,b| a.downcase <=> b.downcase}.each do |c|
+	@categorized.to_a.sort_by{|e| e[0].downcase}.each do |c, v|
 		info.category = c
 		r << "<H2>#{info.make_anchor}</H2>"
 		r << "<UL>"
-		@categorized[c].keys.sort.each do |ymd|
+		v.to_a.sort_by{|e| e[0]}.each do |ymd, ary|
 			text = Time.local(ymd[0,4], ymd[4,2], ymd[6,2]).strftime(@conf.date_format)
-			@categorized[c][ymd].sort.each do |idx, title, excerpt|
+			ary.sort.each do |idx, title, excerpt|
 				r << %Q|<LI><A HREF="#{h @index}#{anchor "#{ymd}#p#{'%02d' % idx}"}">#{text}#p#{'%02d' % idx}</A> #{apply_plugin(title)}</LI>\n|
 			end
 		end
@@ -182,7 +182,7 @@ def category_dropdown_list(label = nil, multiple = nil)
 	end
 
 	options = ''
-	(['ALL'] + @categories.sort{|a,b|a.downcase <=> b.downcase}).each do |c|
+	(['ALL'] + @categories.sort_by{|e| e.downcase}).each do |c|
 		options << %Q|\t\t<option value="#{h c}"#{" selected" if category.include?(c)}>#{h c}</option>\n|
 	end
 
@@ -636,7 +636,7 @@ end # module Category
 		]
 		ret << '<div class="field title">'
 		ret << "#{@category_conf_label}:\n"
-		@categories.sort{|a,b| a.downcase <=> b.downcase}.each do |c|
+		@categories.sort_by{|e| e.downcase}.each do |c|
 			ret << %Q!| <a href="javascript:inj_c(&quot;[#{h c}]&quot;)">#{h c}</a>\n!
 		end
 		ret << "|\n</div>\n<br>\n"
