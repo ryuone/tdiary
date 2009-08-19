@@ -713,7 +713,10 @@ def absolutify(html, baseurl)
 				if uri.relative?
 					location = (baseuri + location).to_s
 				elsif not uri.host
-					location = (baseuri + uri.path).to_s
+					path = uri.path
+					path += '?' + uri.query if uri.query
+					path += '#' + uri.fragment if uri.fragment
+					location = (baseuri + path).to_s
 				end
 				tag = prefix + location + postfix
 			rescue URI::InvalidURIError
