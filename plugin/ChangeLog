@@ -1,3 +1,6 @@
+2009-08-18  zunda <zunda at freeshell.org>
+	* makerss.rb: modified to make absolute URLs in CDATA
+
 2009-08-10  Kazuhiko  <kazuhiko@fdiary.net>
 	* category.rb: code cleanup. use sort_by for better performance.
 

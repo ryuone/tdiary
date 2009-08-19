@@ -363,13 +363,14 @@ def makerss_body( uri, rdfsec )
 			text << body
 			text << body_leave
 			unless text.empty?
+				uri = @conf.index.dup
+				uri[0, 0] = @conf.base_url unless %r|^https?://|i =~ uri
+				uri.gsub!( %r|/\./|, '/' )
+				text = absolutify( text, uri )
 				text.gsub!( /\]\]>/, ']]]]><![CDATA[>' )
 				rdf << %Q|<content:encoded><![CDATA[#{text}|
 				unless @conf['makerss.comment_link']
 					ymd = date.strftime( "%Y%m%d" )
-					uri = @conf.index.dup
-					uri[0, 0] = @conf.base_url unless %r|^https?://|i =~ uri
-					uri.gsub!( %r|/\./|, '/' )
 					rdf << %Q|\n<p><a href="#{h uri}#{anchor "#{ymd}c"}">#{comment_new}</a></p>|
 				end
 				rdf << %Q|]]></content:encoded>\n|
@@ -694,4 +695,31 @@ def replace_entities( text )
 	text.gsub( /&[a-z]+;/im ) do |e|
 		@xml_entity_table[e] || e
 	end
+end
+
+# Copied from below which includes some tests
+# http://github.com/zunda/ruby-absolutify/tree/master
+def absolutify(html, baseurl)
+	baseuri = URI.parse(URI.encode(baseurl))
+	r = html.gsub(%r|<\S[^>]*/?>|) do |tag|
+		type = tag.scan(/\A<(\S+)/)[0][0].downcase
+		if attr = {'a' => 'href', 'img' => 'src'}[type]
+			m = tag.match(%r|(.*#{attr}=)(['"]?)([^\2>]+?)\2(.*)|i)
+			prefix = m[1] + m[2]
+			location = m[3]
+			postfix = m[2] + m[4]
+			begin
+				uri = URI.parse(location)
+				if uri.relative?
+					location = (baseuri + location).to_s
+				elsif not uri.host
+					location = (baseuri + uri.path).to_s
+				end
+				tag = prefix + location + postfix
+			rescue URI::InvalidURIError
+			end
+		end
+		tag
+	end
+	return r
 end
