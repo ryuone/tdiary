@@ -1,3 +1,6 @@
+2009-08-22  sakai <masahiro.sakai at gmail.com>
+	* category.rb: redirected to old encoding access to UTF-8's.
+
 2009-08-19  zunda <zunda at freeshell.org>
 	* makerss.rb: modified handle absolute URLs w/o host with query/fragment
 
