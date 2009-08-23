@@ -704,7 +704,7 @@ def absolutify(html, baseurl)
 	r = html.gsub(%r|<\S[^>]*/?>|) do |tag|
 		type = tag.scan(/\A<(\S+)/)[0][0].downcase
 		if attr = {'a' => 'href', 'img' => 'src'}[type]
-			m = tag.match(%r|(.*#{attr}=)(['"]?)([^\2>]+?)\2(.*)|i)
+			m = tag.match(%r|(.*#{attr}=)(['"]?)([^\2>]+?)\2(.*)|im)
 			prefix = m[1] + m[2]
 			location = m[3]
 			postfix = m[2] + m[4]
