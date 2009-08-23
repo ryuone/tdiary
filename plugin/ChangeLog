@@ -1,3 +1,7 @@
+2009-08-23  Kazuhiko  <kazuhiko@fdiary.net>
+	* makerss.rb (absolutify): fix a bug that breaks html if new lines
+	are included in a tag.
+
 2009-08-22  sakai <masahiro.sakai at gmail.com>
 	* category.rb: redirected to old encoding access to UTF-8's.
 
