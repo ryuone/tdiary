@@ -4,7 +4,7 @@
 # Distributed under the GPL
 #
 require 'pstore'
-require 'kconv'
+autoload :Kconv, 'kconv'
 
 #
 # initialize
@@ -149,7 +149,7 @@ def category_list_sections_mobile
 	raise ::TDiary::NotFound if @categorized.empty? and bot?
 
 	@categorized.to_a.sort_by{|e| e[0].downcase}.each do |c, v|
-		info.category = c
+		info.category = [c]
 		r << "<H2>#{info.make_anchor}</H2>"
 		r << "<UL>"
 		v.to_a.sort_by{|e| e[0]}.each do |ymd, ary|
@@ -166,7 +166,7 @@ end
 def category_list
 	info = Category::Info.new(@cgi, @years, @conf)
 	@categories.map do |c|
-		info.category = c
+		info.category = [c]
 		info.make_anchor
 	end.join(" | \n")
 end
@@ -237,8 +237,8 @@ class Info
 		@cgi = cgi
 		@years = years
 		@conf = conf
-		@category = args[:category] || @cgi.params['category'].map {|c| 
-			::Kconv.isutf8(c) ? c : @conf.to_native(c, @conf.encoding_old)
+		@category = args[:category] || @cgi.params['category'].map {|c|
+			Kconv.isutf8(c) ? c : @conf.to_native(c, @conf.encoding_old)
 		}
 		@year = args[:year] || @cgi.params['year'][0]
 		@month = args[:month] || @cgi.params['month'][0]
