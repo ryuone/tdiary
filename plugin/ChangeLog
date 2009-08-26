@@ -1,3 +1,6 @@
+2009-08-26 zunda <zunda at freeshell.org>
+	* makerss.rb: modified to cache regexps (Thanks to Kazuhiko)
+
 2009-08-26  Kazuhiko  <kazuhiko@fdiary.net>
 	* category.rb: use autoload for kconv library not to reduce
 	performance for non-required case. make an Array explicitly not to
