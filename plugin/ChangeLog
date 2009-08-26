@@ -1,3 +1,8 @@
+2009-08-26  Kazuhiko  <kazuhiko@fdiary.net>
+	* category.rb: use autoload for kconv library not to reduce
+	performance for non-required case. make an Array explicitly not to
+	depends on String#to_a, that is provided in compatible.rb.
+
 2009-08-23  Kazuhiko  <kazuhiko@fdiary.net>
 	* makerss.rb (absolutify): fix a bug that breaks html if new lines
 	are included in a tag.
