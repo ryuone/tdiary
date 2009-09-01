@@ -25,8 +25,7 @@ unless @conf.mobile_agent? then
 #
 # hide Pingbacks in TSUKKOMI
 #
-eval( <<MODIFY_CLASS, TOPLEVEL_BINDING )
-module TDiary
+module ::TDiary
 	module CommentManager
 		def each_visible_pingback( limit = 3 )
 			i = 0
@@ -49,7 +48,6 @@ module TDiary
 		end
 	end
 end
-MODIFY_CLASS
 
 #
 # insert Pingbacks above Today's Link.

@@ -23,8 +23,7 @@
 
 alias :title_tag2 :title_tag
 
-eval(<<__END_OF_TOPLEVEL__,TOPLEVEL_BINDING)
-module TDiary
+module ::TDiary
 	module DiaryBase
 		def all_subtitles_to_html
 			titles = Array.new
@@ -43,7 +42,6 @@ module TDiary
 		end
 	end
 end
-__END_OF_TOPLEVEL__
 
 def title_tag
 	if @mode == 'day' and diary = @diaries[@date.strftime('%Y%m%d')] then
