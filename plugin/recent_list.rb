@@ -16,13 +16,11 @@
 # Copyright (c) 2001,2002 Junichiro KITA <kita@kitaj.no-ip.com>
 # Distributed under the GPL
 #
-eval( <<MODIFY_CLASS, TOPLEVEL_BINDING )
-module TDiary
+module ::TDiary
 	class TDiaryMonthWithoutFilter < TDiaryMonth
 		def referer_filter(referer); end
 	end
 end
-MODIFY_CLASS
 
 def recent_list( days = 30, date_format = nil, title_with_body = nil, show_size = nil, show_title = nil )
 	days = days.to_i

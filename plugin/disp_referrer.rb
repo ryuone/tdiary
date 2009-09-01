@@ -71,21 +71,6 @@ See ChangeLog for changes after this.
 * Mon Feb 17, 2003 zunda <zunda at freeshell.org>
 - First version
 =end
-
-=begin
-== このプラグインで定義されるクラスとメソッド
-=== Array
-Array#values_at()が無い場合、追加します。
-=end
-# 1.8 feature
-unless [].respond_to?( :values_at ) then
-	eval( <<-MODIFY_CLASS, TOPLEVEL_BINDING )
-		class Array
-			alias values_at indices
-		end
-	MODIFY_CLASS
-end
-
 # to be visible from inside classes
 Dispref2plugin = self
 Dispref2plugin_cache_path = @cache_path
