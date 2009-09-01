@@ -9,13 +9,11 @@
 # Copyright (c) 2002 Junichiro KITA <kita@kitaj.no-ip.com>
 # Distributed under the GPL
 
-eval( <<MODIFY_CLASS, TOPLEVEL_BINDING )
-module TDiary
+module ::TDiary
 	class TDiaryMonthWithoutFilter < TDiaryMonth
 		def referer_filter(referer); end
 	end
 end
-MODIFY_CLASS
 
 class NaviUserCGI
 	attr_reader :params, :referer, :user_agent

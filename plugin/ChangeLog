@@ -1,3 +1,8 @@
+2009-09-01  Kazuhiko  <kazuhiko@fdiary.net>
+	* navi_user.rb, recent_list.rb: delete eval to define toplevel
+	module, that is not required on Ruby 1.8 or later.
+	* disp_referrer.rb: remove a code for Ruby 1.6 compatibility.
+
 2009-09-01 TADA Tadashi <t@tdtds.jp>
 	* makerss.rb: deleteed eval for define toplevel module.
 
