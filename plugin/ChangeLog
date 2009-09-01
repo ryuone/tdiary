@@ -1,3 +1,6 @@
+2009-09-01 TADA Tadashi <t@tdtds.jp>
+	* makerss.rb: deleteed eval for define toplevel module.
+
 2009-08-26 zunda <zunda at freeshell.org>
 	* makerss.rb: modified to cache regexps (Thanks to Kazuhiko)
 
