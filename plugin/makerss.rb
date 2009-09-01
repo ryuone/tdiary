@@ -24,7 +24,7 @@
 #   CAUTION: Before using, make 'index.rdf' and 'no_comments.rdf' file
 #            into the directory of your diary, and permit writable to httpd.
 #
-# Copyright (c) 2004 TADA Tadashi <sho@spc.gr.jp>
+# Copyright (c) 2009 TADA Tadashi <t@tdtds.jp>
 # Distributed under the GPL
 #
 
@@ -32,31 +32,29 @@ if /^append|replace|comment|showcomment|trackbackreceive|pingbackreceive$/ =~ @m
 	unless @conf.description
 		@conf.description = @conf['whatsnew_list.rdf.description']
 	end
-	eval( <<-TOPLEVEL_CLASS, TOPLEVEL_BINDING )
-		module TDiary
-			class RDFSection
-				attr_reader :id, :time, :section, :diary_title
+	module ::TDiary
+		class RDFSection
+			attr_reader :id, :time, :section, :diary_title
 
-				# 'id' has 'YYYYMMDDpNN' format (p or c).
-				# 'time' is Last-Modified this section as a Time object.
-				def initialize( id, time, section )
-					@id, @time, @section, @diary_title = id, time, section, diary_title
-				end
+			# 'id' has 'YYYYMMDDpNN' format (p or c).
+			# 'time' is Last-Modified this section as a Time object.
+			def initialize( id, time, section )
+				@id, @time, @section, @diary_title = id, time, section, diary_title
+			end
 
-				def time_string
-					g = @time.dup.gmtime
-					l = Time::local( g.year, g.month, g.day, g.hour, g.min, g.sec )
-					tz = (g.to_i - l.to_i)
-					zone = sprintf( "%+03d:%02d", tz / 3600, tz % 3600 / 60 )
-					@time.strftime( "%Y-%m-%dT%H:%M:%S" ) + zone
-				end
+			def time_string
+				g = @time.dup.gmtime
+				l = Time::local( g.year, g.month, g.day, g.hour, g.min, g.sec )
+				tz = (g.to_i - l.to_i)
+				zone = sprintf( "%+03d:%02d", tz / 3600, tz % 3600 / 60 )
+				@time.strftime( "%Y-%m-%dT%H:%M:%S" ) + zone
+			end
 
-				def <=>( other )
-					other.time <=> @time
-				end
+			def <=>( other )
+				other.time <=> @time
 			end
 		end
-	TOPLEVEL_CLASS
+	end
 end
 
 @makerss_rsses = @makerss_rsses || []
