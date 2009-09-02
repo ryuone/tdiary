@@ -60,7 +60,7 @@ class PluginFake
 		end
 		r.join.chomp
 	end
-	
+
 	def footer_proc
 		r = []
 		@footer_procs.each do |proc|
@@ -72,7 +72,7 @@ class PluginFake
 	def add_body_enter_proc( block = Proc::new )
 		@body_enter_procs << block
 	end
-	
+
 	def body_enter_proc( date )
 		r = []
 		@body_enter_procs.each do |proc|
@@ -84,7 +84,7 @@ class PluginFake
 	def add_body_leave_proc( block = Proc::new )
 		@body_leave_procs << block
 	end
-	
+
 	def body_leave_proc( date )
 		r = []
 		@body_leave_procs.each do |proc|
@@ -207,7 +207,7 @@ def anchor( s )
 	end
 end
 
-# testable_tdiary 
+# testable_tdiary
 $:.unshift(File.expand_path("lib", File.dirname(__FILE__)))
 require 'rubygems'
 require 'spec'
@@ -221,4 +221,3 @@ Spec::Runner.configure do |config|
 	config.mock_with :rr
 	config.include(RspecHpricotMatchers)
 end
-
