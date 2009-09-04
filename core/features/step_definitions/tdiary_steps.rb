@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-require 'hpricot'
+require 'nokogiri'
 
 Given "最低限のtdiary.conf" do
 	fixture_dir = File.expand_path("../fixtures", File.dirname(__FILE__))
@@ -39,7 +39,7 @@ When /(.*) に(?:アクセス|ポスト)した/ do |uri|
 				else raise "invalid uri: must be index.rb or update.rb"
 				end
 	@status, @header, @response = @driver.invoke(target)
-	@response = Hpricot(@response)
+	@response = Nokogiri(@response)
 end
 
 Then /ステータスコードは (.*) である/ do |status|
