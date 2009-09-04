@@ -55,7 +55,7 @@ Then /HTMLの (.*) タグの内容は (.*) である/ do |hpricot_path, content|
 end
 
 Then /HTMLに (.*) へのリンクがある/ do |link|
-	@response.should have_tag("a[@href=#{link}]")
+	@response.should have_tag("a[@href='#{link}']")
 end
 
 Then /HTMLに (.*) タグがある/ do |hpricot_path|
