@@ -61,3 +61,9 @@ end
 Then /HTMLに (.*) タグがある/ do |hpricot_path|
 	@response.should have_tag(hpricot_path)
 end
+
+Then /^画面を表示する$/ do
+	puts @response
+# TODO support Webrat::SaveAndOpenPage
+#  save_and_open_page
+end
