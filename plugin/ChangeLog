@@ -1,3 +1,7 @@
+2009-09-06  Kazuhiko  <kazuhiko@fdiary.net>
+	* makerss.rb (absolutify): fix a bug that raises an exception when
+	there are white spaces around '='.
+
 2009-09-01  Kazuhiko  <kazuhiko@fdiary.net>
 	* navi_user.rb, pb-show.rb, recent_list.rb, title_tag.rb:
 	delete eval to define toplevel module, that is not required on
