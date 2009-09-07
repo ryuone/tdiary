@@ -705,21 +705,23 @@ def absolutify(html, baseurl)
 		if attr = {'a' => 'href', 'img' => 'src'}[type]
 			@@_absolutify_attr_regexp[attr] ||= %r|(.*#{attr}\s*=\s*)(['"]?)([^\2>]+?)(\2.*)|im
 			m = tag.match(@@_absolutify_attr_regexp[attr])
-			prefix = m[1] + m[2]
-			location = m[3]
-			postfix = m[4]
-			begin
-				uri = URI.parse(location)
-				if uri.relative?
-					location = (baseuri + location).to_s
-				elsif not uri.host
-					path = uri.path
-					path += '?' + uri.query if uri.query
-					path += '#' + uri.fragment if uri.fragment
-					location = (baseuri + path).to_s
+			unless m.nil?
+				prefix = m[1] + m[2]
+				location = m[3]
+				postfix = m[4]
+				begin
+					uri = URI.parse(location)
+					if uri.relative?
+						location = (baseuri + location).to_s
+					elsif not uri.host
+						path = uri.path
+						path += '?' + uri.query if uri.query
+						path += '#' + uri.fragment if uri.fragment
+						location = (baseuri + path).to_s
+					end
+					tag = prefix + location + postfix
+				rescue URI::InvalidURIError
 				end
-				tag = prefix + location + postfix
-			rescue URI::InvalidURIError
 			end
 		end
 		tag
