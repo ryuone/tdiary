@@ -1,3 +1,7 @@
+2009-09-07  Kazuhiko  <kazuhiko@fdiary.net>
+	* makerss.rb (absolutify): fix a bug that raises an exception when
+	replacing attributes don't appear.
+
 2009-09-06  Kazuhiko  <kazuhiko@fdiary.net>
 	* makerss.rb (absolutify): fix a bug that raises an exception when
 	there are white spaces around '='.
