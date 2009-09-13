@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+$:.unshift(File.expand_path("../misc", File.dirname(__FILE__)))
+require 'server'
+
+TDiary::Server.run(:port => 19292)
