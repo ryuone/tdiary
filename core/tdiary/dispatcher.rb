@@ -116,7 +116,6 @@ module TDiary
 				@cgi = cgi
 				conf = TDiary::Config::new(@cgi)
 				tdiary = nil
-
 				begin
 					if @cgi.valid?( 'append' )
 						tdiary = TDiary::TDiaryAppend::new( @cgi, 'show.rhtml', conf )
@@ -124,7 +123,7 @@ module TDiary
 						tdiary = TDiary::TDiaryEdit::new( @cgi, 'update.rhtml', conf )
 					elsif @cgi.valid?( 'replace' )
 						tdiary = TDiary::TDiaryReplace::new( @cgi, 'show.rhtml', conf )
-					elsif @cgi.valid?( 'appendpreview' ) or @cgi.valid?( 'replacepreview' ) 
+					elsif @cgi.valid?( 'appendpreview' ) or @cgi.valid?( 'replacepreview' )
 						tdiary = TDiary::TDiaryPreview::new( @cgi, 'preview.rhtml', conf )
 					elsif @cgi.valid?( 'plugin' )
 						tdiary = TDiary::TDiaryFormPlugin::new( @cgi, 'update.rhtml', conf )
