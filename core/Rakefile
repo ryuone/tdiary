@@ -43,39 +43,39 @@ task :features => :cucumber do |t|
 end
 
 namespace :spec do
-	desc 'Run specs'
-	Spec::Rake::SpecTask.new(:core) do |t|
-		t.spec_files = FileList['spec/**/*_spec.rb']
-		t.spec_opts << '--options' << File.join('spec', 'spec.opts')
-	end
+   desc 'Run specs'
+   Spec::Rake::SpecTask.new(:core) do |t|
+      t.spec_files = FileList['spec/**/*_spec.rb']
+      t.spec_opts << '--options' << File.join('spec', 'spec.opts')
+   end
 
-	desc 'Run specs w/ RCov'
-	Spec::Rake::SpecTask.new(:rcov) do |t|
-		t.spec_files = FileList['spec/**/*_spec.rb']
-		t.spec_opts << '--options' << File.join('spec', 'spec.opts')
-		t.rcov = true
-		t.rcov_dir = File.expand_path("coverage/spec", File.dirname(__FILE__))
-		t.rcov_opts = lambda do
-			IO.readlines(File.join('spec', 'rcov.opts')).map {|line| line.chomp.split(" ") }.flatten
-		end
-	end
-	task :rcov => "coverage:clean"
+   desc 'Run specs w/ RCov'
+   Spec::Rake::SpecTask.new(:rcov) do |t|
+      t.spec_files = FileList['spec/**/*_spec.rb']
+      t.spec_opts << '--options' << File.join('spec', 'spec.opts')
+      t.rcov = true
+      t.rcov_dir = File.expand_path("coverage/spec", File.dirname(__FILE__))
+      t.rcov_opts = lambda do
+         IO.readlines(File.join('spec', 'rcov.opts')).map {|line| line.chomp.split(" ") }.flatten
+      end
+   end
+   task :rcov => "coverage:clean"
 end
 
 task :default => :spec
 
 desc "Run spec"
 task :spec do |t|
-	Rake::Task["spec:core"].invoke
+   Rake::Task["spec:core"].invoke
 end
 
 namespace :coverage do
-	desc "delete aggregate coverage data"
-	task(:clean) {
-		rm_f "coverage/*"
-		mkdir "coverage" unless File.exist? "coverage"
-		rm "coverage.aggregate" if File.exist? "coverage.aggregate"
-	}
+   desc "delete aggregate coverage data"
+   task(:clean) {
+      rm_f "coverage/*"
+      mkdir "coverage" unless File.exist? "coverage"
+      rm "coverage.aggregate" if File.exist? "coverage.aggregate"
+   }
 end
 
 desc "all coverage"
