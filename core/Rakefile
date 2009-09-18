@@ -3,14 +3,6 @@ require 'spec/rake/spectask'
 require 'cucumber/rake/task'
 
 namespace :cuke do
-   Cucumber::Rake::Task.new({:rcov => "coverage:clean"}, "Run features(@ok) w/ rcov") do |t|
-      t.fork = true
-      t.cucumber_opts = "--tags ~@wip --format progress --language ja"
-      t.rcov = true
-      t.rcov_opts = IO.readlines(File.join('spec', 'rcov.opts')).map {|line| line.chomp.split(" ") }.flatten
-      rcov_dir = File.expand_path("coverage/features", File.dirname(__FILE__))
-      t.rcov_opts << " -o #{rcov_dir}"
-   end
    Cucumber::Rake::Task.new(:ok, 'Run features that should pass') do |t|
       t.fork = true
       t.cucumber_opts = "--tags ~@wip --strict --format #{ENV['CUCUMBER_FORMAT']|| 'pretty'} --language ja"
@@ -23,11 +15,19 @@ namespace :cuke do
 
    desc 'Run all features'
    task :all => [:ok, :wip]
+
+   Cucumber::Rake::Task.new({:rcov => "coverage:clean"}, "Run features(@ok) w/ rcov") do |t|
+      t.fork = true
+      t.cucumber_opts = "--tags ~@wip --format progress --language ja"
+      t.rcov = true
+      t.rcov_opts = IO.readlines(File.join('spec', 'rcov.opts')).map {|line| line.chomp.split(" ") }.flatten
+      rcov_dir = File.expand_path("coverage/features", File.dirname(__FILE__))
+      t.rcov_opts << " -o #{rcov_dir}"
+   end
 end
 
 desc 'Alias for cuke:ok'
 task :cuke => 'cuke:ok'
-
 
 desc "Run features"
 task :features => :cucumber do |t|
