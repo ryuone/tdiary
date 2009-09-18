@@ -1,2 +1,2 @@
---exclude "spec/*,features/*,gems/*,misc/server.rb"
+--exclude "ruby/1\.8/, spec/.*,features/.*,gems/.*,misc/server\.rb"
 --aggregate coverage.aggregate
