@@ -3,27 +3,27 @@ require 'spec/rake/spectask'
 require 'cucumber/rake/task'
 
 namespace :cuke do
-   Cucumber::Rake::Task.new(:ok, 'Run features that should pass') do |t|
-      t.fork = true
-      t.cucumber_opts = "--tags ~@wip --strict --format #{ENV['CUCUMBER_FORMAT']|| 'pretty'} --language ja"
-   end
+	Cucumber::Rake::Task.new(:ok, 'Run features that should pass') do |t|
+		t.fork = true
+		t.cucumber_opts = "--tags ~@wip --strict --format #{ENV['CUCUMBER_FORMAT']|| 'pretty'} --language ja"
+	end
 
-   Cucumber::Rake::Task.new(:wip, 'Run features that are being worked on') do |t|
-      t.fork = true
-      t.cucumber_opts = "--tags @wip:2 --wip --format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} --language ja"
-   end
+	Cucumber::Rake::Task.new(:wip, 'Run features that are being worked on') do |t|
+		t.fork = true
+		t.cucumber_opts = "--tags @wip:2 --wip --format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} --language ja"
+	end
 
-   desc 'Run all features'
-   task :all => [:ok, :wip]
+	desc 'Run all features'
+	task :all => [:ok, :wip]
 
-   Cucumber::Rake::Task.new({:rcov => "coverage:clean"}, "Run features(@ok) w/ rcov") do |t|
-      t.fork = true
-      t.cucumber_opts = "--tags ~@wip --format progress --language ja"
-      t.rcov = true
-      t.rcov_opts = IO.readlines(File.join('spec', 'rcov.opts')).map {|line| line.chomp.split(" ") }.flatten
-      rcov_dir = File.expand_path("coverage/features", File.dirname(__FILE__))
-      t.rcov_opts << " -o #{rcov_dir}"
-   end
+	Cucumber::Rake::Task.new({:rcov => "coverage:clean"}, "Run features(@ok) w/ rcov") do |t|
+		t.fork = true
+		t.cucumber_opts = "--tags ~@wip --format progress --language ja"
+		t.rcov = true
+		t.rcov_opts = IO.readlines(File.join('spec', 'rcov.opts')).map {|line| line.chomp.split(" ") }.flatten
+		rcov_dir = File.expand_path("coverage/features", File.dirname(__FILE__))
+		t.rcov_opts << " -o #{rcov_dir}"
+	end
 end
 
 desc 'Alias for cuke:ok'
@@ -31,43 +31,43 @@ task :cuke => 'cuke:ok'
 
 desc "Run features"
 task :features => :cucumber do |t|
-    STDERR.puts "*** The 'features' task is deprecated. See rake -T cucumber ***"
+	 STDERR.puts "*** The 'features' task is deprecated. See rake -T cucumber ***"
 end
 
 namespace :spec do
-   desc 'Run specs'
-   Spec::Rake::SpecTask.new(:core) do |t|
-      t.spec_files = FileList['spec/**/*_spec.rb']
-      t.spec_opts << '--options' << File.join('spec', 'spec.opts')
-   end
+	desc 'Run specs'
+	Spec::Rake::SpecTask.new(:core) do |t|
+		t.spec_files = FileList['spec/**/*_spec.rb']
+		t.spec_opts << '--options' << File.join('spec', 'spec.opts')
+	end
 
-   desc 'Run specs w/ RCov'
-   Spec::Rake::SpecTask.new(:rcov) do |t|
-      t.spec_files = FileList['spec/**/*_spec.rb']
-      t.spec_opts << '--options' << File.join('spec', 'spec.opts')
-      t.rcov = true
-      t.rcov_dir = File.expand_path("coverage/spec", File.dirname(__FILE__))
-      t.rcov_opts = lambda do
-         IO.readlines(File.join('spec', 'rcov.opts')).map {|line| line.chomp.split(" ") }.flatten
-      end
-   end
-   task :rcov => "coverage:clean"
+	desc 'Run specs w/ RCov'
+	Spec::Rake::SpecTask.new(:rcov) do |t|
+		t.spec_files = FileList['spec/**/*_spec.rb']
+		t.spec_opts << '--options' << File.join('spec', 'spec.opts')
+		t.rcov = true
+		t.rcov_dir = File.expand_path("coverage/spec", File.dirname(__FILE__))
+		t.rcov_opts = lambda do
+			IO.readlines(File.join('spec', 'rcov.opts')).map {|line| line.chomp.split(" ") }.flatten
+		end
+	end
+	task :rcov => "coverage:clean"
 end
 
 task :default => :spec
 
 desc "Run spec"
 task :spec do |t|
-   Rake::Task["spec:core"].invoke
+	Rake::Task["spec:core"].invoke
 end
 
 namespace :coverage do
-   desc "delete aggregate coverage data"
-   task(:clean) {
-      rm_f "coverage/*"
-      mkdir "coverage" unless File.exist? "coverage"
-      rm "coverage.aggregate" if File.exist? "coverage.aggregate"
-   }
+	desc "delete aggregate coverage data"
+	task(:clean) {
+		rm_f "coverage/*"
+		mkdir "coverage" unless File.exist? "coverage"
+		rm "coverage.aggregate" if File.exist? "coverage.aggregate"
+	}
 end
 
 desc "all coverage"
