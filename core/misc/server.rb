@@ -35,8 +35,10 @@ module TDiary
 				:AccessLog => webrick_access_log_to(opts[:access_log])
 				)
 			@server.logger.level = WEBrick::Log::DEBUG
-			@server.mount("/index.rb", WEBrick::HTTPServlet::CGIHandler,
-				File.expand_path("index.rb", TDIARY_CORE_DIR))
+			['/', '/index.rb'].each do |path|
+				@server.mount(path, WEBrick::HTTPServlet::CGIHandler,
+					File.expand_path("index.rb", TDIARY_CORE_DIR))
+			end
 			@server.mount("/update.rb", WEBrick::HTTPServlet::CGIHandler,
 				File.expand_path("update.rb", TDIARY_CORE_DIR))
 		end
