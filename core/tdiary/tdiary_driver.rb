@@ -1,3 +1,4 @@
+require 'cgi'
 require 'stringio'
 require 'tdiary'
 require 'tdiary/dispatcher'
@@ -53,6 +54,11 @@ class TDiaryDriver
 		stdin_spy = StringIO.new("")
 		unless @param_str.empty?
 			stdin_spy.print(@param_str.join("\n"))
+			stdin_spy.rewind
+		end
+		# FIXME dirty hack
+		if $RACK_ENV && $RACK_ENV['rack.input']
+			stdin_spy.print($RACK_ENV['rack.input'].read)
 			stdin_spy.rewind
 		end
 		$stdin = stdin_spy

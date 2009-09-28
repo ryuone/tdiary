@@ -1,4 +1,5 @@
 $:.unshift(File.expand_path("../../", File.dirname(__FILE__)))
+require 'cgi'
 require 'rack/request'
 require 'rack/response'
 require 'tdiary/tdiary_driver'
@@ -22,6 +23,7 @@ module Rack
 		def call(env)
 			req = Request.new(env)
 			$RACK_ENV = req.env
+			env["rack.input"].rewind
 			tdiary_conf = ::File.expand_path("../../tdiary-rack.conf",
 				::File.dirname(__FILE__))
 			driver = @driver.configure {
