@@ -41,9 +41,8 @@ class ResponseHelper
 	end
 
 	def parse_raw_result
-		raw_header, *body = @raw.split(CGI::EOL * 2)
+		raw_header, @body = @raw.split(CGI::EOL * 2, 2)
 		@headers ||= parse_headers(raw_header)
-		@body = body.join("")
 		@status = extract_status
 	end
 
