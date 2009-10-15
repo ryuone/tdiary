@@ -41,6 +41,8 @@ module TDiary
 			end
 			@server.mount("/update.rb", WEBrick::HTTPServlet::CGIHandler,
 				File.expand_path("update.rb", TDIARY_CORE_DIR))
+			@server.mount("/theme", WEBrick::HTTPServlet::FileHandler,
+				File.expand_path("theme", TDIARY_CORE_DIR), :FancyIndexing => true)
 		end
 
 		def start
