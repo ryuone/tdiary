@@ -1,3 +1,6 @@
+2009-10-15  SHIBATA Hiroshi  <shibata.hiroshi@gmail.com>
+	* makerss.rb : applied patch #178. thx sakai.
+
 2009-09-07  Kazuhiko  <kazuhiko@fdiary.net>
 	* makerss.rb (absolutify): fix a bug that raises an exception when
 	replacing attributes don't appear.
