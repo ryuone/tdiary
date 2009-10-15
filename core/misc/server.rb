@@ -6,10 +6,13 @@ require 'tempfile'
 
 module TDiary
 	class Server
+		attr_reader :daemonize, :pid_path
 		TDIARY_CORE_DIR = File.expand_path("..", File.dirname(__FILE__))
 		DEFAULT_OPTIONS = {
 			:logger => $stderr,
 			:access_log => $stderr,
+			:daemonize => false,
+			:pid_path => File.expand_path("../tmp/tdiary-server.pid", File.dirname(__FILE__))
 		}
 		class << self
 			def run(option)
@@ -26,7 +29,8 @@ module TDiary
 
 		def initialize(options)
 			opts = DEFAULT_OPTIONS.merge(options)
-
+			@daemonize = opts[:daemonize]
+			@pid_path = opts[:pid_path]
 			@server = WEBrick::HTTPServer.new(
 				:Port => opts[:port], :BindAddress => '127.0.0.1',
 				:DocumentRoot => TDIARY_CORE_DIR,
@@ -46,6 +50,28 @@ module TDiary
 		end
 
 		def start
+			if daemonize
+				@server.logger.info("server will be daemon...")
+				if RUBY_VERSION < "1.9"
+					exit if fork
+					Process.setsid
+					exit if fork
+					Dir.chdir "/"
+					File.umask 0000
+					STDIN.reopen "/dev/null"
+					STDOUT.reopen "/dev/null", "a"
+					STDERR.reopen "/dev/null", "a"
+				else
+					Process.daemon
+				end
+				if @pid_path
+					pid_dir = File.dirname( @pid_path )
+					require 'fileutils'
+					FileUtils.mkdir_p(pid_dir) unless File.exist? pid_dir
+					File.open(@pid_path, 'w'){ |f| f.write("#{Process.pid}") }
+					at_exit { File.delete(@pid_path) if File.exist?(@pid_path) }
+				end
+			end
 			@server.start
 		end
 

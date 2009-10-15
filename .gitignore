@@ -1,4 +1,5 @@
 core/data
 core/coverage
 core/features/data
+core/tmp
 **/*.work
