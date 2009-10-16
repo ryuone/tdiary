@@ -464,9 +464,13 @@ module TDiary
 	#  configuration class
 	#
 	class Config
+		@@tdiary_config_file_path = nil
 		class << self
 			def tdiary_config_file_path
-				@@tdiary_config_file_path ||= "tdiary.conf"
+				return @@tdiary_config_file_path if @@tdiary_config_file_path
+				conf_memo_path = File.expand_path( "tmp/tdiary-conf.memo", File.dirname(__FILE__) )
+				@@tdiary_config_file_path = ( File.exist?(conf_memo_path) ?
+					File.read( conf_memo_path ) : "tdiary.conf" )
 			end
 
 			def tdiary_config_file_path=(path)

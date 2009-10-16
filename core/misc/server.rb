@@ -1,18 +1,22 @@
+$:.unshift(File.expand_path("../", File.dirname(__FILE__)))
 require 'webrick'
 require 'webrick/httpservlet/cgihandler'
 require 'webrick/httputils'
 require 'webrick/accesslog'
 require 'tempfile'
+require 'fileutils'
+require 'tdiary'
 
 module TDiary
 	class Server
-		attr_reader :daemonize, :pid_path
+		attr_reader :daemonize, :pid_path, :tdiary_config_path
 		TDIARY_CORE_DIR = File.expand_path("..", File.dirname(__FILE__))
 		DEFAULT_OPTIONS = {
 			:logger => $stderr,
 			:access_log => $stderr,
 			:daemonize => false,
-			:pid_path => File.expand_path("../tmp/tdiary-server.pid", File.dirname(__FILE__))
+			:pid_path => File.expand_path("../tmp/tdiary-server.pid", File.dirname(__FILE__)),
+			:tdiary_config_path => nil,
 		}
 		class << self
 			def run(option)
@@ -31,6 +35,8 @@ module TDiary
 			opts = DEFAULT_OPTIONS.merge(options)
 			@daemonize = opts[:daemonize]
 			@pid_path = opts[:pid_path]
+			@tdiary_config_path = opts[:tdiary_config_path]
+
 			@server = WEBrick::HTTPServer.new(
 				:Port => opts[:port], :BindAddress => '127.0.0.1',
 				:DocumentRoot => TDIARY_CORE_DIR,
@@ -66,11 +72,17 @@ module TDiary
 				end
 				if @pid_path
 					pid_dir = File.dirname( @pid_path )
-					require 'fileutils'
 					FileUtils.mkdir_p(pid_dir) unless File.exist? pid_dir
 					File.open(@pid_path, 'w'){ |f| f.write("#{Process.pid}") }
 					at_exit { File.delete(@pid_path) if File.exist?(@pid_path) }
 				end
+			end
+			if tdiary_config_path
+				conf_memo_dir = File.expand_path("../tmp", File.dirname(__FILE__))
+				conf_memo_path = File.join(conf_memo_dir, "tdiary-conf.memo")
+				FileUtils.mkdir_p(conf_memo_dir) unless File.exist? conf_memo_dir
+				File.open(conf_memo_path, 'w'){ |f| f.write(tdiary_config_path) }
+				at_exit { File.delete(conf_memo_path) if File.exist?(conf_memo_path) }
 			end
 			@server.start
 		end
