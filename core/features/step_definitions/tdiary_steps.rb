@@ -17,6 +17,19 @@ Given "最低限のtdiary.conf" do
 	end
 end
 
+Given "CGIが最低限動く設定" do
+	fixture_dir = File.expand_path("../fixtures", File.dirname(__FILE__))
+	work_data_dir = File.expand_path("../data", File.dirname(__FILE__))
+	sources = Dir.glob("#{fixture_dir}/just_installed/data/*")
+
+	unless sources.empty?
+		FileUtils.cp_r sources, work_data_dir, :verbose => true
+	end
+
+	boot_cgi_daemon_with(File.expand_path("../fixtures/just_installed/tdiary.conf", File.dirname(__FILE__)))
+end
+
+
 # FIXME paramのハンドリングをもう少しまともにやること
 Given "デフォルトの基本設定項目" do
 	@driver.append_param("html_title=")
@@ -44,27 +57,21 @@ When /(.*) に(?:アクセス|ポスト)した/ do |uri|
 end
 
 Then /ステータスコードは (.*) である/ do |status|
-	@status.to_s.should == status
+	response_code.should == status.to_i
 end
 
 Then /HTMLの (.*) タグの内容は (.*) を含む/ do |hpricot_path, content|
-	@response.should have_tag(hpricot_path, /#{content}/)
+	response_body.should have_tag(hpricot_path, /#{content}/)
 end
 
 Then /HTMLの (.*) タグの内容は (.*) である/ do |hpricot_path, content|
-	@response.should have_tag(hpricot_path, content)
+	response_body.should have_tag(hpricot_path, content)
 end
 
 Then /HTMLに (.*) へのリンクがある/ do |link|
-	@response.should have_tag("a[@href='#{link}']")
+	response_body.should have_tag("a[@href='#{link}']")
 end
 
 Then /HTMLに (.*) タグがある/ do |hpricot_path|
-	@response.should have_tag(hpricot_path)
-end
-
-Then /^画面を表示する$/ do
-	puts @response
-# TODO support Webrat::SaveAndOpenPage
-#  save_and_open_page
+	response_body.should have_tag(hpricot_path)
 end
