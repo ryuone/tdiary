@@ -500,7 +500,7 @@ module TDiary
 			require 'logger'
 
 			log_path = @options['log_path'] || "#{@data_path}/log/"
-			FileUtils::mkdir_p( log_path ) unless FileTest::directory?( log_path ) 
+			FileUtils::mkdir_p( log_path ) unless FileTest::directory?( log_path )
 
 			log_file = log_path + "debug.log"
 			@logger = Logger::new( log_file, 'daily' )
@@ -540,8 +540,8 @@ module TDiary
 				@logger.warn( str )
 			when "INFO"
 				@logger.info( str )
-			else 
-				@logger.debug( str )			
+			else
+				@logger.debug( str )
 			end
 		end
 
@@ -1897,7 +1897,7 @@ EOS
 			end
 		end
 	end
-	
+
 	#
 	# class TDiaryMonth
 	#  show month mode view
@@ -2200,7 +2200,7 @@ HERE
 			if @cgi.content_type =~ /charset=([^\s;]*)/i then
 				charset = $1
 			end
-			
+
 			url = @cgi.params['url'][0]
 			blog_name = @conf.to_native( @cgi.params['blog_name'][0] || '', charset )
 			title = @conf.to_native( @cgi.params['title'][0] || '', charset )
