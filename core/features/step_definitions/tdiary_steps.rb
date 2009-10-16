@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'nokogiri'
+require 'server'
 
 Given "最低限のtdiary.conf" do
 	fixture_dir = File.expand_path("../fixtures", File.dirname(__FILE__))
