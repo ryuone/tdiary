@@ -1,6 +1,10 @@
 require 'rake'
 require 'spec/rake/spectask'
 require 'cucumber/rake/task'
+require 'rake/clean'
+
+CLEAN.include("webrat-*.html", "webrat.log", "coverage.aggregate")
+CLOBBER.include("tmp")
 
 namespace :cuke do
 	Cucumber::Rake::Task.new(:ok, 'Run features that should pass') do |t|
