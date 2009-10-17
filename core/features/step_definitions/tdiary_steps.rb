@@ -22,18 +22,10 @@ Then /ステータスコードは (.*) である/ do |status|
 	response_code.should == status.to_i
 end
 
-Then /HTMLの (.*) タグの内容は (.*) を含む/ do |hpricot_path, content|
-	response_body.should have_tag(hpricot_path, /#{content}/)
-end
-
-Then /HTMLの (.*) タグの内容は (.*) である/ do |hpricot_path, content|
-	response_body.should have_tag(hpricot_path, content)
-end
-
-Then /HTMLに (.*) へのリンクがある/ do |link|
+Then /"([^\"]*)"へのリンクがあること/ do |link|
 	response_body.should have_tag("a[@href='#{link}']")
 end
 
-Then /HTMLに (.*) タグがある/ do |hpricot_path|
-	response_body.should have_tag(hpricot_path)
+Then /"([^\"]*)"タグがある/ do |selector|
+	response_body.should have_tag(selector)
 end
