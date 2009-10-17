@@ -47,6 +47,7 @@ class TDiaryWorld
 	include Webrat::Matchers
 
 	Webrat::Methods.delegate_to_session :response_code, :response_body
+	URL_BASE = 'http://localhost:19293'
 end
 
 World { TDiaryWorld.new }
