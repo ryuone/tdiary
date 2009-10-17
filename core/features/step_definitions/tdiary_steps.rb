@@ -22,7 +22,7 @@ Given "CGIが最低限動く設定" do
 	sources = Dir.glob("#{fixture_dir}/just_installed/data/*")
 
 	unless sources.empty?
-		FileUtils.cp_r sources, work_data_dir, :verbose => true
+		FileUtils.cp_r sources, work_data_dir, :verbose => false
 	end
 end
 
