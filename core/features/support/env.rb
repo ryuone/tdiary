@@ -15,7 +15,7 @@ require 'tdiary/tdiary_driver'
 
 def cleanup_feature_data_dir
 	work_data_entries = File.expand_path("../data", File.dirname(__FILE__))
-	FileUtils.rm_r(Dir.glob("#{work_data_entries}/*"), :verbose => true, :force => true)
+	FileUtils.rm_r(Dir.glob("#{work_data_entries}/*"), :verbose => false, :force => true)
 end
 
 Before do
