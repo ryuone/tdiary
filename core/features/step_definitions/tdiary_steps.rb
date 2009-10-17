@@ -4,10 +4,7 @@ Given "CGIが最低限動く設定" do
 	fixture_dir = File.expand_path("../fixtures", File.dirname(__FILE__))
 	work_data_dir = File.expand_path("../data", File.dirname(__FILE__))
 	sources = Dir.glob("#{fixture_dir}/just_installed/data/*")
-
-	unless sources.empty?
-		FileUtils.cp_r sources, work_data_dir, :verbose => false
-	end
+	FileUtils.cp_r sources, work_data_dir, :verbose => false unless sources.empty?
 end
 
 Then /^日付フォームは"([^\"]*)"になっている$/ do |date|
