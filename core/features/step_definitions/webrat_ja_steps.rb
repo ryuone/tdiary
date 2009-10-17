@@ -94,8 +94,38 @@ Then /^"([^\"]*)"と表示されていること$/ do |text|
   Then %Q(I should see "#{text}")
 end
 
+#追加 opposide order from English
+Then /^"([^\"]*)"に"([^\"]*)"と表示されていること$/ do |selector, text|
+	Then %Q(I should see "#{text}" within "#{selector}")
+end
+
+#追加
+Then /^\/([^\/]*)\/と表示されていること$/ do |regexp|
+   Then %Q(I should see \/#{regexp}\/)
+end
+
+#追加 英語とは指定がopposite
+Then /^"([^\"]*)"に\/([^\/]*)\/と表示されていること$/ do |selector, regexp|
+	Then %Q(I should see \/#{regexp}\/ within "#{selector}")
+end
+
 Then /^"([^\"]*)"と表示されていないこと$/ do |text|
   Then %Q(I should not see "#{text}")
+end
+
+#追加  英語とは指定がopposite
+Then /^"([^\"]*)"に"([^\"]*)"と表示されていないこと$/ do |selector, text|
+	Then %Q(I should not see "#{text}" within "#{selector}")
+end
+
+#追加
+Then /^\/([^\/]*)\/と表示されていないこと$/ do |regexp|
+	Then %Q(I should not see \/#{regexp}\/)
+end
+
+#追加 英語とは指定がopposite
+Then /^"([^\"]*)"に\/([^\/]*)\/と表示されていないこと$/ do |selector, regexp|
+	Then %Q(I should not see \/#{regexp}\/ within "#{selector}")
 end
 
 Then /^入力項目"([^\"]*)"に"([^\"]*)"と表示されていること$/ do |field, value|
@@ -112,4 +142,9 @@ end
 
 Then /^"([^\"]*)"ページを表示していること$/ do |page_name|
   Then %Q(I should be on #{page_name})
+end
+
+# 0.4.2 に追加されてる
+Then /^画面を目視$/ do
+  Then %Q(show me the page)
 end
