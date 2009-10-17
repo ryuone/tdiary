@@ -14,6 +14,7 @@ require 'tdiary'
 require 'tdiary/tdiary_driver'
 
 $:.unshift(File.expand_path("../../misc", File.dirname(__FILE__)))
+require 'server'
 
 def cleanup_feature_data_dir
 	work_data_entries = File.expand_path("../data", File.dirname(__FILE__))
@@ -32,9 +33,10 @@ end
 
 def shutdown_cgi_daemon
 	pid_path = File.expand_path("../../tmp/tdiary-server.pid", File.dirname(__FILE__))
-	kill_pid = File.read(pid_path).to_i
-	puts "kill! #{kill_pid}"
-	Process.kill(:TERM.to_s, kill_pid)
+	if File.exist? pid_path
+		kill_pid = File.read(pid_path).to_i
+		Process.kill(:TERM.to_s, kill_pid)
+	end
 end
 
 require 'webrat'
@@ -59,9 +61,12 @@ end
 
 After do
 	# Scenario teardown
-	shutdown_cgi_daemon
 end
 
 at_exit do
 	# Global teardown
+	shutdown_cgi_daemon
 end
+
+boot_cgi_daemon_with(File.expand_path("../fixtures/just_installed/tdiary.conf", File.dirname(__FILE__)))
+sleep 5

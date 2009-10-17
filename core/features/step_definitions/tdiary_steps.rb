@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 require 'nokogiri'
-require 'server'
 
 Given "最低限のtdiary.conf" do
 	fixture_dir = File.expand_path("../fixtures", File.dirname(__FILE__))
@@ -25,8 +24,6 @@ Given "CGIが最低限動く設定" do
 	unless sources.empty?
 		FileUtils.cp_r sources, work_data_dir, :verbose => true
 	end
-
-	boot_cgi_daemon_with(File.expand_path("../fixtures/just_installed/tdiary.conf", File.dirname(__FILE__)))
 end
 
 
