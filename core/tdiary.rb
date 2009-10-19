@@ -1298,6 +1298,19 @@ module TDiary
 
 				log_file = log_path + "debug.log"
 				@logger = Logger::new( log_file, 'daily' )
+
+				case @conf.options['log_level'] then
+				when "DEBUG"
+					@logger.level = Logger::DEBUG
+				when "WARN"
+					@logger.level = Logger::WARN
+				when "ERROR"
+					@logger.level = Logger::ERROR
+				when "FATAL"
+					@logger.level = Logger::FATAL
+				else
+					@logger.level = Logger::INFO
+				end
 			end
 		end
 	end
