@@ -871,3 +871,23 @@ def saveconf_csrf_protection
 		nil
 	end
 end
+
+def saveconf_logger
+	if @mode == 'saveconf' then
+		@conf['log_level'] = @cgi.params['log_level'][0]
+	end
+end
+
+def conf_logger_list
+	log_level_list = ["DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
+	r = ''
+
+	log_level_list.each do |level|
+		if level == @conf['log_level'] then
+			select = " selected"
+		end
+		r << %Q|<option value="#{h level}"#{select}>#{level}</option>|
+	end
+
+	r << %Q|</select></p>|
+end
