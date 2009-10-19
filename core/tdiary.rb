@@ -1299,7 +1299,7 @@ module TDiary
 				log_file = log_path + "debug.log"
 				@logger = Logger::new( log_file, 'daily' )
 
-				case @conf.options['log_level'] then
+				case @conf.options['log_level']
 				when "DEBUG"
 					@logger.level = Logger::DEBUG
 				when "WARN"
