@@ -6,18 +6,23 @@ require 'webrick/accesslog'
 require 'tempfile'
 require 'fileutils'
 require 'tdiary'
+require 'tdiary/test_supporter'
 
 module TDiary
 	class Server
-		attr_reader :daemonize, :pid_path, :tdiary_config_path
+		attr_reader :daemonize, :pid_path
+
 		TDIARY_CORE_DIR = File.expand_path("..", File.dirname(__FILE__))
 		DEFAULT_OPTIONS = {
+			:port => 19292,
+			:host => '0.0.0.0',
 			:logger => $stderr,
 			:access_log => $stderr,
 			:daemonize => false,
 			:pid_path => File.expand_path("../tmp/tdiary-server.pid", File.dirname(__FILE__)),
-			:tdiary_config_path => nil,
-		}
+			:reload_tdiary_conf_per_request => false,
+		}.freeze
+
 		class << self
 			def run(option)
 				@@server = TDiary::Server.new(option)
@@ -35,10 +40,9 @@ module TDiary
 			opts = DEFAULT_OPTIONS.merge(options)
 			@daemonize = opts[:daemonize]
 			@pid_path = opts[:pid_path]
-			@tdiary_config_path = opts[:tdiary_config_path]
-
+			@reload_tdiary_conf_per_request = opts[:reload_tdiary_conf_per_request]
 			@server = WEBrick::HTTPServer.new(
-				:Port => opts[:port], :BindAddress => '127.0.0.1',
+				:Port => opts[:port], :BindAddress => opts[:host],
 				:DocumentRoot => TDIARY_CORE_DIR,
 				:MimeTypes => tdiary_mime_types,
 				:Logger => webrick_logger_to(opts[:logger]),
@@ -77,18 +81,19 @@ module TDiary
 					at_exit { File.delete(@pid_path) if File.exist?(@pid_path) }
 				end
 			end
-			if tdiary_config_path
-				conf_memo_dir = File.expand_path("../tmp", File.dirname(__FILE__))
-				conf_memo_path = File.join(conf_memo_dir, "tdiary-conf.memo")
-				FileUtils.mkdir_p(conf_memo_dir) unless File.exist? conf_memo_dir
-				File.open(conf_memo_path, 'w'){ |f| f.write(tdiary_config_path) }
-				at_exit { File.delete(conf_memo_path) if File.exist?(conf_memo_path) }
+			if reload_tdiary_conf_per_request?
+				TDiary::TestSupporter.setup_tdiary_conf_memo
 			end
+
 			@server.start
 		end
 
 		def shutdown
 			@server.shutdown
+		end
+
+		def reload_tdiary_conf_per_request?
+			@reload_tdiary_conf_per_request
 		end
 
 		private

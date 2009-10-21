@@ -12,6 +12,7 @@ include RspecHpricotMatchers
 $:.unshift(File.expand_path("../../", File.dirname(__FILE__)))
 require 'tdiary'
 require 'tdiary/tdiary_driver'
+require 'tdiary/test_supporter'
 
 $:.unshift(File.expand_path("../../misc", File.dirname(__FILE__)))
 require 'server'
@@ -19,24 +20,6 @@ require 'server'
 def cleanup_feature_data_dir
 	work_data_entries = File.expand_path("../data", File.dirname(__FILE__))
 	FileUtils.rm_r(Dir.glob("#{work_data_entries}/*"), :verbose => false, :force => true)
-end
-
-def boot_cgi_daemon_with(tdiary_config_path)
-	pid = fork do
-		TDiary::Server.run(
-			:port => 19293, :daemonize => true,
-			:tdiary_config_path => tdiary_config_path
-			)
-	end
-	Process.wait2
-end
-
-def shutdown_cgi_daemon
-	pid_path = File.expand_path("../../tmp/tdiary-server.pid", File.dirname(__FILE__))
-	if File.exist? pid_path
-		kill_pid = File.read(pid_path).to_i
-		Process.kill(:TERM.to_s, kill_pid)
-	end
 end
 
 require 'webrat'
@@ -49,7 +32,7 @@ class TDiaryWorld
 	include Webrat::Matchers
 
 	Webrat::Methods.delegate_to_session :response_code, :response_body
-	URL_BASE = 'http://localhost:19293'
+	URL_BASE = "http://localhost:#{TDiary::TestSupporter.port4cuke}"
 end
 
 World { TDiaryWorld.new }
@@ -65,8 +48,24 @@ end
 
 at_exit do
 	# Global teardown
-	shutdown_cgi_daemon
 end
 
-boot_cgi_daemon_with(File.expand_path("../fixtures/just_installed/tdiary.conf", File.dirname(__FILE__)))
-sleep 5
+begin
+	require 'open-uri'
+	cgidaemon_heatbeart = open(TDiaryWorld::URL_BASE)
+rescue
+	$stderr.puts(<<-ERROR_MESSAGE)
+#{'(::)  ' * 10}
+
+Can't access to a tDiary server via #{TDiaryWorld::URL_BASE}.
+#{$!.class} raised.
+
+Now, use 'script/server --cuke' command to
+boot tDiary server for testing or check your tDiary server status.
+
+#{'(::)  ' * 10}
+   ERROR_MESSAGE
+	exit!
+ensure
+	cgidaemon_heatbeart.close
+end

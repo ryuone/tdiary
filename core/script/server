@@ -1,5 +1,32 @@
 #!/usr/bin/env ruby
 $:.unshift(File.expand_path("../misc", File.dirname(__FILE__)))
+require 'optparse'
 require 'server'
 
-TDiary::Server.run(:port => 19292)
+options = {}
+
+default_options = TDiary::Server::DEFAULT_OPTIONS
+opts = OptionParser.new("", 20, ' ' * 2) do |opts|
+	opts.banner = "Usage: script/server [options]"
+	opts.on("-o", "--host HOST", "Listen on HOST (default: #{default_options[:host]})") do |host|
+		options[:host] = host
+	end
+
+	opts.on("-p", "--port PORT", "Use PORT (default: #{default_options[:port]})") do |port|
+		options[:port] = port
+	end
+
+	opts.on("-c", "--cuke", "Boot in foreground to run w/ cucumber (port: #{TDiary::TestSupporter.port4cuke})") do
+		options[:port] = TDiary::TestSupporter.port4cuke
+		options[:reload_tdiary_conf_per_request] = true
+	end
+
+	opts.on_tail("-h", "--help", "Show this message") do
+		puts opts
+		exit
+	end
+
+	opts.parse! ARGV
+end
+
+TDiary::Server.run(options)

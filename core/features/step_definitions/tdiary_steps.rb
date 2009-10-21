@@ -2,9 +2,13 @@
 
 Given "CGIが最低限動く設定" do
 	fixture_dir = File.expand_path("../fixtures", File.dirname(__FILE__))
-	work_data_dir = File.expand_path("../data", File.dirname(__FILE__))
 	sources = Dir.glob("#{fixture_dir}/just_installed/data/*")
+
+	work_data_dir = File.expand_path("../data", File.dirname(__FILE__))
 	FileUtils.cp_r sources, work_data_dir, :verbose => false unless sources.empty?
+
+	tdiary_conf_path  = File.join(fixture_dir, "just_installed/tdiary.conf")
+	TDiary::TestSupporter.write_tdiary_conf_memo(tdiary_conf_path)
 end
 
 Then /^日付フォームは"([^\"]*)"になっている$/ do |date|
