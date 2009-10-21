@@ -464,20 +464,6 @@ module TDiary
 	#  configuration class
 	#
 	class Config
-		@@tdiary_config_file_path = nil
-		class << self
-			def tdiary_config_file_path
-				return @@tdiary_config_file_path if @@tdiary_config_file_path
-				conf_memo_path = File.expand_path( "tmp/tdiary-conf.memo", File.dirname(__FILE__) )
-				@@tdiary_config_file_path = ( File.exist?(conf_memo_path) ?
-					File.read( conf_memo_path ) : "tdiary.conf" )
-			end
-
-			def tdiary_config_file_path=(path)
-				@@tdiary_config_file_path = path
-			end
-		end
-
 		def initialize(cgi)
 			@cgi = cgi
 			load
@@ -710,9 +696,33 @@ module TDiary
 			end
 		end
 
+		private
 		def load_tdiary_config
-			eval( File::open( Config.tdiary_config_file_path ) {
-					|f| f.read }.untaint, b, "(#{Config.tdiary_config_file_path})", 1 )
+			eval( File::open( tdiary_config_file_path ) {
+					|f| f.read }.untaint, b, "(#{tdiary_config_file_path})", 1 )
+		end
+
+		def tdiary_config_file_path
+			return @tdiary_config_file_path if @tdiary_config_file_path
+			@tdiary_config_file_path = detect_config_file_path
+		end
+
+		def detect_config_file_path
+			require 'tdiary/test_supporter'
+			tdiary_conf_memo_path = TDiary::TestSupporter.tdiary_conf_memo_path
+			if File.exist?( tdiary_conf_memo_path )
+				File.read( tdiary_conf_memo_path )
+			else
+				default_tdiary_conf_path
+			end
+		end
+
+		def default_tdiary_conf_path
+			if defined?( ::Rack )
+				"tdiary-rack.conf"
+			else
+				"tdiary.conf"
+			end
 		end
 
 		def method_missing( *m )

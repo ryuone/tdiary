@@ -3,6 +3,11 @@ $:.unshift(parent_dir)
 $:.unshift(File.expand_path("misc", parent_dir))
 
 require 'rack/tdiary_app'
+require 'tdiary/test_supporter'
+
+if $CUKE
+	TDiary::TestSupporter.setup_tdiary_conf_memo
+end
 
 use Rack::ShowExceptions
 use Rack::CommonLogger

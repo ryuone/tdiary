@@ -1,0 +1,2 @@
+#!/bin/sh
+rackup -e '$CUKE=true' -p 19293 -s thin script/tdiary.ru

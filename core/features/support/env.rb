@@ -11,7 +11,6 @@ include RspecHpricotMatchers
 
 $:.unshift(File.expand_path("../../", File.dirname(__FILE__)))
 require 'tdiary'
-require 'tdiary/tdiary_driver'
 require 'tdiary/test_supporter'
 
 $:.unshift(File.expand_path("../../misc", File.dirname(__FILE__)))

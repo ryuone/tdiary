@@ -46,6 +46,10 @@ class ResponseHelper
 		@status = extract_status
 	end
 
+	def to_a
+		[status_code, headers, body]
+	end
+
 	private
 	def parse_headers(raw_header)
 		raw_header.split(CGI::EOL).inject({}) do |headers, entry|
@@ -53,6 +57,7 @@ class ResponseHelper
 				key, val = pair[1..-1]
 				headers[key] = val
 			end
+			headers.delete("Status") # for rack lint
 			headers
 		end
 	end
