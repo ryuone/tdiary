@@ -882,6 +882,8 @@ def conf_logger_list
 	log_level_list = ["DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
 	r = ''
 
+	@conf['log_level'] ||= "INFO"
+
 	log_level_list.each do |level|
 		if level == @conf['log_level'] then
 			select = " selected"
