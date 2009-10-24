@@ -1,3 +1,6 @@
+2009-10-24  TADA Tadashi <t@tdtds.jp>
+	* highlight.rb: splitted exactly local jump URL.
+
 2009-10-15  SHIBATA Hiroshi  <shibata.hiroshi@gmail.com>
 	* makerss.rb : applied patch #178. thx sakai.
 

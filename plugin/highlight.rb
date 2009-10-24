@@ -54,7 +54,7 @@ if @mode == 'day' and not bot? then
 			
 			hereURL = document.location.href.split(/\#/)[0];
 			for (var i=0; i<document.links.length; ++i) {
-				if (hereURL == document.links[i].href.split(/\#/)[0]) {
+				if (hereURL == document.links[i].href.split(/\#[pc]/)[0]) {
 					document.links[i].onclick = handleLinkClick;
 				}
 			}
