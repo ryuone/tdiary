@@ -7,7 +7,7 @@ Copyright (C) 2001-2009, TADA Tadashi <sho@spc.gr.jp>
 You can redistribute it and/or modify it under GPL2.
 =end
 
-TDIARY_VERSION = '2.3.3.20090826'
+TDIARY_VERSION = '2.3.3.20091124'
 
 $:.insert( 1, File::dirname( __FILE__ ).untaint + '/misc/lib' )
 
@@ -312,8 +312,8 @@ module TDiary
 			DEBUG_SPAM = 1
 			DEBUG_FULL = 2
 
-			def initialize( cgi, conf )
-				@cgi, @conf = cgi, conf
+			def initialize( cgi, conf, logger )
+				@cgi, @conf, @logger = cgi, conf, logger
 
 				if @conf.options.include?('filter.debug_mode')
 					@debug_mode = @conf.options['filter.debug_mode']
@@ -334,7 +334,7 @@ module TDiary
 				return if @debug_mode == DEBUG_NONE
 				return if @debug_mode == DEBUG_SPAM and level == DEBUG_FULL
 
-				@conf.debug("#{@cgi.remote_addr}->#{(@cgi.params['date'][0] || 'no date').dump}: #{msg}")
+				@logger.info("#{@cgi.remote_addr}->#{(@cgi.params['date'][0] || 'no date').dump}: #{msg}")
 			end
 		end
 	end
@@ -484,16 +484,6 @@ module TDiary
 			bot = ["bot", "spider", "antenna", "crawler", "moget", "slurp"]
 			bot += @options['bot'] || []
 			@bot = Regexp::new( "(#{bot.uniq.join( '|' )})", true )
-
-			# create log directory
-			require 'fileutils'
-			require 'logger'
-
-			log_path = @options['log_path'] || "#{@data_path}/log/"
-			FileUtils::mkdir_p( log_path ) unless FileTest::directory?( log_path )
-
-			log_file = log_path + "debug.log"
-			@logger = Logger::new( log_file, 'daily' )
 		end
 
 		# saving to tdiary.conf in @data_path
@@ -518,21 +508,6 @@ module TDiary
 
 		def bot?
 			@bot =~ @cgi.user_agent
-		end
-
-		def debug( str, level = "DEBUG")
-			case( level )
-			when "FATAL"
-				@logger.fatal( str )
-			when "ERROR"
-				@logger.error( str )
-			when "WARN"
-				@logger.warn( str )
-			when "INFO"
-				@logger.info( str )
-			else
-				@logger.debug( str )
-			end
 		end
 
 		#
@@ -1118,6 +1093,9 @@ module TDiary
 				@conf.io_class = DefaultIO
 			end
 			@io = @conf.io_class.new( self )
+
+			# load logger
+			load_logger
 		end
 
 		def eval_rhtml( prefix = '' )
@@ -1212,7 +1190,8 @@ module TDiary
 				'cache_path' => cache_path,
 				'date' => @date,
 				'comment' => @comment,
-				'last_modified' => last_modified
+				'last_modified' => last_modified,
+				'logger' => @logger
 			)
 		end
 
@@ -1314,7 +1293,7 @@ module TDiary
 			filter_path = @conf.filter_path || "#{PATH}/tdiary/filter"
 			Dir::glob( "#{filter_path}/*.rb" ).sort.each do |file|
 				require file.untaint
-				@filters << TDiary::Filter::const_get( "#{File::basename( file, '.rb' ).capitalize}Filter" )::new( @cgi, @conf )
+				@filters << TDiary::Filter::const_get( "#{File::basename( file, '.rb' ).capitalize}Filter" )::new( @cgi, @conf, @logger )
 			end
 		end
 
@@ -1336,6 +1315,33 @@ module TDiary
 				return false unless filter.referer_filter( referer )
 			end
 			true
+		end
+
+		def load_logger
+			return if @logger
+
+			require 'fileutils'
+			require 'logger'
+
+			# create log directory
+			log_path = @conf.options['log_path'] || "#{@conf.data_path}/log/"
+			FileUtils::mkdir_p( log_path ) unless FileTest::directory?( log_path ) 
+
+			log_file = log_path + "debug.log"
+			@logger = Logger::new( log_file, 'daily' )
+
+			case @conf.options['log_level']
+			when "FATAL"
+				@logger.level = Logger::FATAL
+			when "ERROR"
+				@logger.level = Logger::ERROR
+			when "WARN"
+				@logger.level = Logger::WARN
+			when "INFO"
+				@logger.level = Logger::INFO
+			else
+				@logger.level = Logger::DEBUG
+			end
 		end
 	end
 
@@ -1974,6 +1980,12 @@ EOS
 		end
 	end
 
+	#
+	# class TDiaryMonthWithoutFilter
+	#
+	class TDiaryMonthWithoutFilter < TDiaryMonth
+		def referer_filter(referer); end
+	end
 
 	#
 	# class TDiaryLatest

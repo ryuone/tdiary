@@ -1,4 +1,4 @@
-# blog-style.rb: English recource of BlogKit. $Revision: 1.2 $
+# blog-style.rb: English recource of BlogKit.
 #
 # Copyright (c) 2002 TADA Tadashi <sho@spc.gr.jp>
 # Distributed under the GPL
@@ -19,7 +19,7 @@ def comment_new
 	'Post a comment'
 end
 
-def comment_description
+def comment_description_default
 	'Post a comment please. Your Email address will not show in this page.'
 end
 

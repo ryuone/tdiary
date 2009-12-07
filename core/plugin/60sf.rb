@@ -1,8 +1,7 @@
 # -*- coding: utf-8; -*-
-# 50sf.rb.rb - select-filters plugin
-# This file is based on 01sp.rb Revision: 1.5
+# 60sf.rb - select-filters plugin
+# This file is based on 50sp.rb Revision: 1.5
 # Modified by KURODA Hiraku.
-
 
 SF_PREFIX = 'sf'
 @sf_path = ( @conf["#{SF_PREFIX}.path"] || "#{TDiary::PATH}/misc/filter" ).to_a
@@ -129,7 +128,7 @@ if sf_option( 'selected' ) && !@sf_filters then
 			if File.readable?( path ) then
 				begin
 					require path
-					@sf_filters << TDiary::Filter::const_get("#{File::basename(filename, ".rb").capitalize}Filter")::new(@cgi, @conf)
+					@sf_filters << TDiary::Filter::const_get("#{File::basename(filename, ".rb").capitalize}Filter")::new(@cgi, @conf, @logger)
 					plugin_path = "#{dir}/plugin/#{filename}"
 					load_plugin(plugin_path) if File.readable?(plugin_path)
 				rescue Exception
