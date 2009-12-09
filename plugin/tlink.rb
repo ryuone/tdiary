@@ -154,3 +154,10 @@ def tlink( url, str, title = nil )
   %Q[<a href="#{h url}" title="#{h title}">#{str}</a>]
 end
 
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

@@ -156,4 +156,10 @@ add_conf_proc('RandomGoogle', '関連するかもしれないページ検索') d
 	r
 end
 
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:
 # vim: ts=3

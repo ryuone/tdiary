@@ -47,3 +47,10 @@ add_conf_proc( 'comment_mail', comment_mail_conf_label, 'tsukkomi' ) do
 	comment_mail_basic_setting
 	comment_mail_basic_html
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

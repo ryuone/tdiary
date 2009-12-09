@@ -104,4 +104,11 @@ server.add_handler("pingback.ping") do |sourceURI,targetURI|
   "Pingback receive success"
 end
 server.serve
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:
 # vim: ts=2

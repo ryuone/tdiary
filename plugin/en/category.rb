@@ -193,4 +193,11 @@ Move mouse pointer on an icon, the icon's name will pop up.
 </p>
 HTML
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:
 # vim: ts=3

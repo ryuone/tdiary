@@ -13,3 +13,10 @@ def edit_today_conf_html
 	<p><input name="edit_today_caption" size="70" value="#{h @conf['edit_today.caption']}"></p>
 	HTML
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

@@ -8,3 +8,10 @@ if /conf/ =~ @mode then
 end
 
 @ping_label_send = '更新情報を送る'
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

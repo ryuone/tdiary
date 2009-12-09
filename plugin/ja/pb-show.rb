@@ -14,3 +14,10 @@ def pb_show_conf_html
   <p>最大<input name="pingback_limit" value="#{ h(@conf['pingback_limit'] || @conf.comment_limit ) }" size="3">件</p>
   HTML
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

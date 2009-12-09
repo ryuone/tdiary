@@ -39,3 +39,10 @@ Permission is granted for use, copying, modification, distribution, and
 distribution of modified versions of this work under the terms of GPL
 version 2 or later.
 =end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

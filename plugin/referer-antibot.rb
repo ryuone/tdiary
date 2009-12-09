@@ -44,3 +44,10 @@ def referer_of_today_long( diary, limit )
 	return '' if bot?
 	referer_of_today_long_antibot_backup( diary, limit )
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

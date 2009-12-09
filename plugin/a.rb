@@ -200,3 +200,10 @@ add_conf_proc( 'a_conf', a_conf_label ) do
   a_conf_html(data)
 end
 
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

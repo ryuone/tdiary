@@ -358,3 +358,10 @@ alias isbnImgLeft isbn_image_left
 alias isbnImgRight isbn_image_right
 alias isbnImg isbn_image
 alias amazon isbn_image
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

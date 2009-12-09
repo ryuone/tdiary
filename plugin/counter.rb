@@ -622,3 +622,10 @@ end
 add_conf_proc('counter', @counter_conf_counter) do 
 	print_conf_html
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

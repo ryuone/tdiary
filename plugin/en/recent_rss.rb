@@ -24,3 +24,10 @@ end
 def label_recent_rss_use_image_link
 	"use image as link"
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

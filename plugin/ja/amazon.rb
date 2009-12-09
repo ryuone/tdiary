@@ -77,3 +77,10 @@
 @amazon_label_usedefault = 'デフォルトのイメージを使う'
 @amazon_label_clearcache = 'キャッシュの削除'
 @amazon_label_clearcache_desc = 'イメージ関連情報のキャッシュを削除する(Amazon上の表示と矛盾がある場合に試して下さい)'
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

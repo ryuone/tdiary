@@ -41,3 +41,10 @@ add_conf_proc( 'hide-mail-field', @hide_mail_field_label_conf, 'security' ) do
 	end
 	hide_mail_field_conf_html
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

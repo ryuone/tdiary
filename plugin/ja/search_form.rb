@@ -23,3 +23,10 @@ end
 def yahoo_form( button_name = "Yahoo! 検索", size = 20, default_text = "" )
 	yahooj_form( button_name, size, default_text )
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

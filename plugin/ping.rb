@@ -93,5 +93,11 @@ def ping_edit_proc
 	</label></div>
 	HTML
 end
-# vim: ts=3
 
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:
+# vim: ts=3

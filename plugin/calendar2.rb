@@ -175,3 +175,10 @@ end
 
 #@calendar2_cache = CacheMonth.new(@date, :calender2, method(:calendar2))
 #add_update_proc @calendar2_cache.writer
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

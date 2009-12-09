@@ -213,3 +213,10 @@ add_conf_proc( 'tb-show', 'TrackBack', 'tsukkomi' ) do
 	end
 	tb_show_conf_html
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

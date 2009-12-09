@@ -10,3 +10,10 @@
 # Distributed under the GPL
 
 # this plugin is obsoleted
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:
