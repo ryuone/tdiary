@@ -42,6 +42,7 @@ def amazon_call_ecs( asin, id_type )
 	url << "&ItemId=#{asin}"
 	url << "&IdType=#{id_type}"
 	url << "&SearchIndex=Books" if id_type == 'ISBN'
+	url << "&SearchIndex=All"   if id_type == 'EAN'
 	url << "&ResponseGroup=Medium"
 	url << "&Version=#{@amazon_require_version}"
 
@@ -207,7 +208,7 @@ def amazon_get( asin, with_image = true, label = nil, pos = 'amazon' )
 	digit = asin.gsub( /[^\d]/, '' )
 	if digit.length == 13 then # ISBN-13
 		asin = digit
-		id_type = 'ISBN'
+		id_type = /^97[89]/ =~ digit ? 'ISBN' : 'EAN'
 	else
 		id_type = 'ASIN'
 	end

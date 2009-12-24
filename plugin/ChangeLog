@@ -1,3 +1,6 @@
+2009-12-24  TADA Tadashi <t@tdtds.jp>
+	* amazon.rb: supported EAN code. Thanks for yoshida.
+
 2009-10-24 TADA Tadashi <sho@spc.gr.jp>
 	* highlight.rb: compared tag name case insensitive.
 
