@@ -1,3 +1,6 @@
+2009-12-24  TADA Tadashi <t@tdtds.jp>
+	* amazon.rb: supported EAN code. Thanks for yoshida.
+
 2009-11-24  SHIBATA Hiroshi  <shibata.hiroshi@gmail.com>
 	* navi_user.rb: obsolete.
 
