@@ -58,11 +58,18 @@ class String
 	end
 end
 
+# ENV#[] raises an exception on secure mode
+class CGI
+	ENV = ::ENV.to_hash
+end
+
 
 # for Ruby1.8.X
 
 unless "".respond_to?('force_encoding')
 	class Encoding
+		class CompatibilityError < Exception; end
+
 		def Encoding.const_missing(id)
 			self
 		end
@@ -116,3 +123,10 @@ module TDiary
 		end
 	end
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

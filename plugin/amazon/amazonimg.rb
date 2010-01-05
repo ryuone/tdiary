@@ -104,3 +104,10 @@ if asin && /\A[0-9A-Z]{10}\z/ =~ asin then
 else
 	puts "Content-Type: text/plain\n\nBAD REQUEST\nasin:#{CGI::escapeHTML(asin)}\nsize:#{CGI::escapeHTML(size)}"
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

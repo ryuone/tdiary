@@ -59,3 +59,10 @@ add_conf_proc( 'speed_comment', speed_comment_label ) do
 	end
 	speed_comment_html
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

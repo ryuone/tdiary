@@ -51,3 +51,10 @@ def daily_theme_conf_proc
    <p><textarea name="daily_theme.list" cols="70" rows="20">#{h( @conf['daily_theme.list'] )}</textarea></p>
 	HTML
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

@@ -12,3 +12,10 @@ def pb_show_conf_html
   <p><input name="trackback_limit" value="#{ h( @conf['trackback_limit'] || @conf.comment_limit )}" size="3"> Pingbacks</p>
   HTML
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

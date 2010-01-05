@@ -1,3 +1,17 @@
+2010-01-05  Kazuhiko  <kazuhiko@fdiary.net>
+	* misc/lib/compatible.rb: define CGI::ENV so as to avoid "Insecure
+	operation `[]' at level 4" exception.
+
+	* misc/lib/compatible.rb: define Encoding::CompatibilityError for
+	ruby 1.8.x because it appears in rescue clauses.
+
+	* skel/footer.rhtml: disypal RUBY_RELEASE_DATE instead of
+	RUBY_PATCHLEVEL if RUBY_PATCH_LEVEL is missing.
+
+2009-12-09  Kazuhiko  <kazuhiko@fdiary.net>
+	* skel/i.header.rhtml: invoke header_proc without embedding its result.
+	* plugin/00default.rb: fix mobile_navi according to navi_user integration.
+
 2009-12-04 TADA Tadashi <t@tdtds.jp>
 	* plugin/00default.rb: fixed bug of no saved referer under new navi_user plugin.
 

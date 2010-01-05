@@ -497,3 +497,10 @@ end
 add_update_proc do get_weather end
 add_conf_proc( 'weather', @weather_plugin_name ) do configure_weather end
 
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

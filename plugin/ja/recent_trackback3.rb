@@ -41,4 +41,11 @@ add_conf_proc( 'recent_trackback3', '最近のTrackBack', 'tsukkomi' ) do
 	HTML
 end
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:
 # vim: ts=3

@@ -27,3 +27,10 @@ def gradient( str, first_size, last_size )
 	result
 end
 
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

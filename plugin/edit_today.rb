@@ -41,3 +41,10 @@ add_conf_proc( 'edit_today', @edit_today_caption, 'update' ) do
 	edit_today_init
 	edit_today_conf_html
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

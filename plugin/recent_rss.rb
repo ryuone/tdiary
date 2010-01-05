@@ -298,3 +298,10 @@ add_conf_proc('recent_rss', label_recent_rss_title) do
 	</div>
 	HTML
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

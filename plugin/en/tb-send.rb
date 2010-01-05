@@ -9,3 +9,10 @@ if @conf['tb.no_section'] then
 else
 	@tb_send_label_excerpt = 'Excerpt (use section body in default if not specify here)'
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

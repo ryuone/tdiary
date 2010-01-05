@@ -10,3 +10,10 @@ if @conf['tb.no_section'] then
 else
 	@tb_send_label_excerpt = '概略(記入しなければ選択したセクションの冒頭が使われます)'
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

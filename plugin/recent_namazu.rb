@@ -41,3 +41,10 @@ def recent_namazu(file, namazu, limit = 5, sep='&nbsp;', make_link = true)
 		%Q[<p class="message">#$! (#{$!.class})<br>cannot read #{file}.</p>]
 	end
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

@@ -38,3 +38,10 @@ def makerss_conf_html
 end
 
 @makerss_edit_label = "A little modify (don't update feeds)"
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

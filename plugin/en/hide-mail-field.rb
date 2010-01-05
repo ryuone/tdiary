@@ -10,3 +10,10 @@ def hide_mail_field_conf_html
 	Ex. "Add a TSUKKOMI or Comment please. E-mail field was hidden because against spam. Please do not input E-mail address if you can see it."</p>
 	HTML
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

@@ -33,4 +33,11 @@ add_conf_proc('ToDo', 'ToDo plugin') do
 	<p><input name="todo.n" value="#{h @conf['todo.n']}" size="3"> entries</p>
 	HTML
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:
 # vim: ts=3

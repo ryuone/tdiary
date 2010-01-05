@@ -5,3 +5,10 @@
 
 @daily_theme_label = 'Daily Theme'
 @daily_theme_label_desc = 'List of theme name.'
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

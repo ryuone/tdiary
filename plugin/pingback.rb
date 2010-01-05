@@ -116,3 +116,10 @@ def saveconf_pingback
     @conf['pingback.exclude'] = @cgi.params['pingback.exclude'][0] || ''
   end
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

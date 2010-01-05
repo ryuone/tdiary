@@ -593,3 +593,10 @@ server.add_handler('mt.setNextScheduledPost') do |postid, dateCreated, username,
 end
 
 server.serve
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

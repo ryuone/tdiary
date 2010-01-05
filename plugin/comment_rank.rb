@@ -27,3 +27,10 @@ def comment_rank( max = 5, sep = '&nbsp;', *except )
 	result.join( sep )
 end
 
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

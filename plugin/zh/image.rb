@@ -40,3 +40,10 @@ def image_label_add_plugin; '附加到文章當中'; end
 def image_label_delete; '將選取的圖片刪除'; end
 def image_label_only_jpeg; '只接受 JPEG 格式'; end
 def image_label_add_image; '上傳圖片'; end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

@@ -28,3 +28,10 @@ def tb_show_conf_html
 	HTML
 end
 
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

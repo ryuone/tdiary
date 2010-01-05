@@ -39,3 +39,10 @@
 @counter_conf_kiriban_messages_label_all ||= "Kiriban message:"
 @counter_conf_kiriban_messages_label_today ||= "Today's Kiriban message:"
 @counter_conf_kiriban_messages_label_nomatch ||= "Default(Not Kiriban)message:"
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

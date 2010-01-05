@@ -13,3 +13,10 @@ def yahoo_form( button_name = "Yahoo! Search", size = 20, default_text = "" )
 			style="border-width: 0px; vertical-align: middle;" alt="[Yahoo!]"></a>]
 	search_form( "http://search.yahoo.com/search", "p", button_name, size, default_text, first, "" )
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

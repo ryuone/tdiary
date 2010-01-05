@@ -44,3 +44,10 @@ end
 def namazu_form( url, button_name = "Search", size = 20, default_text = "" )
 	search_form( url, "query", button_name, size, default_text )
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

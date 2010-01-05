@@ -11,3 +11,10 @@ def hide_mail_field_conf_html
 	例: ツッコミ・コメントがあればどうぞ! spam対策でE-mail欄は隠してあります。もしE-mail欄が見えていても、何も入力しないで下さい。</p>
 	HTML
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

@@ -23,3 +23,10 @@ def calendar
 	result << %Q[<input type="submit" value="Go">\n]
 	result << "</div>\n</form>"
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

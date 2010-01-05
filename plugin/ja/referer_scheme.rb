@@ -77,3 +77,10 @@ unless @conf.referer_table.respond_to?( 'scheme_hatena', true ) then
 		end
 	end
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

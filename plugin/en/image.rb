@@ -44,3 +44,10 @@ def image_label_add_plugin; 'Add to the article'; end
 def image_label_delete; 'Delete checked images'; end
 def image_label_only_jpeg; 'Only JPEG'; end
 def image_label_add_image; 'Upload the image'; end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

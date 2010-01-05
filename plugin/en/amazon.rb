@@ -59,3 +59,10 @@
 @amazon_label_usedefault = 'Use default image'
 @amazon_label_clearcache = 'Clear Cache'
 @amazon_label_clearcache_desc = 'Delete local cache file about book images'
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:
