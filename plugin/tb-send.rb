@@ -5,8 +5,8 @@
 #
 
 add_edit_proc do |date|
-	url = @cgi.params['plugin_tb_url'][0] || ''
-	excerpt = @cgi.params['plugin_tb_excerpt'][0] || ''
+	url = @conf.to_native( @cgi.params['plugin_tb_url'][0] || '' )
+	excerpt = @conf.to_native( @cgi.params['plugin_tb_excerpt'][0] || '' )
 	section = @cgi.params['plugin_tb_section'][0] || ''
 	select_sections = ''
 	unless @conf['tb.no_section'] then
