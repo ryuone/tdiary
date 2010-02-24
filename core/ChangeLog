@@ -1,3 +1,6 @@
+2010-02-25 TADA Tadashi <t@tdtds.jp>
+	* release 2.2.3.
+
 2009-12-16 TADA Tadashi <t@tdtds.jp>
 	* plugin/ja/00default.rb: fixed bug of Japanese resource (#184).
 

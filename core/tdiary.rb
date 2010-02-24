@@ -3,11 +3,11 @@
 tDiary: the "tsukkomi-able" web diary system.
 tdiary.rb
 
-Copyright (C) 2001-2009, TADA Tadashi <sho@spc.gr.jp>
+Copyright (C) 2001-2010, TADA Tadashi <sho@spc.gr.jp>
 You can redistribute it and/or modify it under GPL2.
 =end
 
-TDIARY_VERSION = '2.2.2'
+TDIARY_VERSION = '2.2.3'
 
 $:.insert( 1, File::dirname( __FILE__ ) + '/misc/lib' )
 
