@@ -1,3 +1,6 @@
+2010-02-25 TADA Tadashi <t@tdtds.jp>
+	* release 2.2.3.
+
 2010-02-17  TADA Tadashi <t@tdtds.jp>
 	* tb-send.rb: changed character encoding of some parameters.
 
