@@ -2,4 +2,5 @@ core/data
 core/coverage
 core/features/data
 core/tmp
+core/rdoc
 **/*.work
