@@ -15,7 +15,7 @@ Then /^日付フォームは"([^\"]*)"になっている$/ do |date|
 	year = month = day = 0
 	if date == "今日"
 		today = Date.today
-		year, month, day = [today.year, "%02d" % today.month, "%02d" % today.day]
+		year, month, day = [today.year, today.month, today.day]
 	end
 	field_named("year").value.should =~ /#{year}/
 	field_named("month").value.should =~ /#{month}/
