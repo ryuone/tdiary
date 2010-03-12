@@ -14,7 +14,7 @@
 # You can distribute this file under the GPL2.
 #
 def gradient( str, first_size, last_size )
-	ary = str.split( // )
+	ary = str.split( //u )
 	len = ary.length - 1
 	result = ""
 	fontsize = first_size.to_f

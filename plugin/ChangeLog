@@ -1,3 +1,6 @@
+2010-03-12  TADA Tadashi <t@tdtds.jp>
+	* gradient.rb, gradation.rb: fixed bug of splitting by character.
+
 2010-02-17  TADA Tadashi <t@tdtds.jp>
 	* tb-send.rb: changed character encoding of some parameters.
 
