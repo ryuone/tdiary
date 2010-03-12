@@ -11,7 +11,7 @@
 # You can distribute this file under the GPL2.
 #
 def gradation( str, first_color, last_color )
-	ary = str.split( // )
+	ary = str.split( //u )
 	len = ary.length - 1
 	result = ""
 	r = first_color[0..1].hex.to_f
