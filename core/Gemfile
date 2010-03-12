@@ -1,0 +1,11 @@
+source :gemcutter
+
+group :cucumber do
+	gem 'cucumber'
+	gem 'webrat'
+	gem 'rspec', :require => 'spec'
+	gem 'rr'
+	gem 'mechanize'
+	gem 'hpricot'
+	gem 'rspec_hpricot_matchers'
+end

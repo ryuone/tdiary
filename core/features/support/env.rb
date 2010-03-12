@@ -1,12 +1,17 @@
 # -*- coding: utf-8 -*-
 $KCODE = 'u' if RUBY_VERSION < "1.9"
 
-require 'spec'
-require 'rr'
-include RR::Adapters::RRMethods
+begin
+	require File.expand_path('../../../.bundle/enviroment', __FILE__)
+rescue LoadError
+	require 'rubygems'
+	require 'bundler'
+	Bundler.setup
+end
 
-require 'hpricot'
-require 'rspec_hpricot_matchers'
+Bundler.require :cucumber
+
+include RR::Adapters::RRMethods
 include RspecHpricotMatchers
 
 $:.unshift(File.expand_path("../../", File.dirname(__FILE__)))
@@ -21,7 +26,6 @@ def cleanup_feature_data_dir
 	FileUtils.rm_r(Dir.glob("#{work_data_entries}/*"), :verbose => false, :force => true)
 end
 
-require 'webrat'
 Webrat.configure do |config|
 	config.mode = :mechanize
 end

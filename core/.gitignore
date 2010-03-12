@@ -1,3 +1,5 @@
 feature.html
 coverage.aggregate
 webrat-*.html
+webrat.log
+.bundle
