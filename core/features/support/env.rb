@@ -2,7 +2,7 @@
 $KCODE = 'u' if RUBY_VERSION < "1.9"
 
 begin
-	require File.expand_path('../../../.bundle/enviroment', __FILE__)
+	require File.expand_path('../../../.bundle/environment', __FILE__)
 rescue LoadError
 	require 'rubygems'
 	require 'bundler'
