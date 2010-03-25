@@ -11,6 +11,10 @@ TDIARY_VERSION = '2.3.3.20091124'
 
 $:.insert( 1, File::dirname( __FILE__ ).untaint + '/misc/lib' )
 
+Dir.glob(File::dirname( __FILE__ ).untaint + '/vendor/plugin/*/lib') do |dir|
+	$:.insert( 1, dir )
+end
+
 require 'cgi'
 require 'uri'
 begin
