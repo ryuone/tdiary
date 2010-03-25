@@ -3,6 +3,7 @@ source :gemcutter
 group :cucumber do
 	gem 'cucumber'
 	gem 'webrat'
+	gem 'rake'
 	gem 'rspec', :require => 'spec'
 	gem 'rr'
 	gem 'mechanize'

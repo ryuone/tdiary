@@ -11,7 +11,7 @@ TDIARY_VERSION = '2.3.3.20100325'
 
 $:.insert( 1, File::dirname( __FILE__ ).untaint + '/misc/lib' )
 
-Dir.glob(File::dirname( __FILE__ ).untaint + '/vendor/plugin/*/lib') do |dir|
+Dir.glob(File::dirname( __FILE__ ).untaint + '/vendor/plugins/*/lib') do |dir|
 	$:.insert( 1, dir )
 end
 
