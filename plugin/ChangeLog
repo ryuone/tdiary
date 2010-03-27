@@ -1,3 +1,6 @@
+2010-03-27  TADA Tadashi <t@tdtds.jp>
+	* amazon.rb: added div element around description in isbn_detail.
+
 2010-03-12  TADA Tadashi <t@tdtds.jp>
 	* gradient.rb, gradation.rb: fixed bug of splitting by character.
 
