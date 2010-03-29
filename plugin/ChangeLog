@@ -1,3 +1,6 @@
+2010-03-29  TADA Tadashi <t@tdtds.jp>
+	* categody.rb: moved script to header.
+
 2010-03-27  TADA Tadashi <t@tdtds.jp>
 	* amazon.rb: added div element around description in isbn_detail.
 
