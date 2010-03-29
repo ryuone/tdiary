@@ -239,34 +239,35 @@ if /^formplugin$/ =~ @mode then
 	end
 end
 
+add_header_proc do
+	%Q[\t<script type="text/javascript"><!--
+	var elem=null
+	function insertImage(val){
+		elem.value+=val
+	}
+	window.onload=function(){
+		for(var i=0;i<document.forms.length;i++){
+			for(var j=0;j<document.forms[i].elements.length;j++){
+				var e=document.forms[i].elements[j]
+				if(e.type&&e.type=="textarea"){
+					if(elem==null){
+						elem=e
+					}
+					e.onfocus=new Function("elem=this")
+				}
+			}
+		}
+	}
+	//-->
+	</script>
+	]
+end
+
 add_form_proc do |date|
 	r = ''
 	tabidx = 1200
 	images = image_list( date.strftime( '%Y%m%d' ) )
 	if images.length > 0 then
-		r << %Q[
-		<script type="text/javascript">
-		<!--
-		var elem=null
-		function ins(val){
-			elem.value+=val
-		}
-		window.onload=function(){
-			for(var i=0;i<document.forms.length;i++){
-				for(var j=0;j<document.forms[i].elements.length;j++){
-					var e=document.forms[i].elements[j]
-					if(e.type&&e.type=="textarea"){
-						if(elem==null){
-							elem=e
-						}
-						e.onfocus=new Function("elem=this")
-					}
-				}
-			}
-		}
-		//-->
-		</script>
-		]
 		case @conf.style.sub( /^blog/i, '' )
                 when /^wiki|markdown$/i
 			ptag1 = "{{"
@@ -307,7 +308,7 @@ add_form_proc do |date|
 			tmp << %Q[<td>
 			#{img_info}<br>
 			<input type="checkbox" tabindex="#{tabidx+id*2}" name="plugin_image_id" value="#{h id}">#{id}
-			<input type="button" tabindex="#{tabidx+id*2+1}" onclick="ins(&quot;#{ptag}&quot;)" value="#{image_label_add_plugin}">
+			<input type="button" tabindex="#{tabidx+id*2+1}" onclick="insertImage(&quot;#{ptag}&quot;)" value="#{image_label_add_plugin}">
 			</td>]
 	   end
 		r << "</tr><tr>"
