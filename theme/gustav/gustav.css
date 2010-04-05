@@ -32,6 +32,7 @@ div.adminmenu {
 	filter: alpha(opacity=60);
 	opacity:0.60;
 	padding: 4px;
+	clear: both;
 }
 
 /*
@@ -62,7 +63,7 @@ span.adminmenu a:visited {
 div.content {
 	text-align: left;
 	margin: 0px auto;
-	width: 900px;
+	max-width: 900px;
 }
 
 h1 {
@@ -85,14 +86,14 @@ hr.sep {
 
 div.main {
 	float: left;
-	width: 680px;
+	max-width: 680px;
 }
 
 div.day {
 	line-height: 150%;
-   border-radius: 8px;
-   -moz-border-radius: 8px;
-   -webkit-border-radius: 8px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
 	color: #000;
 	background-color: #eee;
 	margin-right: 10px;
@@ -104,10 +105,10 @@ div.day h2 {
 	text-align: right;
 	font-size: small;
 	background-color: #aaa;
-   border-radius: 8px 8px 0px 0px;
-   -moz-border-radius: 8px 8px 0px 0px;
-   -webkit-border-top-left-radius: 8px;
-   -webkit-border-top-right-radius: 8px;
+	border-radius: 8px 8px 0px 0px;
+	-moz-border-radius: 8px 8px 0px 0px;
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
 	padding: 8px;
 }
 
@@ -148,18 +149,18 @@ div.section pre {
 	margin: 1em 10px 1em 30px;
 	padding: 8px;
 	background-color: #fff;
-   border-radius: 8px;
-   -moz-border-radius: 8px;
-   -webkit-border-radius: 8px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
 }
 
 div.section blockquote {
 	margin: 1em 10px 1em 30px;
-	padding: 2px;
+	padding: 2px 10px;
 	background-color: #fff;
-   border-radius: 8px;
-   -moz-border-radius: 8px;
-   -webkit-border-radius: 8px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
 	border-style: solid;
 	border-width: 2px 2px 2px 2px;
 	border-color: #555;
@@ -183,6 +184,7 @@ div.section dt {
 
 div.section dd {
 	overflow: auto;
+	margin-bottom: 10px;
 }
 
 div.section table {
@@ -211,18 +213,22 @@ div.section td {
 	padding: 0.3em 1em;
 }
 
-img.right, img.amazon, img.photo {
+div.section img.right, img.amazon, img.photo {
 	float: right;
-	border-stype: solid;
+	border-style: solid;
 	border-color: #888;
 	border-width: 1px;
 	margin-left: 10px;
 	margin-bottom: 10px;
 }
 
-img.left {
+div.section img.left {
 	float: none;
+	border-style: solid;
+	border-color: #888;
+	border-width: 1px;
 	margin: 0px auto;
+	margin-bottom: 10px;
 	display: block;
 }
 
@@ -233,9 +239,9 @@ div.section div.footnote {
 
 div.amazon-detail {
 	margin: 1em 10px 1em 30px;
-   border-radius: 8px;
-   -moz-border-radius: 8px;
-   -webkit-border-radius: 8px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
 	background-color: #fff;
 	padding: 8px;
 }
@@ -243,6 +249,7 @@ div.amazon-detail {
 div.amazon-detail img {
 	float: left;
 	margin-right: 10px;
+	border: none;
 }
 
 div.amazon-detail-desc {
@@ -278,7 +285,31 @@ div.profile span.profile-name {
 }
 
 div.profile span.profile-description {
-	text-align: justify;
+	text-align: left;
+}
+
+div.section div.everytrail {
+	text-align: center;
+}
+
+div.section object.ustream {
+	display: block;
+	text-align: center;
+	margin: 10px auto;
+}
+
+form.search div {
+	width: 100%;
+}
+
+form.search input.text {
+	font-size: medium;
+	width: 160px;
+	max-width: 80%;
+}
+
+form.search input.button {
+	width: 32px;
 }
 
 div.commentbody .commentator {
@@ -343,9 +374,9 @@ div.day div.form input,
 div.day div.form textarea {
 	padding-top: 4px;
 	padding-bottom: 4px;
-   border-radius: 8px;
-   -moz-border-radius: 8px;
-   -webkit-border-radius: 8px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
 }
 
 div.day div.form .button input {
@@ -370,9 +401,9 @@ div.sidebar {
 }
 
 div.sidebar-item {
-   border-radius: 8px;
-   -moz-border-radius: 8px;
-   -webkit-border-radius: 8px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
 	color: #000;
 	background-color: #eee;
 	margin-bottom: 10px;
@@ -382,10 +413,10 @@ div.sidebar-item {
 
 div.sidebar-item h3 {
 	background-color: #aaa;
-   border-radius: 8px 8px 0px 0px;
-   -moz-border-radius: 8px 8px 0px 0px;
-   -webkit-border-top-left-radius: 8px;
-   -webkit-border-top-right-radius: 8px;
+	border-radius: 8px 8px 0px 0px;
+	-moz-border-radius: 8px 8px 0px 0px;
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
 	padding: 5px 8px;
 	margin: -10px -10px 10px -10px;
 }
@@ -431,7 +462,7 @@ body.update h1 {
 }
 
 body.update div.autopagerize_page_element {
-	width: 900px;
+	max-width: 900px;
 	margin: 10px auto 10px auto;
 	text-align: left;
 }
@@ -439,7 +470,7 @@ body.update div.autopagerize_page_element {
 div.update {
 	text-align: left;
 	margin: 10px auto 0px auto;
-	width: 900px;
+	max-width: 900px;
 }
 
 div.update div.caption {
@@ -461,10 +492,88 @@ form.update div.title {
 	margin-top: 10px;
 }
 form.update div.title input {
-	pagging-left: 10px;
+	padding-left: 10px;
 	width: 100%;
 }
 
 div.update div.form .button input {
 	padding: 2px;
 }
+
+p.message {
+	color: #fff;
+	background-color: #800;
+	width: 100%;
+	margin: 0px auto;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	font-weight: bold;
+}
+
+/*
+ design for iPhone and other smart phones
+ */
+@media screen and (max-device-width: 480px) {
+	body {
+		background-image: url(gustav_back_iphone.jpg);
+		background-position: left top;
+	}
+
+	div.adminmenu {
+		font-size: x-small;
+		margin: 0px;
+		width: 100%;
+	}
+
+	h1 {
+		padding-top: 80px;
+		height: 50px;
+	}
+
+	div.content {
+		width: 100%;
+	}
+
+	div.main {
+		width: 100%;
+	}
+
+	div.day {
+		margin-right: 0px;
+		width: 100%;
+	}
+
+	div.day h2 {
+		background-color: transparent;
+	}
+
+	div.section h3 {
+		margin-left: 0px;
+		text-indent: 0px;
+	}
+
+	div.section img {
+		max-width: 320px;
+	}
+
+	body.update h1 {
+		background-image: none;
+		height: auto;
+		display: block;
+		padding: 0px;
+	}
+
+	body.update div.autopagerize_page_element {
+		width: 100%;
+	}
+
+	div.update {
+		width: 100%;
+	}
+
+	textarea {
+		font-size: 110%;
+	}
+}
+
