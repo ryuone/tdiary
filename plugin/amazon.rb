@@ -157,7 +157,7 @@ def amazon_detail_html( item )
 
 	url = amazon_url( item )
 	html = <<-HTML
-	<a href="#{url}"><div class="amazon-detail">
+	<a class="amazon-detail" href="#{url}"><div class="amazon-detail">
 		<img class="amazon-detail left" src="#{h image[:src]}"
 		height="#{h image[:height]}" width="#{h image[:width]}"
 		alt="">
