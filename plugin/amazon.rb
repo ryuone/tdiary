@@ -157,19 +157,17 @@ def amazon_detail_html( item )
 
 	url = amazon_url( item )
 	html = <<-HTML
-	<div class="amazon-detail">
-	<a href="#{url}">
+	<a href="#{url}"><div class="amazon-detail">
 		<img class="amazon-detail left" src="#{h image[:src]}"
 		height="#{h image[:height]}" width="#{h image[:width]}"
 		alt="">
-	</a>
-	<div class="amazon-detail-desc">
-	<span class="amazon-title">#{h title}</span><br>
-	<span class="amazon-author">#{h author}</span><br>
-	<span class="amazon-label">#{h amazon_label( item )}</span><br>
-	<span class="amazon-price">#{h amazon_price( item )}</span>
-	</div><br style="clear: left">
-	</div>
+		<div class="amazon-detail-desc">
+			<span class="amazon-title">#{h title}</span><br>
+			<span class="amazon-author">#{h author}</span><br>
+			<span class="amazon-label">#{h amazon_label( item )}</span><br>
+			<span class="amazon-price">#{h amazon_price( item )}</span>
+		</div><br style="clear: left">
+	</div></a>
 	HTML
 end
 

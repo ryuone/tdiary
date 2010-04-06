@@ -1,5 +1,6 @@
 2010-04-06  TADA Tadashi <t@tdtds.jp>
 	* amazon.rb: set empty alt in img elements for better accessibility.
+	* amazon.rb: make link around all elements.
 
 2010-03-29  TADA Tadashi <t@tdtds.jp>
 	* categody.rb: moved script to header.
