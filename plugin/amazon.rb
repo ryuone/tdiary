@@ -161,7 +161,7 @@ def amazon_detail_html( item )
 	<a href="#{url}">
 		<img class="amazon-detail left" src="#{h image[:src]}"
 		height="#{h image[:height]}" width="#{h image[:width]}"
-		alt="#{h title}" title="#{h title}">
+		alt="">
 	</a>
 	<div class="amazon-detail-desc">
 	<span class="amazon-title">#{h title}</span><br>
@@ -179,10 +179,10 @@ def amazon_to_html( item, with_image = true, label = nil, pos = 'amazon' )
 	author = amazon_author( item )
 	author = "(#{author})" unless author.empty?
 
+	label ||= %Q|#{amazon_title( item )}#{author}|
+	alt = ''
 	if with_image and @conf['amazon.hidename'] || pos != 'amazon' then
-		label = ''
-	elsif not label
-		label = %Q|#{amazon_title( item )}#{author}|
+		label, alt = alt, label
 	end
 
 	if with_image
@@ -193,7 +193,7 @@ def amazon_to_html( item, with_image = true, label = nil, pos = 'amazon' )
 			img = <<-HTML
 			<img class="#{h pos}" src="#{h image[:src]}"
 			height="#{h image[:height]}" width="#{h image[:width]}"
-			alt="#{h label}" title="#{h label}">
+			alt="#{h alt}">
 			HTML
 			img.gsub!( /\t/, '' )
 		end
@@ -212,7 +212,7 @@ def amazon_secure_html( asin, with_image, label, pos = 'amazon', country = nil )
 		image = <<-HTML
 		<img class="#{h pos}"
 		src="#{h @conf['amazon.secure-cgi']}?asin=#{u asin};size=#{u @conf['amazon.imgsize']};country=#{u country}"
-		alt="#{h label}" title="#{h label}">
+		alt="">
 		HTML
 	end
 	image.gsub!( /\t/, '' )
