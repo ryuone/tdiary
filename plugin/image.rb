@@ -72,10 +72,11 @@ def image( id, alt = 'image', thumbnail = nil, size = nil, place = 'photo' )
    	image = image_list( @image_date )[id.to_i]
    	image_t = image_list( @image_date )[thumbnail.to_i] if thumbnail
 	end
-	if size then
+	if @conf.iphone? then
+		size = ''
+	elsif size
 		if size.kind_of?(Array)
 			size = %Q| width="#{h size[0]}" height="#{h size[1]}"|
-
 		else
 			size = %Q| width="#{size.to_i}"|
 		end

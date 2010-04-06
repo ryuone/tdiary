@@ -157,19 +157,17 @@ def amazon_detail_html( item )
 
 	url = amazon_url( item )
 	html = <<-HTML
-	<div class="amazon-detail">
-	<a href="#{url}">
+	<a class="amazon-detail" href="#{url}"><div class="amazon-detail">
 		<img class="amazon-detail left" src="#{h image[:src]}"
 		height="#{h image[:height]}" width="#{h image[:width]}"
-		alt="#{h title}" title="#{h title}">
-	</a>
-	<div class="amazon-detail-desc">
-	<span class="amazon-title">#{h title}</span><br>
-	<span class="amazon-author">#{h author}</span><br>
-	<span class="amazon-label">#{h amazon_label( item )}</span><br>
-	<span class="amazon-price">#{h amazon_price( item )}</span>
-	</div><br style="clear: left">
-	</div>
+		alt="">
+		<div class="amazon-detail-desc">
+			<span class="amazon-title">#{h title}</span><br>
+			<span class="amazon-author">#{h author}</span><br>
+			<span class="amazon-label">#{h amazon_label( item )}</span><br>
+			<span class="amazon-price">#{h amazon_price( item )}</span>
+		</div><br style="clear: left">
+	</div></a>
 	HTML
 end
 
@@ -179,10 +177,10 @@ def amazon_to_html( item, with_image = true, label = nil, pos = 'amazon' )
 	author = amazon_author( item )
 	author = "(#{author})" unless author.empty?
 
+	label ||= %Q|#{amazon_title( item )}#{author}|
+	alt = ''
 	if with_image and @conf['amazon.hidename'] || pos != 'amazon' then
-		label = ''
-	elsif not label
-		label = %Q|#{amazon_title( item )}#{author}|
+		label, alt = alt, label
 	end
 
 	if with_image
@@ -190,10 +188,10 @@ def amazon_to_html( item, with_image = true, label = nil, pos = 'amazon' )
 		unless image[:src] then
 			img = ''
 		else
+			size = @conf.iphone? ? '' : %Q|height="#{h image[:height]}" width="#{h image[:width]}"|
 			img = <<-HTML
 			<img class="#{h pos}" src="#{h image[:src]}"
-			height="#{h image[:height]}" width="#{h image[:width]}"
-			alt="#{h label}" title="#{h label}">
+			#{size} alt="#{h alt}">
 			HTML
 			img.gsub!( /\t/, '' )
 		end
@@ -212,7 +210,7 @@ def amazon_secure_html( asin, with_image, label, pos = 'amazon', country = nil )
 		image = <<-HTML
 		<img class="#{h pos}"
 		src="#{h @conf['amazon.secure-cgi']}?asin=#{u asin};size=#{u @conf['amazon.imgsize']};country=#{u country}"
-		alt="#{h label}" title="#{h label}">
+		alt="">
 		HTML
 	end
 	image.gsub!( /\t/, '' )
