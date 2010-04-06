@@ -188,10 +188,10 @@ def amazon_to_html( item, with_image = true, label = nil, pos = 'amazon' )
 		unless image[:src] then
 			img = ''
 		else
+			size = @conf.iphone? ? '' : %Q|height="#{h image[:height]}" width="#{h image[:width]}"|
 			img = <<-HTML
 			<img class="#{h pos}" src="#{h image[:src]}"
-			height="#{h image[:height]}" width="#{h image[:width]}"
-			alt="#{h alt}">
+			#{size} alt="#{h alt}">
 			HTML
 			img.gsub!( /\t/, '' )
 		end
