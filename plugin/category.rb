@@ -120,7 +120,7 @@ def category_list_sections
 			img = ''
 		end
 		r << <<HTML
-<div class="conf day">
+<div class="category day">
 	<h2><span class="title">#{img}#{info.make_anchor}</span></h2>
 	<div class="body">
 		<ul class="category">

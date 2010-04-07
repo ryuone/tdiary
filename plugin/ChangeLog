@@ -1,3 +1,6 @@
+2010-04-07  TADA Tadashi <t@tdtds.jp>
+	* category.rb: fixed bug: div.conf -> div.category.
+
 2010-04-06  TADA Tadashi <t@tdtds.jp>
 	* amazon.rb: set empty alt in img elements for better accessibility.
 	* amazon.rb: make link around all elements.
