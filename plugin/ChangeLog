@@ -1,3 +1,6 @@
+2010-04-13  TADA Tadashi <t@tdtds.jp>
+	* pre_wrap.rb: supported URLs in comments.
+
 2010-04-07  TADA Tadashi <t@tdtds.jp>
 	* category.rb: fixed bug: div.conf -> div.category.
 
