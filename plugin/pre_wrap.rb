@@ -7,7 +7,7 @@
 add_header_proc do
 	<<-STYLE
 		<style type="text/css"><!--
-			div.section pre {
+			div.section pre, div.commentbody a {
 				white-space: -moz-pre-wrap;
 				white-space: -pre-wrap;
 				white-space: -o-pre-wrap;
