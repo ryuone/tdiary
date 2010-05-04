@@ -1,3 +1,5 @@
+# -*- coding: utf-8; -*-
+
 class ResponseHelper
 	class HTTPStatus
 		attr_reader :code, :message
