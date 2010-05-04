@@ -204,11 +204,11 @@ module TDiary
 			@target = TARGET[target]
 		end
 
-		def dispatch_cgi( cgi = CGI.new, stdout = STDOUT, stderr = STDERR )
+		def dispatch_cgi( cgi = CGI.new, stdout = nil, stderr = nil )
 			stdout_orig = $stdout;stderr_orig = $stderr
 			begin
-				$stdout = stdout
-				$stderr = stderr
+				$stdout = stdout if stdout
+				$stderr = stderr if stderr
 				@target.run( cgi )
 			ensure
 				$stdout = stdout_orig
