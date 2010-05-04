@@ -1,3 +1,5 @@
+# -*- coding: utf-8; -*-
+
 require 'stringio'
 require 'tdiary'
 require 'tdiary/response_helper'
@@ -78,7 +80,7 @@ module TDiary
 							end
 							head['cookie'] = tdiary.cookies if tdiary.cookies.size > 0
 							print @cgi.header( head )
-							print body if /HEAD/i !~ @cgi.request_method
+							print body
 						end
 					rescue TDiary::NotFound
 						if @cgi then
@@ -105,8 +107,6 @@ module TDiary
 								</head>
 								<body>Wait or <a href="#{$!.path}">Click here!</a></body>
 								</html>]
-					print @cgi.header( head )
-					print body
 				end
 			end
 		end
@@ -217,3 +217,11 @@ module TDiary
 		end
 	end
 end
+
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:
